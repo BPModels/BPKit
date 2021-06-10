@@ -21,14 +21,14 @@ Pod::Spec.new do |s|
 TODO: Add long description of the pod here.
                        DESC
 
-  s.homepage         = 'https://github.com/TestEngineerFish/BPKit'
+  s.homepage         = 'https://github.com/BPModels/BPKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'TestEngineerFish' => '916878440@qq.com' }
-  s.source           = { :git => 'https://github.com/TestEngineerFish/BPKit.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/BPModels/BPKit.git', :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
-  s.ios.deployment_target = '9.0'
+  s.ios.deployment_target = '10.0'
 
   s.source_files = 'BPKit/Classes/**/*'
   

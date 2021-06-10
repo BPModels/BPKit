@@ -1,0 +1,22 @@
+{
+  "name": "BPKit",
+  "version": "0.1.0",
+  "summary": "A short description of BPKit.",
+  "description": "TODO: Add long description of the pod here.",
+  "homepage": "https://github.com/TestEngineerFish/BPKit",
+  "license": {
+    "type": "MIT",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "TestEngineerFish": "916878440@qq.com"
+  },
+  "source": {
+    "git": "https://github.com/TestEngineerFish/BPKit.git",
+    "tag": "0.1.0"
+  },
+  "platforms": {
+    "ios": "9.0"
+  },
+  "source_files": "BPKit/Classes/**/*"
+}

@@ -1,10 +1,16 @@
 PODS:
-  - BPKit (0.1.0)
+  - BPKit (0.1.1):
+    - Kingfisher
+    - SnapKit
+    - Toast-Swift
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
+  - Kingfisher (4.10.1)
+  - SnapKit (4.2.0)
+  - Toast-Swift (5.0.1)
 
 DEPENDENCIES:
   - BPKit (from `../`)
@@ -13,14 +19,20 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - FBSnapshotTestCase
+    - Kingfisher
+    - SnapKit
+    - Toast-Swift
 
 EXTERNAL SOURCES:
   BPKit:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BPKit: 9310c5f9cb8f9422efcc387f9977a739f2edf7b9
+  BPKit: d2b498a7569aff106ca49dfe6469e02e83fb2aa0
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
 
 PODFILE CHECKSUM: 63d9854e9634b698604d7003831c1b43563767d7
 

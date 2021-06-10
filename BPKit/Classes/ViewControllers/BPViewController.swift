@@ -8,18 +8,8 @@
 
 import UIKit
 import SnapKit
-import FDFullscreenPopGesture
 
 class BPViewController: UIViewController, BPNavigationBarDelegate {
-    
-    // 特殊VC，不支持侧滑返回
-    let specialVCList: [AnyClass] = [BPGuideViewController.classForCoder(),
-                                     BPLoginViewController.classForCoder(),
-                                     BPInputInfoViewController.classForCoder(),
-                                     BPResetPasswordViewController.classForCoder(),
-                                     BPCreateOrganizationViewController.classForCoder(),
-                                     BPStudioCreateProjectViewController.classForCoder(),
-                                     BPAccountManageViewController.classForCoder()]
 
     deinit {
         #if DEBUG
@@ -73,29 +63,19 @@ class BPViewController: UIViewController, BPNavigationBarDelegate {
     internal func registerNotification() {}
 
     private func setFullScreenPopGesture() {
-        // 处理测滑隐藏与未隐藏的NavBar的关系
-        self.fd_prefersNavigationBarHidden = true
-        if self.specialVCList.contains(where: { [weak self] (type) -> Bool in
-            guard let self = self else { return false }
-            return type == self.classForCoder
-        }) {
-            self.fd_interactivePopDisabled = true
-        } else {
-            self.fd_interactivePopDisabled = false
-        }
     }
     
-    // TODO: ==== 摇一摇切换环境 ====
-    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-        super.motionEnded(motion, with: event)
-        #if DEBUG
-        if event?.subtype == .some(.motionShake) && !(UIViewController.currentViewController?.isKind(of: BPEnvChangeViewController.classForCoder()) ?? false) {
-            let vc = BPEnvChangeViewController()
-            UIViewController.currentViewController?.present(vc, animated: true, completion: nil)
-            BPLog("用户目录：\(NSHomeDirectory())")
-        }
-        #endif
-    }
+//    // TODO: ==== 摇一摇切换环境 ====
+//    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+//        super.motionEnded(motion, with: event)
+//        #if DEBUG
+//        if event?.subtype == .some(.motionShake) && !(UIViewController.currentViewController?.isKind(of: BPEnvChangeViewController.classForCoder()) ?? false) {
+//            let vc = BPEnvChangeViewController()
+//            UIViewController.currentViewController?.present(vc, animated: true, completion: nil)
+//            BPLog("用户目录：\(NSHomeDirectory())")
+//        }
+//        #endif
+//    }
     
     // TODO: ==== CustomNavigationBar ====
     private struct AssociatedKeys {

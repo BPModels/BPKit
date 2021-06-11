@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import QuartzCore
+import Foundation
 
 
 enum BPButtonStatusEnum: Int {

@@ -314,7 +314,7 @@ public extension String {
         do {
             regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         } catch let error as NSError {
-            BPLog(error.localizedDescription)
+            print(error.localizedDescription)
         }
         guard var matches = regex?.matches(in: self, options: .withoutAnchoringBounds, range: NSMakeRange(0, attrStr.string.count)), !matches.isEmpty else {
             return attrStr

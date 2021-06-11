@@ -10,7 +10,7 @@ import UIKit
 
 class BPNavigationController: UINavigationController, UIGestureRecognizerDelegate {
     
-    private let lightStatusBarVCList: [AnyClass] = [BPServerSourceManageViewController.classForCoder()]
+    private let lightStatusBarVCList: [AnyClass] = []
 
     override func viewDidLoad() {
         super.viewDidLoad()

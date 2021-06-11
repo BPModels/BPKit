@@ -23,7 +23,7 @@ class BPTabBarController: UITabBarController, UITabBarControllerDelegate {
     
     /// 设置底部TabBarItem
     func addChildViewController() {
-        let messageVC = BPMessageHomeViewController()
+        let messageVC = UIViewController()
         messageVC.view.backgroundColor = .white0
         let messageNC = BPNavigationController()
         messageNC.addChild(messageVC)
@@ -33,7 +33,7 @@ class BPTabBarController: UITabBarController, UITabBarControllerDelegate {
         messageNC.tabBarItem.imageInsets   = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         self.addChild(messageNC)
         
-        let taskVC = BPTaskHomeViewController()
+        let taskVC = UIViewController()
         taskVC.view.backgroundColor = .white0
         let taskNC = BPNavigationController()
         taskNC.addChild(taskVC)
@@ -43,7 +43,7 @@ class BPTabBarController: UITabBarController, UITabBarControllerDelegate {
         taskNC.tabBarItem.imageInsets   = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         self.addChild(taskNC)
         
-        let studioVC = BPStudioHomeViewController()
+        let studioVC = UIViewController()
         studioVC.view.backgroundColor = .white0
         let studioNC = BPNavigationController()
         studioNC.addChild(studioVC)
@@ -53,7 +53,7 @@ class BPTabBarController: UITabBarController, UITabBarControllerDelegate {
         studioNC.tabBarItem.imageInsets   = UIEdgeInsets(top: 8, left: 8, bottom: 8, right: 8)
         self.addChild(studioNC)
         
-        let organizationVC = BPOrganizationViewController()
+        let organizationVC = UIViewController()
         organizationVC.view.backgroundColor = .gray4
         let organizationNC = BPNavigationController()
         organizationNC.addChild(organizationVC)

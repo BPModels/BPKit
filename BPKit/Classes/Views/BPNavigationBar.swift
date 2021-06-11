@@ -6,6 +6,8 @@
 //  Copyright © 2019 沙庭宇. All rights reserved.
 //
 
+import Foundation
+
 protocol BPNavigationBarDelegate: NSObjectProtocol {
     func leftAction()
     func rightAction()

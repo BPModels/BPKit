@@ -1,6 +1,6 @@
 {
   "name": "BPKit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "summary": "A short description of BPKit.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/BPModels/BPKit",
@@ -13,12 +13,18 @@
   },
   "source": {
     "git": "https://github.com/BPModels/BPKit.git",
-    "tag": "0.1.1"
+    "tag": "0.1.2"
   },
   "platforms": {
     "ios": "10.0"
   },
+  "swift_versions": "5.0",
   "source_files": "BPKit/Classes/**/*",
+  "resource_bundles": {
+    "BPKit": [
+      "BPKit/Assets/*"
+    ]
+  },
   "dependencies": {
     "Kingfisher": [
 
@@ -28,6 +34,13 @@
     ],
     "Toast-Swift": [
 
+    ],
+    "IQKeyboardManager": [
+
+    ],
+    "SDWebImage": [
+
     ]
-  }
+  },
+  "swift_version": "5.0"
 }

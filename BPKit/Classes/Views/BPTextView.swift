@@ -6,6 +6,8 @@
 //
 
 import Foundation
+import IQKeyboardManager
+
 protocol BPTextViewDelegate: NSObjectProtocol {
     func textViewDidChange(_ textView: UITextView)
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String)

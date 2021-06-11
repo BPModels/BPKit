@@ -20,7 +20,7 @@ Pod::Spec.new do |s|
   s.description      = <<-DESC
 TODO: Add long description of the pod here.
                        DESC
-
+                       
   s.homepage         = 'https://github.com/BPModels/BPKit'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
@@ -29,12 +29,14 @@ TODO: Add long description of the pod here.
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '10.0'
+  
+  s.swift_versions = '5.0'
 
   s.source_files = 'BPKit/Classes/**/*'
   
-  # s.resource_bundles = {
-  #   'BPKit' => ['BPKit/Assets/*.png']
-  # }
+   s.resource_bundles = {
+     'BPKit' => ['BPKit/Assets/*']
+   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
@@ -44,6 +46,12 @@ TODO: Add long description of the pod here.
    s.dependency 'SnapKit'
    # 弹框
    s.dependency 'Toast-Swift'
-   # 设备信息
-   s.dependency 'BPDeviceInfo'
+   # 键盘管理
+   s.dependency 'IQKeyboardManager'
+   # 图片库
+   s.dependency 'SDWebImage'
+#   # 日志收集
+#   s.dependency 'BPLog'
+#   # 设备信息
+#   s.dependency 'BPDeviceInfo'
 end

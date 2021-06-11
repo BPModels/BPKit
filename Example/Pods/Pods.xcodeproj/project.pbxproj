@@ -57,6 +57,7 @@
 		228BA8B0F4435EF9987F91DDCD9F3DFD /* SDWebImagePrefetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 73110DDBC77297892AC3477A53B623C2 /* SDWebImagePrefetcher.m */; };
 		22D0D56526730B720039350A /* NSString+Algorithm.m in Sources */ = {isa = PBXBuildFile; fileRef = 22D0D56326730B720039350A /* NSString+Algorithm.m */; };
 		22D0D56626730B720039350A /* NSString+Algorithm.h in Headers */ = {isa = PBXBuildFile; fileRef = 22D0D56426730B720039350A /* NSString+Algorithm.h */; };
+		22D0D56A267314890039350A /* BPKitConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22D0D569267314890039350A /* BPKitConfig.swift */; };
 		24F1156D71429D9970D15908A82B3D65 /* AnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF050E89354AB3CA29235F04D6634642 /* AnimatedImageView.swift */; };
 		254D6487CB1CE5AE5AA1E42AA87CAF02 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 00353BC1918600999CE29D6E8E00D227 /* CFNetwork.framework */; };
 		25A11779E3F64AC9EBC5FAE550327E24 /* SDImageAssetManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 1B7DDFDD3E06540F683DA7BA96865F5A /* SDImageAssetManager.m */; };
@@ -510,6 +511,7 @@
 		2282C76FF8C1855223B7ACC8D53D7CC1 /* ImageTransition.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageTransition.swift; path = Sources/ImageTransition.swift; sourceTree = "<group>"; };
 		22D0D56326730B720039350A /* NSString+Algorithm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Algorithm.m"; sourceTree = "<group>"; };
 		22D0D56426730B720039350A /* NSString+Algorithm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Algorithm.h"; sourceTree = "<group>"; };
+		22D0D569267314890039350A /* BPKitConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BPKitConfig.swift; path = BPKit/Classes/BPKitConfig.swift; sourceTree = "<group>"; };
 		235A6772B9F4E08DD5E7297E520C2ACB /* BPKitGlobal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BPKitGlobal.swift; path = BPKit/Classes/BPKitGlobal.swift; sourceTree = "<group>"; };
 		2383091B2CB70F24D272BDD1122BC102 /* SDImageCacheDefine.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCacheDefine.h; path = SDWebImage/Core/SDImageCacheDefine.h; sourceTree = "<group>"; };
 		23996820963FA3AFCA6930C3A60451FF /* UIImage+Diff.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+Diff.h"; path = "FBSnapshotTestCase/Categories/UIImage+Diff.h"; sourceTree = "<group>"; };
@@ -981,6 +983,7 @@
 		18C13064EC46F2684DFA4E45309E1CA3 /* BPKit */ = {
 			isa = PBXGroup;
 			children = (
+				22D0D569267314890039350A /* BPKitConfig.swift */,
 				6C31DE79077A825849084C03D3FF0E0B /* area.json */,
 				235A6772B9F4E08DD5E7297E520C2ACB /* BPKitGlobal.swift */,
 				E987A13036DE8F334B1A80F753352F81 /* iconfont.ttf */,
@@ -2300,6 +2303,7 @@
 				8E1BA43163F3E51C510AE37A797AC718 /* BPStackView.swift in Sources */,
 				2134F32022554B89130281A14F8BDAB4 /* BPTabBarController.swift in Sources */,
 				7B6C1EBDC0F43F51A85280714D506993 /* BPTableView.swift in Sources */,
+				22D0D56A267314890039350A /* BPKitConfig.swift in Sources */,
 				16A807B3B55168B26E120EFFB6AC1CF8 /* BPTextField.swift in Sources */,
 				370F19F200336D9955FF880DD586029E /* BPTextView.swift in Sources */,
 				E5D95A8801C900E116B160086CF251F7 /* BPTopWindowView.swift in Sources */,

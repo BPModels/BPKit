@@ -13,7 +13,7 @@ class BPViewController: UIViewController, BPNavigationBarDelegate {
 
     deinit {
         #if DEBUG
-        print(self.classForCoder, "资源释放")
+        BPLog(self.classForCoder, "资源释放")
         #endif
     }
     
@@ -34,7 +34,7 @@ class BPViewController: UIViewController, BPNavigationBarDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        print("==== \(self.classForCoder) 内存告警 ====")
+        BPLog("==== \(self.classForCoder) 内存告警 ====")
     }
 
     override func viewDidLoad() {

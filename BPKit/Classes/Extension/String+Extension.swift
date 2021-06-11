@@ -133,7 +133,7 @@ public extension String {
             let count = regular.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions.reportProgress, range: NSRange(location: 0, length: self.count))
             result = count > 0
         } catch {
-            print("Regular expression error!!")
+            BPLog("Regular expression error!!")
         }
         return result
     }
@@ -148,7 +148,7 @@ public extension String {
             let count = regular.numberOfMatches(in: self, options: NSRegularExpression.MatchingOptions.reportProgress, range: NSRange(location: 0, length: self.count))
             result = count > 0
         } catch {
-            print("Regular expression error!!")
+            BPLog("Regular expression error!!")
         }
         return result
     }
@@ -314,7 +314,7 @@ public extension String {
         do {
             regex = try NSRegularExpression(pattern: pattern, options: .caseInsensitive)
         } catch let error as NSError {
-            print(error.localizedDescription)
+            BPLog(error.localizedDescription)
         }
         guard var matches = regex?.matches(in: self, options: .withoutAnchoringBounds, range: NSMakeRange(0, attrStr.string.count)), !matches.isEmpty else {
             return attrStr
@@ -472,7 +472,7 @@ extension String {
                 dict = dictTmp
                 return dict
             } catch {
-                print(error.localizedDescription)
+                BPLog(error.localizedDescription)
             }
         }
         return dict

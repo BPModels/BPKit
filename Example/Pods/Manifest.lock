@@ -1,10 +1,21 @@
 PODS:
-  - BPKit (0.1.2):
+  - BPCommon (0.1.1)
+  - BPDeviceInfo (0.1.2)
+  - BPKit (0.1.3):
+    - BPCommon
+    - BPDeviceInfo (~> 0.1.2)
+    - BPLog
     - IQKeyboardManager
     - Kingfisher
     - SDWebImage
     - SnapKit
     - Toast-Swift
+  - BPLog (0.1.3):
+    - CocoaLumberjack/Swift
+    - ZipArchive
+  - CocoaLumberjack/Core (3.7.2)
+  - CocoaLumberjack/Swift (3.7.2):
+    - CocoaLumberjack/Core
   - FBSnapshotTestCase (2.1.4):
     - FBSnapshotTestCase/SwiftSupport (= 2.1.4)
   - FBSnapshotTestCase/Core (2.1.4)
@@ -17,12 +28,20 @@ PODS:
   - SDWebImage/Core (5.11.1)
   - SnapKit (4.2.0)
   - Toast-Swift (5.0.1)
+  - ZipArchive (1.4.0)
 
 DEPENDENCIES:
   - BPKit (from `../`)
   - FBSnapshotTestCase (~> 2.1.4)
 
 SPEC REPOS:
+  https://github.com/BPModels/BPSpecs.git:
+    - BPCommon
+    - BPDeviceInfo
+    - BPLog
+  https://github.com/CocoaPods/Specs.git:
+    - CocoaLumberjack
+    - ZipArchive
   trunk:
     - FBSnapshotTestCase
     - IQKeyboardManager
@@ -36,14 +55,19 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  BPKit: 1b4cc37b01154bbf79bd7f306909d549df75e06f
+  BPCommon: 91c0a1327e602c084ca97c347e7f87e366ed2db7
+  BPDeviceInfo: ba87cc87fd8c9fb016aed32b312635b3109ea0bc
+  BPKit: 517c305166a73598d3f0f642145b7fe02750d286
+  BPLog: 4f8c0e3cc0e493dc23c10545331bf9240358e17a
+  CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
+  ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 63d9854e9634b698604d7003831c1b43563767d7
+PODFILE CHECKSUM: 40b320d809ef83bfd2a1568362efe3622debd151
 
 COCOAPODS: 1.10.1

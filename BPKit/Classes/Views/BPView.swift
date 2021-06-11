@@ -13,7 +13,7 @@ class BPView: UIView {
     
     deinit {
         #if DEBUG
-        print(self.classForCoder, "资源释放")
+        BPLog(self.classForCoder, "资源释放")
         #endif
     }
 

@@ -19,7 +19,7 @@ class BPAlertViewImage: BPBaseAlertView {
         super.init(frame: .zero)
         self.imageUrlStr = imageStr
         self.imageView.showImage(with: imageStr, placeholder: nil, completion: nil) { (progress) in
-            print(progress)
+            BPLog(progress)
         }
         self.imageActionBlock = touchBlock
         self.closeButton.isHidden = hideCloseBtn

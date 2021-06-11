@@ -143,7 +143,7 @@ class BPTableView: UITableView {
         guard section != self.currentSelectedIndex, section < numberOfSections, section >= 0 else { return }
         self.currentSelectedIndex = section
         // 震动
-        feedbackGenerator()
+        shake()
         if showGuideView {
             self.showIndexGuideView(section: section)
         }

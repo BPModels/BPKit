@@ -10,6 +10,7 @@
 #endif
 #endif
 
+#import "NSString+Algorithm.h"
 
 FOUNDATION_EXPORT double BPKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char BPKitVersionString[];

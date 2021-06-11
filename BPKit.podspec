@@ -38,7 +38,7 @@ TODO: Add long description of the pod here.
      'BPKit' => ['BPKit/Assets/*']
    }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
+   s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
    # 下载处理图片
    s.dependency 'Kingfisher'
@@ -50,8 +50,10 @@ TODO: Add long description of the pod here.
    s.dependency 'IQKeyboardManager'
    # 图片库
    s.dependency 'SDWebImage'
-#   # 日志收集
-#   s.dependency 'BPLog'
-#   # 设备信息
-#   s.dependency 'BPDeviceInfo'
+   # 日志收集
+   s.dependency 'BPLog'
+   # 设备信息
+   s.dependency 'BPDeviceInfo', '~> 0.1.2'
+   # 公共库
+   s.dependency 'BPCommon'
 end

@@ -1,0 +1,6 @@
+framework module BPLog {
+  umbrella header "BPLog-umbrella.h"
+
+  export *
+  module * { export * }
+}

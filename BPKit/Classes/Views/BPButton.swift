@@ -11,7 +11,7 @@ import QuartzCore
 import Foundation
 
 
-enum BPButtonStatusEnum: Int {
+public enum BPButtonStatusEnum: Int {
     case normal
     case touchDown
     case disable
@@ -27,16 +27,16 @@ enum BPButtonType: Int {
 }
 
 @IBDesignable
-class BPButton: UIButton {
+public class BPButton: UIButton {
     
     private var status: BPButtonStatusEnum = .normal
     private var type: BPButtonType
     private var showAnimation: Bool
     
     /// 正常状态透明度
-    var normalOpacity:Float     = 1.0
+    public var normalOpacity:Float     = 1.0
     /// 禁用状态透明度
-    var disableOpacity:Float    = 0.3
+    public var disableOpacity:Float    = 0.3
     
     
     // MARK: ---- Init ----
@@ -66,14 +66,14 @@ class BPButton: UIButton {
     
     // MARK: ---- Layout ----
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         // 约束设置
         self.setStatus(nil)
     }
     
     /// 设置按钮状态，根据状态来更新UI
-    func setStatus(_ status: BPButtonStatusEnum?) {
+    public func setStatus(_ status: BPButtonStatusEnum?) {
         if let _status = status {
             self.status = _status
         }
@@ -107,12 +107,13 @@ class BPButton: UIButton {
         }
     }
     
-    func setTitleColor(_ color: UIColor?) {
+    public func setTitleColor(_ color: UIColor?) {
         self.setTitleColor(color, for: .normal)
         self.setTitleColor(color, for: .highlighted)
     }
     
-    @objc func touchDown(sender: UIButton) {
+    @objc
+    private func touchDown(sender: UIButton) {
         self.isEnabled = true
         if type != .normal {
             self.backgroundColor = self.backgroundColor?.withAlphaComponent(0.7)
@@ -129,7 +130,8 @@ class BPButton: UIButton {
         sender.layer.add(animation, forKey: nil)
     }
     
-    @objc func touchUp(sender: UIButton) {
+    @objc
+    private func touchUp(sender: UIButton) {
         if type != .normal {
             self.backgroundColor = self.backgroundColor?.withAlphaComponent(1.0)
         }

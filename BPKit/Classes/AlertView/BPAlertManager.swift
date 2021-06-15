@@ -9,9 +9,9 @@
 import UIKit
 import Kingfisher
 
-class BPAlertManager {
+public class BPAlertManager {
     
-    static var share       = BPAlertManager()
+    public static var share       = BPAlertManager()
     private var alertArray = [BPBaseAlertView]()
     private var isShowing  = false
     

@@ -236,24 +236,6 @@ extension UIView {
 }
 
 public extension UIView {
-
-    /// 将当前View添加到 Window 层显示
-    ///
-    /// UIApplication.shared.keyWindow
-    func showToWindow() {
-        UIView.cleanTopWindow(anyClass: BPTopWindowView.classForCoder())
-        kWindow.addSubview(self)
-    }
-
-    /// 清除当前Window下指定View
-    /// - parameter anyClass: 指定需要清除View的类别
-    class func cleanTopWindow(anyClass: AnyClass) {
-        for subview in kWindow.subviews {
-            if subview.isKind(of: anyClass) {
-                subview.removeFromSuperview()
-            }
-        }
-    }
     
     /// 显示Toast提示，基于当前的View，不影响其他页面的操作
     func toast(_ message: String, duration: TimeInterval = 1.5, completion: ((_ didTap: Bool) -> Void)? = nil) {

@@ -8,23 +8,23 @@
 
 import Foundation
 
-protocol BPNavigationBarDelegate: NSObjectProtocol {
+public protocol BPNavigationBarDelegate: NSObjectProtocol {
     func leftAction()
     func rightAction()
 }
 
-class BPNavigationBar: BPView {
+public class BPNavigationBar: BPView {
     
-    weak var delegate: BPNavigationBarDelegate?
+    public weak var delegate: BPNavigationBarDelegate?
     
     /// 设置大标题
-    var isBigTitle: Bool = false {
+    public var isBigTitle: Bool = false {
         didSet {
             self.setBigTitle()
         }
     }
     
-    var titleLabel: BPLabel = {
+    public var titleLabel: BPLabel = {
         let label = BPLabel()
         label.text          = ""
         label.textColor     = UIColor.black0
@@ -33,7 +33,7 @@ class BPNavigationBar: BPView {
         return label
     }()
     
-    var leftButton: BPButton = {
+    public var leftButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.back.rawValue, for: .normal)
         button.setTitleColor(UIColor.black0)
@@ -42,7 +42,7 @@ class BPNavigationBar: BPView {
         return button
     }()
     
-    var rightButton: BPButton = {
+    public var rightButton: BPButton = {
         let button = BPButton()
         button.setTitleColor(UIColor.black0, for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(16))
@@ -51,7 +51,7 @@ class BPNavigationBar: BPView {
         return button
     }()
     
-    var leftTitle: String? = "" {
+    public var leftTitle: String? = "" {
         willSet {
             self.leftButton.setTitle(newValue, for: .normal)
             self.leftButton.sizeToFit()
@@ -61,13 +61,13 @@ class BPNavigationBar: BPView {
         }
     }
     
-    var title: String? = "" {
+    public var title: String? = "" {
         willSet {
             self.titleLabel.text = newValue
         }
     }
     
-    var rightTitle: String? {
+    public var rightTitle: String? {
         set {
             self.rightButton.setTitle(newValue, for: .normal)
             self.rightButton.isHidden = false
@@ -146,11 +146,11 @@ class BPNavigationBar: BPView {
         btn.setStatus(.normal)
     }
     
-    func hideLeftButton() {
+    public func hideLeftButton() {
         self.leftButton.isHidden = true
     }
     
-    func hideRightButton() {
+    public func hideRightButton() {
         self.rightButton.isHidden = true
     }
 
@@ -178,7 +178,7 @@ class BPNavigationBar: BPView {
     }
     
     /// 设置字体颜色
-    func setTextColor(color: UIColor) {
+    public func setTextColor(color: UIColor) {
         self.leftButton.setTitleColor(color)
         self.titleLabel.textColor = color
         self.rightButton.setTitleColor(color)

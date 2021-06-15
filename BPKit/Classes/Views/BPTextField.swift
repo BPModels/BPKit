@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum BPTextFieldType {
+public enum BPTextFieldType {
     /// 常规
     case normal
     /// 纯数字（不包含小数）
@@ -20,15 +20,15 @@ enum BPTextFieldType {
     case money
 }
 
-class BPTextField: UITextField, UITextFieldDelegate {
+public class BPTextField: UITextField, UITextFieldDelegate {
     
     private var type: BPTextFieldType
     /// 最长字符长度
-    var maxLength: Int    = .max
+    public var maxLength: Int    = .max
     /// 最多显示小数数量
-    var decimalCount: Int = 2
+    public var decimalCount: Int = 2
     /// 最大的金额数字
-    var maxMoney: Double?
+    public var maxMoney: Double?
     private var _maxMoney:Double?{
         // 取maxMoney
         if let maxMoney = self.maxMoney{
@@ -53,11 +53,11 @@ class BPTextField: UITextField, UITextFieldDelegate {
     }
 
     /// 编辑时闭包回调
-    var editingBlock: StringBlock?
+    public var editingBlock: StringBlock?
     /// 编辑结束后闭包回调
-    var editFinishedBlock: StringBlock?
+    public var editFinishedBlock: StringBlock?
     
-    var showLeftView: Bool = true {
+    public var showLeftView: Bool = true {
         willSet {
             if newValue {
                 let _leftView = BPView(frame: CGRect(origin: .zero, size: CGSize(width: AdaptSize(15), height: AdaptSize(1))))
@@ -70,7 +70,7 @@ class BPTextField: UITextField, UITextFieldDelegate {
             }
         }
     }
-    var showBorder: Bool = false {
+    public var showBorder: Bool = false {
         willSet {
             if newValue {
                 self.layer.borderWidth  = AdaptSize(0.6)
@@ -84,7 +84,7 @@ class BPTextField: UITextField, UITextFieldDelegate {
             }
         }
     }
-    var showRightView: Bool = false {
+    public var showRightView: Bool = false {
         willSet {
             if newValue {
                 let _rightView = BPView(frame: CGRect(origin: .zero, size: CGSize(width: AdaptSize(15), height: AdaptSize(1))))
@@ -113,7 +113,7 @@ class BPTextField: UITextField, UITextFieldDelegate {
         self.addTarget(self, action: #selector(editingAction), for: .editingChanged)
     }
     
-    override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return false
     }
     
@@ -124,13 +124,13 @@ class BPTextField: UITextField, UITextFieldDelegate {
     }
     
     // MARK: ==== UITextFieldDelegate ====
-    func textFieldDidBeginEditing(_ textField: UITextField) {
+    public func textFieldDidBeginEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
         if self.type == .money && Double(text) == 0 {
             textField.text = nil
         }
     }
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if self.type != .money{
             guard let currentText = textField.text, string.isNotEmpty else { return true }
@@ -228,13 +228,11 @@ class BPTextField: UITextField, UITextFieldDelegate {
         return true
     }
     
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    public func textFieldDidEndEditing(_ textField: UITextField) {
         self.editFinishedBlock?(text ?? "")
     }
     
-    func updateType(type: BPTextFieldType) {
+    public func updateType(type: BPTextFieldType) {
         self.type = type
     }
-    
-   
 }

@@ -5,7 +5,7 @@
 //  Created by 沙庭宇 on 2021/1/28.
 //
 
-enum BPDirectionType: Int {
+public enum BPDirectionType: Int {
     case left
     case right
     case center
@@ -13,7 +13,7 @@ enum BPDirectionType: Int {
     case bottom
 }
 
-enum BPStackViewShadowType {
+public enum BPStackViewShadowType {
     /// 默认不增加阴影
     case normal
     /// 除了首张，都增加阴影
@@ -22,10 +22,10 @@ enum BPStackViewShadowType {
 
 import Foundation
 
-class BPStackView: BPView {
-    var offsetX: CGFloat = .zero
-    var spacing: CGFloat
-    var shadowType: BPStackViewShadowType = .normal
+public class BPStackView: BPView {
+    public var offsetX: CGFloat = .zero
+    public var spacing: CGFloat
+    public var shadowType: BPStackViewShadowType = .normal
     private var type: BPDirectionType
     private var subviewList: [UIView]
     
@@ -40,7 +40,7 @@ class BPStackView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         guard !subviewList.isEmpty else { return }
         self.setShadow()
@@ -97,12 +97,12 @@ class BPStackView: BPView {
     }
     
     // MARK: ==== Event ====
-    func add(view: UIView) {
+    public func add(view: UIView) {
         self.subviewList.append(view)
         self.layoutSubviews()
     }
     
-    func insert(view: UIView, index: Int) {
+    public func insert(view: UIView, index: Int) {
         if index < 0 {
             self.subviewList = [view] + subviewList
         } else if index >= subviewList.count {
@@ -113,7 +113,7 @@ class BPStackView: BPView {
         self.layoutSubviews()
     }
     
-    func remove(view: UIView) {
+    public func remove(view: UIView) {
         for (index, subview) in subviewList.enumerated() {
             if subview == view {
                 subview.removeFromSuperview()
@@ -124,7 +124,7 @@ class BPStackView: BPView {
         self.layoutSubviews()
     }
     
-    func removeAll() {
+    public func removeAll() {
         self.subviewList.forEach { (subview) in
             subview.removeFromSuperview()
         }

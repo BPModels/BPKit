@@ -9,7 +9,7 @@
 import UIKit
 
 /// 所有需要现在在顶部Window的视图,都需要继承该类
-class BPTopWindowView: BPView {
+public class BPTopWindowView: BPView {
 
     /// 全屏透明背景
     internal var backgroundView: UIView = {

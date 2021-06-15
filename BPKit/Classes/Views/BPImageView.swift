@@ -9,13 +9,13 @@
 import UIKit
 import Kingfisher
 
-class BPImageView: UIImageView {
+public class BPImageView: UIImageView {
     /// 下载进度闭包
-    typealias ImageDownloadProgress   = (CGFloat) -> Void
+    public typealias ImageDownloadProgress   = (CGFloat) -> Void
     /// 下载完成闭包
-    typealias ImageDownloadCompletion = ((_ image: UIImage?, _ error: Error?, _ imageURL: URL?) -> Void)
+    public typealias ImageDownloadCompletion = ((_ image: UIImage?, _ error: Error?, _ imageURL: URL?) -> Void)
 
-    func showImage(with imageStr: String, placeholder: UIImage? = nil, completion: ImageDownloadCompletion? = nil, downloadProgress: ImageDownloadProgress? = nil) -> Void {
+    public func showImage(with imageStr: String, placeholder: UIImage? = nil, completion: ImageDownloadCompletion? = nil, downloadProgress: ImageDownloadProgress? = nil) -> Void {
 
         let imageURL = URL(string: imageStr)
 

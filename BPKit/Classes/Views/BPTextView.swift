@@ -8,7 +8,7 @@
 import Foundation
 import IQKeyboardManager
 
-protocol BPTextViewDelegate: NSObjectProtocol {
+public protocol BPTextViewDelegate: NSObjectProtocol {
     func textViewDidChange(_ textView: UITextView)
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String)
 }
@@ -18,10 +18,10 @@ extension BPTextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) {}
 }
 
-class BPTextView: IQTextView, UITextViewDelegate {
-    var maxLength: Int = .max
+public class BPTextView: IQTextView, UITextViewDelegate {
+    public var maxLength: Int = .max
     
-    var delegateBP: BPTextViewDelegate?
+    public weak var delegateBP: BPTextViewDelegate?
     
     override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -39,11 +39,11 @@ class BPTextView: IQTextView, UITextViewDelegate {
     
     // MARK: ==== UITextViewDelegate ====
     
-    func textViewDidChange(_ textView: UITextView) {
+    public func textViewDidChange(_ textView: UITextView) {
         self.delegateBP?.textViewDidChange(textView)
     }
     
-    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
+    public func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
         defer {
             self.delegateBP?.textView(textView, shouldChangeTextIn: range, replacementText: text)

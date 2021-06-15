@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class BPView: UIView {
+public class BPView: UIView {
     
     deinit {
         #if DEBUG

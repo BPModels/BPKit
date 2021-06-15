@@ -8,15 +8,15 @@
 
 import UIKit
 
-class BPLabel: UILabel {
+public class BPLabel: UILabel {
     /// 内边距
-    var textInsets: UIEdgeInsets = .zero
+    public var textInsets: UIEdgeInsets = .zero
     
-    override func drawText(in rect: CGRect) {
+    public override func drawText(in rect: CGRect) {
         super.drawText(in: rect.inset(by: textInsets))
     }
     
-    override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
+    public override func textRect(forBounds bounds: CGRect, limitedToNumberOfLines numberOfLines: Int) -> CGRect {
         let insets = textInsets
         var rect = super.textRect(forBounds: bounds.inset(by: insets),
                                   limitedToNumberOfLines: numberOfLines)
@@ -29,7 +29,7 @@ class BPLabel: UILabel {
     }
     
     /// 设置文本，指定行间距
-    func setText(text: String, line space: CGFloat) {
+    public func setText(text: String, line space: CGFloat) {
         self.text = text
         let style = NSMutableParagraphStyle()
         style.lineSpacing   = space

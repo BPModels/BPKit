@@ -7,9 +7,9 @@
 
 import CoreText
 
-class BPAttributionView: BPView {
+public class BPAttributionView: BPView {
     // 可配置的属性
-    var text: String {
+    public var text: String {
         set {
             self.mAttrStr = NSMutableAttributedString(string: newValue)
             self.mAttrStr.addAttributes([NSAttributedString.Key.foregroundColor : textColor, NSAttributedString.Key.font : font], range: NSMakeRange(0, newValue.count))
@@ -19,18 +19,18 @@ class BPAttributionView: BPView {
             return mAttrStr.string
         }
     }
-    var font: UIFont = UIFont.regularFont(ofSize: AdaptSize(16)) {
+    public var font: UIFont = UIFont.regularFont(ofSize: AdaptSize(16)) {
         didSet {
             self.mAttrStr.addAttributes([NSAttributedString.Key.font : font], range: NSMakeRange(0, mAttrStr.length))
             self.height = sizeForText(mAttrStr: mAttrStr, width: width).height
         }
     }
-    var textColor = UIColor.gray0 {
+    public var textColor = UIColor.gray0 {
         didSet {
             self.mAttrStr.addAttributes([NSAttributedString.Key.foregroundColor : textColor], range: NSMakeRange(0, mAttrStr.length))
         }
     }
-    var heightLightColor = UIColor.blue0
+    public var heightLightColor = UIColor.blue0
     
     private var mAttrStr = NSMutableAttributedString(string: "")
     /// 点击中的范围（未点中，则为nil）
@@ -49,7 +49,7 @@ class BPAttributionView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         super.draw(rect)
         // 获得上下文
         let content = UIGraphicsGetCurrentContext()
@@ -108,7 +108,7 @@ class BPAttributionView: BPView {
         self.addGestureRecognizer(tapGes)
     }
     
-    override func gestureRecognizerShouldBegin(_ ges: UIGestureRecognizer) -> Bool {
+    public override func gestureRecognizerShouldBegin(_ ges: UIGestureRecognizer) -> Bool {
         /// 防止与父控件其他手势冲突
         guard let tapGes = ges as? UITapGestureRecognizer else {
             return true
@@ -138,7 +138,7 @@ class BPAttributionView: BPView {
     }
     
     // MARK: ==== Event ====
-    func setHeightLightText(text: String, click block:StringBlock?) {
+    public func setHeightLightText(text: String, click block:StringBlock?) {
         let rangeList = self.getRangeList(regex: text)
         for range in rangeList {
             self.rangeList.append((range, block))

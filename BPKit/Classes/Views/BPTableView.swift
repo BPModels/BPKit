@@ -7,11 +7,11 @@
 
 import Foundation
 
-protocol BPTableViewIndexViewDelegate: NSObjectProtocol {
+public protocol BPTableViewIndexViewDelegate: NSObjectProtocol {
     func indexTitle(section: Int) -> String
 }
 
-class BPTableView: UITableView {
+public class BPTableView: UITableView {
 
     private var currentSelectedIndex: Int = -1 {
         willSet {
@@ -34,7 +34,7 @@ class BPTableView: UITableView {
     /// 索引选中颜色
     private let indexSelectedColor = UIColor.blue0
 
-    weak var indexDelegate: BPTableViewIndexViewDelegate?
+    public weak var indexDelegate: BPTableViewIndexViewDelegate?
     
     private var indexView: BPView = {
         let view = BPView()
@@ -53,7 +53,7 @@ class BPTableView: UITableView {
         return label
     }()
     
-    override func reloadData() {
+    public override func reloadData() {
         super.reloadData()
         if indexDelegate != nil {
             self.createIndexView()
@@ -98,14 +98,14 @@ class BPTableView: UITableView {
     }
 
     /// 显示放大指示视图
-    func showIndexGuideView(section: Int) {
+    public func showIndexGuideView(section: Int) {
         indexGuideLabel.text     = self.indexDelegate?.indexTitle(section: section)
         indexGuideLabel.isHidden = false
         let offsetY = self.indexView.top + CGFloat(section) * itemH
         indexGuideLabel.frame = CGRect(x: kScreenWidth - itemW - guideW - AdaptSize(15), y: offsetY, width: guideW, height: guideH)
     }
 
-    func displayIndex(section: Int) {
+    public func displayIndex(section: Int) {
         self.selectedIndexView(section: section, showGuideView: false, autoScroll: false)
     }
 

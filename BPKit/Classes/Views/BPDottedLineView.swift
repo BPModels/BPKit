@@ -8,7 +8,7 @@
 import Foundation
 
 /// 水平虚线
-class BPDottedLineView: BPView {
+public class BPDottedLineView: BPView {
     
     init(size: CGSize) {
         super.init(frame: CGRect(origin: .zero, size: size))
@@ -19,7 +19,7 @@ class BPDottedLineView: BPView {
     }
     
     // MARK: ==== Event ====
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         super.draw(rect)
         let shapLayer = CAShapeLayer()
         shapLayer.bounds = self.bounds

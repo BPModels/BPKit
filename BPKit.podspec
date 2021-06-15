@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BPKit'
-  s.version          = '0.1.5'
+  s.version          = '0.1.6'
   s.summary          = 'A short description of BPKit.'
 
 # This description is used to generate tags and improve search results.
@@ -53,7 +53,7 @@ TODO: Add long description of the pod here.
    # 日志收集
    s.dependency 'BPLog'
    # 设备信息
-   s.dependency 'BPDeviceInfo', '~> 0.1.2'
+   s.dependency 'BPDeviceInfo'
    # 公共库
    s.dependency 'BPCommon'
 end

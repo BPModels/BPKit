@@ -8,7 +8,7 @@
 import Foundation
 import SDWebImage
 
-class BPLoadingView: BPView {
+public class BPLoadingView: BPView {
 
     private var imageView: BPImageView = {
         let imageView = BPImageView()
@@ -23,7 +23,7 @@ class BPLoadingView: BPView {
         return imageView
     }()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.createSubviews()
         self.bindProperty()
@@ -50,7 +50,7 @@ class BPLoadingView: BPView {
     }
     
     // MARK: ==== Event ====
-    func show(view: UIView = kWindow, delay: Double) {
+    public func show(view: UIView = kWindow, delay: Double) {
         // 延迟显示
         DispatchQueue.main.async {
             self.isHidden = false
@@ -68,7 +68,7 @@ class BPLoadingView: BPView {
         }
     }
     
-    func hide() {
+    public func hide() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             self.layer.opacity = 0.0

@@ -9,19 +9,19 @@
 import UIKit
 import WebKit
 
-class BPWebViewController: BPViewController {
-    var urlStr: String   = ""
-    var backBlock: DefaultBlock?
-    var hideNavigationBar: Bool = false
+public class BPWebViewController: BPViewController {
+    public var urlStr: String   = ""
+    public var backBlock: DefaultBlock?
+    public var hideNavigationBar: Bool = false
     
-    let configuration = WKWebViewConfiguration()
+    public let configuration = WKWebViewConfiguration()
     
-    lazy var webView: WKWebView = {
+    public lazy var webView: WKWebView = {
         self.setConfiguration()
         let _webView = WKWebView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: kScreenHeight), configuration: configuration)
         return _webView
     }()
-    var progressView: UIProgressView?
+    public var progressView: UIProgressView?
     
     private func setConfiguration() {
         // 视频播放是否允许调用本地播放器
@@ -47,14 +47,14 @@ class BPWebViewController: BPViewController {
         configuration.userContentController = userContentController
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.createSubviews()
         self.bindProperty()
         self.bindData()
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.view.addSubview(webView)
         webView.snp.makeConstraints { (make) in
@@ -63,13 +63,13 @@ class BPWebViewController: BPViewController {
         }
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         self.customNavigationBar?.title    = title
         self.customNavigationBar?.isHidden = hideNavigationBar
     }
     
-    override func bindData() {
+    public override func bindData() {
         super.bindData()
         guard let url = URL(string: urlStr) else {
             kWindow.toast("地址无效")
@@ -80,13 +80,13 @@ class BPWebViewController: BPViewController {
         self.webView.load(request)
     }
     
-    override func leftAction() {
+    public override func leftAction() {
         super.leftAction()
         self.backBlock?()
     }
     
     
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
+    public func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
         return
     }
 }

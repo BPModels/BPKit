@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-class BPViewController: UIViewController, BPNavigationBarDelegate {
+public class BPViewController: UIViewController, BPNavigationBarDelegate {
 
     deinit {
         #if DEBUG
@@ -18,7 +18,7 @@ class BPViewController: UIViewController, BPNavigationBarDelegate {
     }
     
     // TODO: ==== 分页 ====
-    var page: Int {
+    public var page: Int {
         var _page = 1
         self.view.subviews.forEach { (contentView) in
             contentView.subviews.forEach { (subview) in
@@ -30,39 +30,39 @@ class BPViewController: UIViewController, BPNavigationBarDelegate {
         }
         return _page
     }
-    var pageSize: Int = 20
+    public var pageSize: Int = 20
 
-    override func didReceiveMemoryWarning() {
+    public override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         BPLog("==== \(self.classForCoder) 内存告警 ====")
     }
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white0
         self.useCustomNavigationBar()
     }
     
-    override func viewWillAppear(_ animated: Bool) {
+    public override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.setFullScreenPopGesture()
     }
     
-    override func viewDidDisappear(_ animated: Bool) {
+    public override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    internal func createSubviews() {}
+    public func createSubviews() {}
 
-    internal func bindProperty() {}
+    public func bindProperty() {}
 
-    internal func bindData() {}
+    public func bindData() {}
 
-    internal func registerNotification() {}
+    public func registerNotification() {}
 
-    private func setFullScreenPopGesture() {
+    public func setFullScreenPopGesture() {
     }
     
 //    // TODO: ==== 摇一摇切换环境 ====
@@ -82,7 +82,7 @@ class BPViewController: UIViewController, BPNavigationBarDelegate {
         static var customeNavigationBar: String = "kCustomeNavigationBar"
     }
     
-    func useCustomNavigationBar() {
+    public func useCustomNavigationBar() {
         let navBar = self.createCustomNavigationBar()
         self.view.addSubview(navBar)
         navBar.snp.makeConstraints { (make) in
@@ -92,7 +92,7 @@ class BPViewController: UIViewController, BPNavigationBarDelegate {
         self.customNavigationBar?.delegate = self
     }
     
-    var customNavigationBar: BPNavigationBar? {
+    public var customNavigationBar: BPNavigationBar? {
         return objc_getAssociatedObject(self, &AssociatedKeys.customeNavigationBar) as? BPNavigationBar
     }
     
@@ -104,9 +104,11 @@ class BPViewController: UIViewController, BPNavigationBarDelegate {
     }
     
     // MARK: ==== BPNavigationBarDelegate ====
-    func leftAction() {
+    public func leftAction() {
         kWindow.hideLoading()
         self.navigationController?.pop()
     }
-    func rightAction() {}
+    public func rightAction() {
+        BPLog("Click right button in custom navigation bar")
+    }
 }

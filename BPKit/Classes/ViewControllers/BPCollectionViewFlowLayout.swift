@@ -8,13 +8,13 @@
 
 import Foundation
 
-enum BPCollectionViewFlowType: Int {
+public enum BPCollectionViewFlowType: Int {
     case left
     case center
     case right
 }
 
-class BPCollectionViewFlowLayout: UICollectionViewFlowLayout {
+public class BPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     var flowType: BPCollectionViewFlowType = .center
     var sumCellWidth = CGFloat.zero
 
@@ -27,7 +27,7 @@ class BPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let layoutAttributes = super.layoutAttributesForElements(in: rect) else {
             return nil
         }

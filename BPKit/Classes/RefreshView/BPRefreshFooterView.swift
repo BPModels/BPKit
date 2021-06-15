@@ -8,8 +8,8 @@
 
 import Foundation
 
-class BPRefreshFooterView: BPView {
-    var titleLabel: UILabel = {
+public class BPRefreshFooterView: BPView {
+    public var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor     = .gray0
         label.font          = UIFont.regularFont(ofSize: AdaptSize(13))
@@ -17,7 +17,7 @@ class BPRefreshFooterView: BPView {
         return label
     }()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear
         self.createSubviews()
@@ -27,7 +27,7 @@ class BPRefreshFooterView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { (make) in
@@ -35,7 +35,7 @@ class BPRefreshFooterView: BPView {
         }
     }
     
-    func setStatus(status: BPRefreshStatus) {
+    public func setStatus(status: BPRefreshStatus) {
         switch status {
         case .footerPulling:
             self.titleLabel.text = "上拉加载更多"

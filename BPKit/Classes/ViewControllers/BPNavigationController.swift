@@ -8,17 +8,17 @@
 
 import UIKit
 
-class BPNavigationController: UINavigationController, UIGestureRecognizerDelegate {
+public class BPNavigationController: UINavigationController, UIGestureRecognizerDelegate {
     
     private let lightStatusBarVCList: [AnyClass] = []
 
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         self.interactivePopGestureRecognizer?.delegate = self
     }
     
     // MARK: ==== Override ====
-    override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         if self.children.count == 1 {
             viewController.hidesBottomBarWhenPushed = true
         }
@@ -26,12 +26,12 @@ class BPNavigationController: UINavigationController, UIGestureRecognizerDelegat
         super.pushViewController(viewController, animated: animated)
     }
     
-    override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
+    public override func setViewControllers(_ viewControllers: [UIViewController], animated: Bool) {
         super.setViewControllers(viewControllers, animated: animated)
         self.setNavigationBarHidden(true, animated: false)
     }
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
+    public override var preferredStatusBarStyle: UIStatusBarStyle {
         guard let topVC = self.children.last, lightStatusBarVCList.contains(where: { (targetType) -> Bool in
             return topVC.classForCoder == targetType
         }) else {

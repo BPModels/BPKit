@@ -39,16 +39,16 @@ public class BPBaseAlertView: BPTopWindowView {
     public var maxContentHeight: CGFloat = AdaptSize(300)
     
     /// 间距
-    let leftPadding: CGFloat   = AdaptSize(20)
-    let rightPadding: CGFloat  = AdaptSize(20)
-    let topPadding: CGFloat    = AdaptSize(25)
-    let bottomPadding: CGFloat = .zero
-    let defaultSpace: CGFloat  = AdaptSize(15)
-    let buttonHeight: CGFloat  = AdaptSize(50)
-    let closeBtnSize: CGSize   = CGSize(width: AdaptSize(50), height: AdaptSize(50))
+    public let leftPadding: CGFloat   = AdaptSize(20)
+    public let rightPadding: CGFloat  = AdaptSize(20)
+    public let topPadding: CGFloat    = AdaptSize(25)
+    public let bottomPadding: CGFloat = .zero
+    public let defaultSpace: CGFloat  = AdaptSize(15)
+    public let buttonHeight: CGFloat  = AdaptSize(50)
+    public let closeBtnSize: CGSize   = CGSize(width: AdaptSize(50), height: AdaptSize(50))
     
-    let webCotentHeight        = AdaptSize(300)
-    let imageViewSize: CGSize  = CGSize(width: AdaptSize(300), height: AdaptSize(500))
+    public let webCotentHeight        = AdaptSize(300)
+    public let imageViewSize: CGSize  = CGSize(width: AdaptSize(300), height: AdaptSize(500))
     
     // 标题的高度
     public var titleHeight: CGFloat {
@@ -191,28 +191,32 @@ public class BPBaseAlertView: BPTopWindowView {
         self.mainView.layer.addJellyAnimation()
     }
 
-    @objc func leftAction() {
+    @objc
+    public func leftAction() {
         self.leftActionBlock?()
         if autoClose {
             self.hide()
         }
     }
 
-    @objc func rightAction() {
+    @objc
+    public func rightAction() {
         self.rightActionBlock?()
         if autoClose {
             self.hide()
         }
     }
     
-    @objc func clickImageAction() {
+    @objc
+    public func clickImageAction() {
         self.imageActionBlock?(self.imageUrlStr)
         if autoClose {
             self.hide()
         }
     }
     
-    @objc public override func hide() {
+    @objc
+    public override func hide() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.mainView.transform = CGAffineTransform(scaleX: 0, y: 0)
         }

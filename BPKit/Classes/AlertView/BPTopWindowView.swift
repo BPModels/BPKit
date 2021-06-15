@@ -12,7 +12,7 @@ import UIKit
 public class BPTopWindowView: BPView {
 
     /// 全屏透明背景
-    internal var backgroundView: UIView = {
+    public var backgroundView: UIView = {
         let view = UIView()
         view.backgroundColor = UIColor.black.withAlphaComponent(0.3)
         view.layer.opacity   = .zero

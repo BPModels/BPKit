@@ -8,15 +8,15 @@
 
 import Foundation
 
-class BPRefreshHeaderView: BPView {
-    var titleLabel: UILabel = {
+public class BPRefreshHeaderView: BPView {
+    public var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor     = .gray0
         label.font          = UIFont.regularFont(ofSize: AdaptSize(13))
         label.textAlignment = .left
         return label
     }()
-    private var imageView: BPImageView = {
+    public  var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = .scaleAspectFill
         if let path = Bundle.main.path(forResource: "refresh", ofType: "gif") {
@@ -29,7 +29,7 @@ class BPRefreshHeaderView: BPView {
         return imageView
     }()
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear
         self.createSubviews()
@@ -39,7 +39,7 @@ class BPRefreshHeaderView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(imageView)
 //        self.addSubview(titleLabel)
@@ -53,7 +53,7 @@ class BPRefreshHeaderView: BPView {
 //        }
     }
     
-    func setStatus(status: BPRefreshStatus) {
+    public func setStatus(status: BPRefreshStatus) {
         switch status {
         case .headerPulling:
             self.titleLabel.text = "下拉刷新"

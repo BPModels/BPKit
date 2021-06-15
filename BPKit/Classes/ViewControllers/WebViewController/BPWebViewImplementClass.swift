@@ -8,16 +8,16 @@
 
 import Foundation
 
-class BPWebViewImplementClass: NSObject {
-    func jsToOcWithPrams(_ parms: [String:Any])  {
+public class BPWebViewImplementClass: NSObject {
+    public func jsToOcWithPrams(_ parms: [String:Any])  {
         BPLog("jsToOcWithPrams, params : \(parms)")
     }
     
-    func jsToOcNoPrams() {
+    public func jsToOcNoPrams() {
         BPLog("jsToOcNoPrams")
     }
     
-    func goBackValue() -> String {
+    public func goBackValue() -> String {
         BPLog("goBackValue")
         return "sam"
     }

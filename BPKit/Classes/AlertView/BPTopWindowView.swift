@@ -20,7 +20,7 @@ public class BPTopWindowView: BPView {
         return view
     }()
 
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: .zero)
     }
 
@@ -28,7 +28,7 @@ public class BPTopWindowView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(backgroundView)
         backgroundView.snp.makeConstraints { (make) in
@@ -36,7 +36,7 @@ public class BPTopWindowView: BPView {
         }
     }
 
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         let tap = UITapGestureRecognizer(target: self, action: #selector(hide))
         self.backgroundView.addGestureRecognizer(tap)
@@ -44,7 +44,7 @@ public class BPTopWindowView: BPView {
 
     // MARK: ==== Event ===
     /// 显示弹框
-    func show(view: UIView = kWindow) {
+    public func show(view: UIView = kWindow) {
         view.addSubview(self)
         self.snp.remakeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -55,7 +55,8 @@ public class BPTopWindowView: BPView {
     }
 
     /// 子类自己实现
-    @objc func hide() {
+    @objc
+    public func hide() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.backgroundView.layer.opacity = 0.0
         } completion: { [weak self] (finished) in

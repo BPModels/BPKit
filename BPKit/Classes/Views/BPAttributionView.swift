@@ -101,7 +101,7 @@ public class BPAttributionView: BPView {
         }
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         self.backgroundColor = UIColor.clear
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(tapGes(ges:)))

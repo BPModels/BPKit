@@ -91,7 +91,7 @@ public class BPNavigationBar: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(leftButton)
         self.addSubview(titleLabel)
@@ -116,7 +116,7 @@ public class BPNavigationBar: BPView {
         }
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         self.backgroundColor = .white0
         self.leftButton.addTarget(self, action: #selector(leftAction), for: .touchUpInside)

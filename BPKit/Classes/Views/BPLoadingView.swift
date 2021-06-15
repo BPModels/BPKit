@@ -33,7 +33,7 @@ public class BPLoadingView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(imageView)
         imageView.snp.makeConstraints { (make) in
@@ -43,7 +43,7 @@ public class BPLoadingView: BPView {
         }
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         self.backgroundColor = UIColor.hex(0xf8f8f8)
         self.layer.opacity   = 0.0

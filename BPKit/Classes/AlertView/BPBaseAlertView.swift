@@ -169,12 +169,12 @@ public class BPBaseAlertView: BPTopWindowView {
         return imageView
     }()
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(mainView)
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         let tapImage      = UITapGestureRecognizer(target: self, action: #selector(clickImageAction))
         self.imageView.addGestureRecognizer(tapImage)
@@ -212,7 +212,7 @@ public class BPBaseAlertView: BPTopWindowView {
         }
     }
     
-    @objc override func hide() {
+    @objc public override func hide() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.mainView.transform = CGAffineTransform(scaleX: 0, y: 0)
         }

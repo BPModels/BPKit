@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum BPRefreshStatus: Int {
+public enum BPRefreshStatus: Int {
     
     // 顶部默认状态
     case headerNormal  = 0
@@ -30,7 +30,7 @@ enum BPRefreshStatus: Int {
 }
 
 @objc
-protocol BPRefreshProtocol: NSObjectProtocol {
+public protocol BPRefreshProtocol: NSObjectProtocol {
     // -------- Header ---------
     /// 下拉Header中
     /// - Parameter scrollView: scrollView

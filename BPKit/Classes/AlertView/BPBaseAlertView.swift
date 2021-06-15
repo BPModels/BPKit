@@ -184,7 +184,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }
     
     // MARK: ==== Event ====
-    override func show(view: UIView = kWindow) {
+    public override func show(view: UIView = kWindow) {
         super.show(view: view)
         UIViewController.currentViewController?.view.endEditing(true)
         // 果冻动画

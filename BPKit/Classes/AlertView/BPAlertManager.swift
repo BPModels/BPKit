@@ -15,7 +15,7 @@ public class BPAlertManager {
     private var alertArray = [BPBaseAlertView]()
     private var isShowing  = false
     
-    private func show() {
+    public func show() {
         guard !self.isShowing else {
             return
         }
@@ -36,12 +36,12 @@ public class BPAlertManager {
 
     /// 添加一个alertView
     /// - Parameter alertView: alert对象
-    private func addAlert(alertView: BPBaseAlertView) {
+    public func addAlert(alertView: BPBaseAlertView) {
         self.alertArray.append(alertView)
     }
 
     /// 移除当前已显示的Alert
-    private func removeAlert() {
+    public func removeAlert() {
         guard !self.alertArray.isEmpty else {
             return
         }
@@ -58,7 +58,7 @@ public class BPAlertManager {
     // MARK: ==== Alert view ====
 
     /// 版本更新弹框
-    func showUpdate(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, priority: BPAlertPriorityEnum = .normal) {
+    public func showUpdate(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, priority: BPAlertPriorityEnum = .normal) {
         let alertView = BPAlertViewUpdate(title: title, description: description, leftBtnName: leftBtnName, leftBtnClosure: leftBtnClosure, rightBtnName: rightBtnName, rightBtnClosure: rightBtnClosure)
         alertView.priority = priority
         self.addAlert(alertView: alertView)
@@ -66,7 +66,7 @@ public class BPAlertManager {
     }
 
     /// 显示纯图片
-    func showOnlyImage(imageStr: String, hideCloseBtn: Bool = false, touchBlock: ((String?) -> Void)? = nil, priority: BPAlertPriorityEnum = .normal) {
+    public func showOnlyImage(imageStr: String, hideCloseBtn: Bool = false, touchBlock: ((String?) -> Void)? = nil, priority: BPAlertPriorityEnum = .normal) {
         let alertView = BPAlertViewImage(imageStr: imageStr, hideCloseBtn: hideCloseBtn, touchBlock: touchBlock)
         alertView.priority = priority
         self.addAlert(alertView: alertView)
@@ -75,47 +75,35 @@ public class BPAlertManager {
     
     /// 显示底部一个按钮的弹框， 默认内容居中
     @discardableResult
-    func oneButton(title: String?, description: String, buttonName: String, closure: (() -> Void)?) -> BPBaseAlertView {
+    public func oneButton(title: String?, description: String, buttonName: String, closure: (() -> Void)?) -> BPBaseAlertView {
         let alertView = BPAlertViewOneButton(title: title, description: description, buttonName: buttonName, closure: closure)
         self.addAlert(alertView: alertView)
         return alertView
     }
     
     /// 显示底部一个按钮的弹框（内容为BPAttributionView）默认左对齐
-    func oneButtonAttr(title: String?, description: String, buttonName: String, closure: (() -> Void)?) -> BPBaseAlertView {
+    public func oneButtonAttr(title: String?, description: String, buttonName: String, closure: (() -> Void)?) -> BPBaseAlertView {
         let alertView = BPAlertAttributedViewOneButton(title: title, description: description, buttonName: buttonName, closure: closure)
         self.addAlert(alertView: alertView)
         return alertView
     }
     
     /// 显示底部两个按钮的弹框
-    func twoButton(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, isDestruct: Bool = false) -> BPBaseAlertView {
+    public func twoButton(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, isDestruct: Bool = false) -> BPBaseAlertView {
         let alertView = BPAlertViewTwoButton(title: title, description: description, leftBtnName: leftBtnName, leftBtnClosure: leftBtnClosure, rightBtnName: rightBtnName, rightBtnClosure: rightBtnClosure, isDestruct: isDestruct)
         self.addAlert(alertView: alertView)
         return alertView
     }
     
     /// 显示底部两个按钮的弹框
-    func twoButtonAttr(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, isDestruct: Bool = false) -> BPBaseAlertView {
+    public func twoButtonAttr(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: (() -> Void)?, isDestruct: Bool = false) -> BPBaseAlertView {
         let alertView = BPAlertAttributedViewTwoButton(title: title, description: description, leftBtnName: leftBtnName, leftBtnClosure: leftBtnClosure, rightBtnName: rightBtnName, rightBtnClosure: rightBtnClosure, isDestruct: isDestruct)
         self.addAlert(alertView: alertView)
         return alertView
     }
-    
-//    /// 显示工人基本信息维护添加联系方式的弹框
-//    func workerContactTwoButton(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: ((String) -> Void)?, isDestruct: Bool = false) -> BPBaseAlertView {
-//        let alertView = BPAlertViewWorkerBasicInfoPhoneContactView(title: title, description: description, leftBtnName: leftBtnName, leftBtnClosure: leftBtnClosure, rightBtnName: rightBtnName, rightBtnClosure: rightBtnClosure, isDestruct: isDestruct)
-//        self.addAlert(alertView: alertView)
-//        return alertView
-//    }
-//    /// 显示工人基本信息维护添加紧急联系方式的弹框
-//    func workerEmergencyContactTwoButton(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: ((BPWorkerContactModel) -> Void)?, isDestruct: Bool = false) -> BPBaseAlertView {
-//        let alertView = BPAlertViewWorkerBasicInfoPhoneEmergencyView(title: title, description: description, leftBtnName: leftBtnName, leftBtnClosure: leftBtnClosure, rightBtnName: rightBtnName, rightBtnClosure: rightBtnClosure, isDestruct: isDestruct)
-//        self.addAlert(alertView: alertView)
-//        return alertView
-//    }
+
     // 显示更换自定义域名弹框
-    func twoTextField(title: String?, firstPlaceholder: String, secondPlaceholder: String, rightBtnClosure: ((String?, String?) -> Void)?) -> BPBaseAlertView {
+    public func twoTextField(title: String?, firstPlaceholder: String, secondPlaceholder: String, rightBtnClosure: ((String?, String?) -> Void)?) -> BPBaseAlertView {
         let alertView = BPAlertViewTwoEditView(title: title, firstPlaceholder: firstPlaceholder, secondPlaceholder: secondPlaceholder, rightBtnClosure: rightBtnClosure)
         self.addAlert(alertView: alertView)
         return alertView

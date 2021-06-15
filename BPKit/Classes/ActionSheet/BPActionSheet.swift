@@ -96,12 +96,12 @@ public class BPActionSheet: BPTopWindowView {
         }
     }
 
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(mainView)
     }
 
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
     }
 

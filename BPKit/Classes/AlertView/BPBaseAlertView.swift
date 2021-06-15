@@ -20,23 +20,23 @@ public enum BPAlertPriorityEnum: Int {
 }
 
 /// AlertView的基类,默认只显示标题或者标题+描述信息
-public class BPBaseAlertView: BPTopWindowView {
+open class BPBaseAlertView: BPTopWindowView {
     
     /// 弹框优先级
-    public var priority: BPAlertPriorityEnum = .normal
+    open var priority: BPAlertPriorityEnum = .normal
     /// 是否已展示过
-    public var isShowed = false
+    open var isShowed = false
     /// 默认事件触发后自动关闭页面
-    public var autoClose: Bool = true
+    open var autoClose: Bool = true
     /// 确定按钮是否标红（破坏性操作警告）
-    public var isDestruct: Bool = false
+    open var isDestruct: Bool = false
     
     /// 弹框的默认宽度
-    public var mainViewWidth = AdaptSize(300)
+    open var mainViewWidth = AdaptSize(300)
     /// 弹框的默认高度
-    public var mainViewHeight: CGFloat = .zero
+    open var mainViewHeight: CGFloat = .zero
     /// 弹框内容最大高度
-    public var maxContentHeight: CGFloat = AdaptSize(300)
+    open var maxContentHeight: CGFloat = AdaptSize(300)
     
     /// 间距
     public let leftPadding: CGFloat   = AdaptSize(20)
@@ -51,27 +51,27 @@ public class BPBaseAlertView: BPTopWindowView {
     public let imageViewSize: CGSize  = CGSize(width: AdaptSize(300), height: AdaptSize(500))
     
     // 标题的高度
-    public var titleHeight: CGFloat {
+    open var titleHeight: CGFloat {
         get {
             return self.titleLabel.textHeight(width: mainViewWidth - leftPadding - rightPadding)
         }
     }
     // 描述的高度
-    public var descriptionHeight: CGFloat {
+    open var descriptionHeight: CGFloat {
         get {
             return self.descriptionLabel.textHeight(width: mainViewWidth - leftPadding - rightPadding)
         }
     }
     
-    public var descriptionText: String = ""
-    public var imageUrlStr: String?
-    public var leftActionBlock: DefaultBlock?
-    public var rightActionBlock: DefaultBlock?
-    public var closeActionBlock: DefaultBlock?
-    public var imageActionBlock: ((String?)->Void)?
+    open var descriptionText: String = ""
+    open var imageUrlStr: String?
+    open var leftActionBlock: DefaultBlock?
+    open var rightActionBlock: DefaultBlock?
+    open var closeActionBlock: DefaultBlock?
+    open var imageActionBlock: ((String?)->Void)?
     
     // 弹框的背景
-    public var mainView: UIView = {
+    open var mainView: UIView = {
         let view = UIView()
         view.backgroundColor     = UIColor.white0
         view.layer.cornerRadius  = AdaptSize(5)
@@ -80,7 +80,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 弹窗标题
-    public var titleLabel: UILabel = {
+    open var titleLabel: UILabel = {
         let label           = UILabel()
         label.numberOfLines = 1
         label.textColor     = UIColor.black0
@@ -89,7 +89,7 @@ public class BPBaseAlertView: BPTopWindowView {
         return label
     }()
     
-    public var contentScrollView: UIScrollView = {
+    open var contentScrollView: UIScrollView = {
        let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator   = false
@@ -97,10 +97,10 @@ public class BPBaseAlertView: BPTopWindowView {
     }()
     
     /// 自定义富文本视图
-    public var attributionView: BPAttributionView?
+    open var attributionView: BPAttributionView?
 
     // 弹窗描述
-    public var descriptionLabel: UILabel = {
+    open var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor     = UIColor.black0.withAlphaComponent(0.5)
         label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
@@ -109,13 +109,13 @@ public class BPBaseAlertView: BPTopWindowView {
         return label
     }()
 
-    public var partitionContentLineView: BPView = {
+    open var partitionContentLineView: BPView = {
         let view = BPView()
         view.backgroundColor = UIColor.gray1
         return view
     }()
     
-    public var partitionButtonLineView: BPView = {
+    open var partitionButtonLineView: BPView = {
        let view = BPView()
         view.backgroundColor = UIColor.gray1
         return view
@@ -129,7 +129,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }()
     
     /// 左边按钮
-    public var leftButton: BPButton = {
+    open var leftButton: BPButton = {
         let button = BPButton(animation: false)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.white0), for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray1), for: .highlighted)
@@ -139,7 +139,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 右边按钮
-    public var rightButton: BPButton = {
+    open var rightButton: BPButton = {
         let button = BPButton(animation: false)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.white0), for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray1), for: .highlighted)
@@ -149,7 +149,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 关闭按钮
-    public var closeButton: BPButton = {
+    open var closeButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.close.rawValue, for: .normal)
         button.setTitleColor(UIColor.black0.withAlphaComponent(0.8), for: .normal)
@@ -160,7 +160,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 图片
-    public var imageView: BPImageView = {
+    open var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.isUserInteractionEnabled = true
@@ -169,12 +169,12 @@ public class BPBaseAlertView: BPTopWindowView {
         return imageView
     }()
     
-    public override func createSubviews() {
+    open override func createSubviews() {
         super.createSubviews()
         self.addSubview(mainView)
     }
     
-    public override func bindProperty() {
+    open override func bindProperty() {
         super.bindProperty()
         let tapImage      = UITapGestureRecognizer(target: self, action: #selector(clickImageAction))
         self.imageView.addGestureRecognizer(tapImage)
@@ -184,7 +184,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }
     
     // MARK: ==== Event ====
-    public override func show(view: UIView = kWindow) {
+    open override func show(view: UIView = kWindow) {
         super.show(view: view)
         UIViewController.currentViewController?.view.endEditing(true)
         // 果冻动画
@@ -192,7 +192,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }
 
     @objc
-    public func leftAction() {
+    open func leftAction() {
         self.leftActionBlock?()
         if autoClose {
             self.hide()
@@ -200,7 +200,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }
 
     @objc
-    public func rightAction() {
+    open func rightAction() {
         self.rightActionBlock?()
         if autoClose {
             self.hide()
@@ -208,7 +208,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }
     
     @objc
-    public func clickImageAction() {
+    open func clickImageAction() {
         self.imageActionBlock?(self.imageUrlStr)
         if autoClose {
             self.hide()
@@ -216,7 +216,7 @@ public class BPBaseAlertView: BPTopWindowView {
     }
     
     @objc
-    public override func hide() {
+    open override func hide() {
         UIView.animate(withDuration: 0.25) { [weak self] in
             self?.mainView.transform = CGAffineTransform(scaleX: 0, y: 0)
         }

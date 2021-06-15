@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-public class BPView: UIView {
+open class BPView: UIView {
     
     deinit {
         #if DEBUG
@@ -18,11 +18,11 @@ public class BPView: UIView {
     }
 
     /// 初始化子视图
-    public func createSubviews() {}
+    open func createSubviews() {}
 
     /// 初始化属性
-    public func bindProperty() {}
+    open func bindProperty() {}
     
     /// 初始化数据
-    public func bindData() {}
+    open func bindData() {}
 }

@@ -1,12 +1,12 @@
 PODS:
   - BPCommon (0.1.1)
   - BPDeviceInfo (0.1.2)
-  - BPKit (0.1.14):
+  - BPKit (0.1.15):
     - BPCommon
     - BPDeviceInfo
     - BPLog
     - IQKeyboardManager
-    - Kingfisher
+    - Kingfisher (~> 5.7)
     - SDWebImage
     - SnapKit
     - Toast-Swift
@@ -22,7 +22,9 @@ PODS:
   - FBSnapshotTestCase/SwiftSupport (2.1.4):
     - FBSnapshotTestCase/Core
   - IQKeyboardManager (6.5.6)
-  - Kingfisher (4.10.1)
+  - Kingfisher (5.15.8):
+    - Kingfisher/Core (= 5.15.8)
+  - Kingfisher/Core (5.15.8)
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
@@ -41,11 +43,11 @@ SPEC REPOS:
     - BPLog
   https://github.com/CocoaPods/Specs.git:
     - CocoaLumberjack
+    - Kingfisher
     - ZipArchive
   trunk:
     - FBSnapshotTestCase
     - IQKeyboardManager
-    - Kingfisher
     - SDWebImage
     - SnapKit
     - Toast-Swift
@@ -57,12 +59,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   BPCommon: 91c0a1327e602c084ca97c347e7f87e366ed2db7
   BPDeviceInfo: ba87cc87fd8c9fb016aed32b312635b3109ea0bc
-  BPKit: 69f317dfd5ac3ea149ca95bef38e007a375f4dd4
+  BPKit: d9feb8f0bad9ff2354b6b6bcda1bd62a2437ef84
   BPLog: 4f8c0e3cc0e493dc23c10545331bf9240358e17a
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
-  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
+  Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711

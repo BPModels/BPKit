@@ -41,7 +41,7 @@ TODO: Add long description of the pod here.
    s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
    # 下载处理图片
-   s.dependency 'Kingfisher'
+   s.dependency 'Kingfisher', '~> 5.7'
    # 布局约束
    s.dependency 'SnapKit'
    # 弹框

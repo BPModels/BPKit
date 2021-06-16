@@ -9,7 +9,7 @@
 import Foundation
 
 extension Array {
-    func transformJson() -> String {
+    public func transformJson() -> String {
         if (!JSONSerialization.isValidJSONObject(self)) {
             return ""
         }

@@ -113,7 +113,7 @@ open class BPTextField: UITextField, UITextFieldDelegate {
         self.addTarget(self, action: #selector(editingAction), for: .editingChanged)
     }
     
-    public override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
+    open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return false
     }
     
@@ -124,13 +124,13 @@ open class BPTextField: UITextField, UITextFieldDelegate {
     }
     
     // MARK: ==== UITextFieldDelegate ====
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
+    open func textFieldDidBeginEditing(_ textField: UITextField) {
         guard let text = textField.text else { return }
         if self.type == .money && Double(text) == 0 {
             textField.text = nil
         }
     }
-    public func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+    open func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         
         if self.type != .money{
             guard let currentText = textField.text, string.isNotEmpty else { return true }

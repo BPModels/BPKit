@@ -7,17 +7,12 @@
 
 import Foundation
 
-class BPAlertViewUpdate: BPBaseAlertView {
+open class BPAlertViewUpdate: BPBaseAlertView {
     
     private var topImageView: BPImageView = {
         let imageView = BPImageView()
         imageView.image = UIImage(named: "updateTopImage")
         return imageView
-    }()
-    private var contentView: BPView = {
-        let view = BPView()
-        view.backgroundColor = UIColor.white0
-        return view
     }()
     private var textView: UITextView = {
         let textView = UITextView()
@@ -43,11 +38,11 @@ class BPAlertViewUpdate: BPBaseAlertView {
         self.bindProperty()
     }
 
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 
-    override func createSubviews() {
+    open override func createSubviews() {
         super.createSubviews()
         self.mainViewWidth = AdaptSize(270)
         mainView.addSubview(topImageView)
@@ -106,8 +101,9 @@ class BPAlertViewUpdate: BPBaseAlertView {
         }
     }
     
-    override func bindProperty() {
+    open override func bindProperty() {
         super.bindProperty()
+        self.contentView.backgroundColor    = .white0
         self.leftButton.backgroundColor     = UIColor.gray1
         self.leftButton.layer.cornerRadius  = AdaptSize(5)
         self.leftButton.layer.masksToBounds = true

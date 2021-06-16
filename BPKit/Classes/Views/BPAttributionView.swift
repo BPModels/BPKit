@@ -40,16 +40,16 @@ open class BPAttributionView: BPView {
     private var ctFrame: CTFrame?
     private var lineHeight: CGFloat = .zero
     
-    open init(width: CGFloat) {
+    public init(width: CGFloat) {
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: width, height: .zero)))
         self.bindProperty()
     }
     
-    open required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    open override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         super.draw(rect)
         // 获得上下文
         let content = UIGraphicsGetCurrentContext()

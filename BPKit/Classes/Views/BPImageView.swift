@@ -19,18 +19,18 @@ open class BPImageView: UIImageView {
 
         let imageURL = URL(string: imageStr)
 
-//        self.kf.setImage(with: imageURL, placeholder: placeholder, options: [], progressBlock: { (receivedByte, totalByte) in
-//            let progress = CGFloat(receivedByte / totalByte)
-//            downloadProgress?(progress)
-//        }) { (result: Result<RetrieveImageResult, KingfisherError>) in
-//            switch result {
-//            case .success(let data):
-//                self.image = data.image
-//                completion?(data.image, nil, data.source.url)
-//            case .failure(let error):
-//                completion?(nil, error, imageURL)
-//            }
-//        }
+        self.kf.setImage(with: imageURL, placeholder: placeholder, options: [], progressBlock: { (receivedByte, totalByte) in
+            let progress = CGFloat(receivedByte / totalByte)
+            downloadProgress?(progress)
+        }) { (result: Result<RetrieveImageResult, KingfisherError>) in
+            switch result {
+            case .success(let data):
+                self.image = data.image
+                completion?(data.image, nil, data.source.url)
+            case .failure(let error):
+                completion?(nil, error, imageURL)
+            }
+        }
     }
     
     // MARK: ==== Event ====

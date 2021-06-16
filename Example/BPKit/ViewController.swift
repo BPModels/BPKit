@@ -28,7 +28,7 @@ protocol BPLoginInputViewItemDelegate: NSObjectProtocol {
 }
 
 
-class BPAlertViewWorkerBasicInfoPhoneContactView: BPBaseAlertView, BPLoginInputViewItemDelegate {
+class BPAlertViewWorkerBasicInfoPhoneContactView: BPBaseAlertView, BPLoginInputViewItemDelegate, UITextFieldDelegate {
    
     private let phoneNumberItem   = UITextField()
     
@@ -125,13 +125,6 @@ class BPAlertViewWorkerBasicInfoPhoneContactView: BPBaseAlertView, BPLoginInputV
     
     @objc
     override func rightAction() {
-        guard phoneNumberItem.isValid else {
-            return
-        }
-        self.rightActionCallBack?(self.phoneNumberItem.getTextValue())
-        if autoClose {
-            self.hide()
-        }
     }
     
 }

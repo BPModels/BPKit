@@ -71,7 +71,7 @@ open class BPBaseAlertView: BPTopWindowView {
     public var imageActionBlock: ((String?)->Void)?
     
     // 弹框的背景
-    public var mainView: UIView = {
+    open var mainView: UIView = {
         let view = UIView()
         view.backgroundColor     = UIColor.white0
         view.layer.cornerRadius  = AdaptSize(5)
@@ -80,7 +80,7 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 弹窗标题
-    public var titleLabel: UILabel = {
+    open var titleLabel: UILabel = {
         let label           = UILabel()
         label.numberOfLines = 1
         label.textColor     = UIColor.black0
@@ -89,7 +89,7 @@ open class BPBaseAlertView: BPTopWindowView {
         return label
     }()
     
-    public var contentScrollView: UIScrollView = {
+    open var contentScrollView: UIScrollView = {
        let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator   = false
@@ -97,10 +97,10 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
     
     /// 自定义富文本视图
-    public var attributionView: BPAttributionView?
+    open var attributionView: BPAttributionView?
 
     // 弹窗描述
-    public var descriptionLabel: UILabel = {
+    open var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor     = UIColor.black0.withAlphaComponent(0.5)
         label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
@@ -109,27 +109,27 @@ open class BPBaseAlertView: BPTopWindowView {
         return label
     }()
 
-    public var partitionContentLineView: BPView = {
+    open var partitionContentLineView: BPView = {
         let view = BPView()
         view.backgroundColor = UIColor.gray1
         return view
     }()
     
-    public var partitionButtonLineView: BPView = {
+    open var partitionButtonLineView: BPView = {
        let view = BPView()
         view.backgroundColor = UIColor.gray1
         return view
     }()
     
     /// 内容视图
-    public var contentView: BPView = {
+    open var contentView: BPView = {
         let view = BPView()
         view.backgroundColor = UIColor.clear
         return view
     }()
     
     /// 左边按钮
-    public var leftButton: BPButton = {
+    open var leftButton: BPButton = {
         let button = BPButton(animation: false)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.white0), for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray1), for: .highlighted)
@@ -139,7 +139,7 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 右边按钮
-    public var rightButton: BPButton = {
+    open var rightButton: BPButton = {
         let button = BPButton(animation: false)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.white0), for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray1), for: .highlighted)
@@ -149,7 +149,7 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 关闭按钮
-    public var closeButton: BPButton = {
+    open var closeButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.close.rawValue, for: .normal)
         button.setTitleColor(UIColor.black0.withAlphaComponent(0.8), for: .normal)
@@ -160,7 +160,7 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 图片
-    public var imageView: BPImageView = {
+    open var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.isUserInteractionEnabled = true

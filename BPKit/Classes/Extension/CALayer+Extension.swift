@@ -124,7 +124,7 @@ public extension CALayer {
 }
 
 // MARK: - 阴影和遮罩
-extension CALayer {
+public extension CALayer {
 
 
     /// 设置默认阴影效果
@@ -252,12 +252,12 @@ public enum GradientDirectionType: Int {
 }
 
 // MARK: - 渐变色
-extension CALayer {
+public extension CALayer {
     /// 根据方向,设置渐变色
     /// - parameter colors: 渐变的颜色数组
     /// - parameter direction: 渐变方向的枚举对象
     /// - note: 设置前,一定要确定当前View的高宽!!!否则无法准确的绘制
-    public func setGradient(colors: [UIColor], direction: GradientDirectionType) {
+    func setGradient(colors: [UIColor], direction: GradientDirectionType) {
         switch direction {
         case .horizontal:
             setGradient(colors: colors, startPoint: CGPoint(x: 0, y: 0.5), endPoint: CGPoint(x: 1, y: 0.5))
@@ -276,7 +276,7 @@ extension CALayer {
     /// - parameter startPoint: 开始渐变的坐标(控制渐变的方向),取值(0 ~ 1)
     /// - parameter endPoint: 结束渐变的坐标(控制渐变的方向),取值(0 ~ 1)
     @discardableResult
-    public func setGradient(colors: [UIColor], locations: [NSNumber]? = nil, startPoint: CGPoint, endPoint: CGPoint) -> CAGradientLayer {
+    func setGradient(colors: [UIColor], locations: [NSNumber]? = nil, startPoint: CGPoint, endPoint: CGPoint) -> CAGradientLayer {
         /// 设置渐变色
         func _setGradient(_ layer: CAGradientLayer) {
             // self.layoutIfNeeded()
@@ -317,7 +317,7 @@ extension CALayer {
 }
 
 // MARK: - 动画
-extension CALayer {
+public extension CALayer {
     /// 添加弹框动画,frame的比例放大缩小效果,类似果冻(Jelly)晃动
     /// - parameter duration: 动画持续时间
     func addJellyAnimation(duration: Double = 0.25){

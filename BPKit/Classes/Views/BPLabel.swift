@@ -8,7 +8,7 @@
 
 import UIKit
 
-public class BPLabel: UILabel {
+open class BPLabel: UILabel {
     /// 内边距
     public var textInsets: UIEdgeInsets = .zero
     

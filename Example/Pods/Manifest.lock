@@ -1,7 +1,7 @@
 PODS:
   - BPCommon (0.1.1)
   - BPDeviceInfo (0.1.2)
-  - BPKit (0.1.11):
+  - BPKit (0.1.13):
     - BPCommon
     - BPDeviceInfo
     - BPLog
@@ -57,7 +57,7 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   BPCommon: 91c0a1327e602c084ca97c347e7f87e366ed2db7
   BPDeviceInfo: ba87cc87fd8c9fb016aed32b312635b3109ea0bc
-  BPKit: 9af036572242f7184e88c23ed259b7cc5f1bc485
+  BPKit: bc4042eb69c1c10c66276265f0c1748792588146
   BPLog: 4f8c0e3cc0e493dc23c10545331bf9240358e17a
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a

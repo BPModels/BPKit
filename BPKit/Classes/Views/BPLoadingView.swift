@@ -8,7 +8,7 @@
 import Foundation
 import SDWebImage
 
-public class BPLoadingView: BPView {
+open class BPLoadingView: BPView {
 
     private var imageView: BPImageView = {
         let imageView = BPImageView()
@@ -29,7 +29,7 @@ public class BPLoadingView: BPView {
         self.bindProperty()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

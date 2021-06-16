@@ -20,7 +20,7 @@ public enum BPTextFieldType {
     case money
 }
 
-public class BPTextField: UITextField, UITextFieldDelegate {
+open class BPTextField: UITextField, UITextFieldDelegate {
     
     private var type: BPTextFieldType
     /// 最长字符长度
@@ -98,13 +98,13 @@ public class BPTextField: UITextField, UITextFieldDelegate {
         }
     }
     
-    init(type: BPTextFieldType = .normal) {
+    public init(type: BPTextFieldType = .normal) {
         self.type = type
         super.init(frame: .zero)
         self.bindProperty()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

@@ -17,7 +17,7 @@ public enum BPButtonStatusEnum: Int {
     case disable
 }
 
-enum BPButtonType: Int {
+public enum BPButtonType: Int {
     /// 普通的按钮，无特殊样式
     case normal
     /// 主按钮，主题蓝色渐变背景样式
@@ -27,21 +27,21 @@ enum BPButtonType: Int {
 }
 
 @IBDesignable
-public class BPButton: UIButton {
+open class BPButton: UIButton {
     
-    private var status: BPButtonStatusEnum = .normal
-    private var type: BPButtonType
-    private var showAnimation: Bool
+    public var status: BPButtonStatusEnum = .normal
+    public var type: BPButtonType
+    public var showAnimation: Bool
     
     /// 正常状态透明度
-    public var normalOpacity:Float     = 1.0
+    public var normalOpacity:Float  = 1.0
     /// 禁用状态透明度
-    public var disableOpacity:Float    = 0.3
+    public var disableOpacity:Float = 0.3
     
     
     // MARK: ---- Init ----
     
-    init(_ type: BPButtonType = .normal, frame: CGRect = .zero, animation: Bool = true) {
+    public init(_ type: BPButtonType = .normal, frame: CGRect = .zero, animation: Bool = true) {
         self.type          = type
         self.showAnimation = animation
         super.init(frame: frame)
@@ -53,7 +53,7 @@ public class BPButton: UIButton {
         self.addTarget(self, action: #selector(touchUp(sender:)), for: .touchCancel)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
@@ -66,7 +66,7 @@ public class BPButton: UIButton {
     
     // MARK: ---- Layout ----
     
-    public override func layoutSubviews() {
+    open override func layoutSubviews() {
         super.layoutSubviews()
         // 约束设置
         self.setStatus(nil)
@@ -149,7 +149,7 @@ public class BPButton: UIButton {
     
     //TODO: 自定义Storyboard编辑器
     @IBInspectable
-    var cornerRadius: CGFloat = 0.0 {
+    open var cornerRadius: CGFloat = 0.0 {
         didSet {
             layer.cornerRadius  = cornerRadius
             layer.masksToBounds = cornerRadius > 0
@@ -157,14 +157,14 @@ public class BPButton: UIButton {
     }
     
     @IBInspectable
-    var borderWidth: CGFloat = 0.0 {
+    open var borderWidth: CGFloat = 0.0 {
         didSet {
             layer.borderWidth = borderWidth
         }
     }
     
     @IBInspectable
-    var borderColor: UIColor = .black {
+    open var borderColor: UIColor = .black {
         didSet {
             layer.borderColor = borderColor.cgColor
         }

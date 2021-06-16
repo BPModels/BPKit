@@ -18,17 +18,17 @@ extension BPTextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) {}
 }
 
-public class BPTextView: IQTextView, UITextViewDelegate {
+open class BPTextView: IQTextView, UITextViewDelegate {
     public var maxLength: Int = .max
     
     public weak var delegateBP: BPTextViewDelegate?
     
-    override init(frame: CGRect, textContainer: NSTextContainer?) {
+    public override init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
         self.bindProperty()
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

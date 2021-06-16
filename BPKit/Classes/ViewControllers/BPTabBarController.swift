@@ -9,9 +9,9 @@
 import UIKit
 
 /// 自定义底部TabBar控制器,实现了TabBar的事件处理协议
-public class BPTabBarController: UITabBarController, UITabBarControllerDelegate {
+open class BPTabBarController: UITabBarController, UITabBarControllerDelegate {
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
         BPKitConfig.share.rootNCList.forEach { nc in

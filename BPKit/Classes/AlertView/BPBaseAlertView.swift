@@ -23,20 +23,20 @@ public enum BPAlertPriorityEnum: Int {
 open class BPBaseAlertView: BPTopWindowView {
     
     /// 弹框优先级
-    open var priority: BPAlertPriorityEnum = .normal
+    public var priority: BPAlertPriorityEnum = .normal
     /// 是否已展示过
-    open var isShowed = false
+    public var isShowed = false
     /// 默认事件触发后自动关闭页面
-    open var autoClose: Bool = true
+    public var autoClose: Bool = true
     /// 确定按钮是否标红（破坏性操作警告）
-    open var isDestruct: Bool = false
+    public var isDestruct: Bool = false
     
     /// 弹框的默认宽度
-    open var mainViewWidth = AdaptSize(300)
+    public var mainViewWidth = AdaptSize(300)
     /// 弹框的默认高度
-    open var mainViewHeight: CGFloat = .zero
+    public var mainViewHeight: CGFloat = .zero
     /// 弹框内容最大高度
-    open var maxContentHeight: CGFloat = AdaptSize(300)
+    public var maxContentHeight: CGFloat = AdaptSize(300)
     
     /// 间距
     public let leftPadding: CGFloat   = AdaptSize(20)
@@ -51,27 +51,27 @@ open class BPBaseAlertView: BPTopWindowView {
     public let imageViewSize: CGSize  = CGSize(width: AdaptSize(300), height: AdaptSize(500))
     
     // 标题的高度
-    open var titleHeight: CGFloat {
+    public var titleHeight: CGFloat {
         get {
             return self.titleLabel.textHeight(width: mainViewWidth - leftPadding - rightPadding)
         }
     }
     // 描述的高度
-    open var descriptionHeight: CGFloat {
+    public var descriptionHeight: CGFloat {
         get {
             return self.descriptionLabel.textHeight(width: mainViewWidth - leftPadding - rightPadding)
         }
     }
     
-    open var descriptionText: String = ""
-    open var imageUrlStr: String?
-    open var leftActionBlock: DefaultBlock?
-    open var rightActionBlock: DefaultBlock?
-    open var closeActionBlock: DefaultBlock?
-    open var imageActionBlock: ((String?)->Void)?
+    public var descriptionText: String = ""
+    public var imageUrlStr: String?
+    public var leftActionBlock: DefaultBlock?
+    public var rightActionBlock: DefaultBlock?
+    public var closeActionBlock: DefaultBlock?
+    public var imageActionBlock: ((String?)->Void)?
     
     // 弹框的背景
-    open var mainView: UIView = {
+    public var mainView: UIView = {
         let view = UIView()
         view.backgroundColor     = UIColor.white0
         view.layer.cornerRadius  = AdaptSize(5)
@@ -80,7 +80,7 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
 
     // 弹窗标题
-    open var titleLabel: UILabel = {
+    public var titleLabel: UILabel = {
         let label           = UILabel()
         label.numberOfLines = 1
         label.textColor     = UIColor.black0
@@ -89,7 +89,7 @@ open class BPBaseAlertView: BPTopWindowView {
         return label
     }()
     
-    open var contentScrollView: UIScrollView = {
+    public var contentScrollView: UIScrollView = {
        let scrollView = UIScrollView()
         scrollView.showsHorizontalScrollIndicator = false
         scrollView.showsVerticalScrollIndicator   = false
@@ -97,10 +97,10 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
     
     /// 自定义富文本视图
-    open var attributionView: BPAttributionView?
+    public var attributionView: BPAttributionView?
 
     // 弹窗描述
-    open var descriptionLabel: UILabel = {
+    public var descriptionLabel: UILabel = {
         let label = UILabel()
         label.textColor     = UIColor.black0.withAlphaComponent(0.5)
         label.font          = UIFont.regularFont(ofSize: AdaptSize(16))
@@ -109,27 +109,27 @@ open class BPBaseAlertView: BPTopWindowView {
         return label
     }()
 
-    open var partitionContentLineView: BPView = {
+    public var partitionContentLineView: BPView = {
         let view = BPView()
         view.backgroundColor = UIColor.gray1
         return view
     }()
     
-    open var partitionButtonLineView: BPView = {
+    public var partitionButtonLineView: BPView = {
        let view = BPView()
         view.backgroundColor = UIColor.gray1
         return view
     }()
     
     /// 内容视图
-    private var contentView: BPView = {
+    public var contentView: BPView = {
         let view = BPView()
         view.backgroundColor = UIColor.clear
         return view
     }()
     
     /// 左边按钮
-    open var leftButton: BPButton = {
+    public var leftButton: BPButton = {
         let button = BPButton(animation: false)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.white0), for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray1), for: .highlighted)
@@ -139,7 +139,7 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 右边按钮
-    open var rightButton: BPButton = {
+    public var rightButton: BPButton = {
         let button = BPButton(animation: false)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.white0), for: .normal)
         button.setBackgroundImage(UIImage.imageWithColor(UIColor.gray1), for: .highlighted)
@@ -149,7 +149,7 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 关闭按钮
-    open var closeButton: BPButton = {
+    public var closeButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.close.rawValue, for: .normal)
         button.setTitleColor(UIColor.black0.withAlphaComponent(0.8), for: .normal)
@@ -160,7 +160,7 @@ open class BPBaseAlertView: BPTopWindowView {
     }()
 
     /// 图片
-    open var imageView: BPImageView = {
+    public var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = UIView.ContentMode.scaleAspectFill
         imageView.isUserInteractionEnabled = true

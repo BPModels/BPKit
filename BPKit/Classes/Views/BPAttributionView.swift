@@ -7,7 +7,7 @@
 
 import CoreText
 
-public class BPAttributionView: BPView {
+open class BPAttributionView: BPView {
     // 可配置的属性
     public var text: String {
         set {
@@ -40,16 +40,16 @@ public class BPAttributionView: BPView {
     private var ctFrame: CTFrame?
     private var lineHeight: CGFloat = .zero
     
-    init(width: CGFloat) {
+    open init(width: CGFloat) {
         super.init(frame: CGRect(origin: .zero, size: CGSize(width: width, height: .zero)))
         self.bindProperty()
     }
     
-    required init?(coder: NSCoder) {
+    open required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public override func draw(_ rect: CGRect) {
+    open override func draw(_ rect: CGRect) {
         super.draw(rect)
         // 获得上下文
         let content = UIGraphicsGetCurrentContext()
@@ -101,14 +101,14 @@ public class BPAttributionView: BPView {
         }
     }
     
-    public override func bindProperty() {
+    open override func bindProperty() {
         super.bindProperty()
         self.backgroundColor = UIColor.clear
         let tapGes = UITapGestureRecognizer(target: self, action: #selector(tapGes(ges:)))
         self.addGestureRecognizer(tapGes)
     }
     
-    public override func gestureRecognizerShouldBegin(_ ges: UIGestureRecognizer) -> Bool {
+    open override func gestureRecognizerShouldBegin(_ ges: UIGestureRecognizer) -> Bool {
         /// 防止与父控件其他手势冲突
         guard let tapGes = ges as? UITapGestureRecognizer else {
             return true
@@ -138,6 +138,7 @@ public class BPAttributionView: BPView {
     }
     
     // MARK: ==== Event ====
+    @objc
     public func setHeightLightText(text: String, click block:StringBlock?) {
         let rangeList = self.getRangeList(regex: text)
         for range in rangeList {

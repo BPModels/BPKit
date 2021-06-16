@@ -14,7 +14,7 @@ public enum BPCollectionViewFlowType: Int {
     case right
 }
 
-public class BPCollectionViewFlowLayout: UICollectionViewFlowLayout {
+open class BPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     var flowType: BPCollectionViewFlowType = .center
     var sumCellWidth = CGFloat.zero
 
@@ -27,7 +27,7 @@ public class BPCollectionViewFlowLayout: UICollectionViewFlowLayout {
         fatalError("init(coder:) has not been implemented")
     }
 
-    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+    open override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
         guard let layoutAttributes = super.layoutAttributesForElements(in: rect) else {
             return nil
         }

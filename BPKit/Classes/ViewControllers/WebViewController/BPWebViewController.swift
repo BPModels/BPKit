@@ -9,7 +9,7 @@
 import UIKit
 import WebKit
 
-public class BPWebViewController: BPViewController {
+open class BPWebViewController: BPViewController {
     public var urlStr: String   = ""
     public var backBlock: DefaultBlock?
     public var hideNavigationBar: Bool = false
@@ -47,14 +47,14 @@ public class BPWebViewController: BPViewController {
         configuration.userContentController = userContentController
     }
     
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         self.createSubviews()
         self.bindProperty()
         self.bindData()
     }
     
-    public override func createSubviews() {
+    open override func createSubviews() {
         super.createSubviews()
         self.view.addSubview(webView)
         webView.snp.makeConstraints { (make) in
@@ -63,13 +63,13 @@ public class BPWebViewController: BPViewController {
         }
     }
     
-    public override func bindProperty() {
+    open override func bindProperty() {
         super.bindProperty()
         self.customNavigationBar?.title    = title
         self.customNavigationBar?.isHidden = hideNavigationBar
     }
     
-    public override func bindData() {
+    open override func bindData() {
         super.bindData()
         guard let url = URL(string: urlStr) else {
             kWindow.toast("地址无效")
@@ -80,7 +80,7 @@ public class BPWebViewController: BPViewController {
         self.webView.load(request)
     }
     
-    public override func leftAction() {
+    open override func leftAction() {
         super.leftAction()
         self.backBlock?()
     }

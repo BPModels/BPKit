@@ -13,7 +13,7 @@ public protocol BPNavigationBarDelegate: NSObjectProtocol {
     func rightAction()
 }
 
-public class BPNavigationBar: BPView {
+open class BPNavigationBar: BPView {
     
     public weak var delegate: BPNavigationBarDelegate?
     

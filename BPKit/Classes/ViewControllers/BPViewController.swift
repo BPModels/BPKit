@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-public class BPViewController: UIViewController, BPNavigationBarDelegate {
+open class BPViewController: UIViewController, BPNavigationBarDelegate {
 
     deinit {
         #if DEBUG
@@ -32,37 +32,37 @@ public class BPViewController: UIViewController, BPNavigationBarDelegate {
     }
     public var pageSize: Int = 20
 
-    public override func didReceiveMemoryWarning() {
+    open override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         BPLog("==== \(self.classForCoder) 内存告警 ====")
     }
 
-    public override func viewDidLoad() {
+    open override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.white0
         self.useCustomNavigationBar()
     }
     
-    public override func viewWillAppear(_ animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
         self.setFullScreenPopGesture()
     }
     
-    public override func viewDidDisappear(_ animated: Bool) {
+    open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
-    public func createSubviews() {}
+    open func createSubviews() {}
 
-    public func bindProperty() {}
+    open func bindProperty() {}
 
-    public func bindData() {}
+    open func bindData() {}
 
-    public func registerNotification() {}
+    open func registerNotification() {}
 
-    public func setFullScreenPopGesture() {
+    open func setFullScreenPopGesture() {
     }
     
 //    // TODO: ==== 摇一摇切换环境 ====
@@ -104,11 +104,11 @@ public class BPViewController: UIViewController, BPNavigationBarDelegate {
     }
     
     // MARK: ==== BPNavigationBarDelegate ====
-    public func leftAction() {
+    open func leftAction() {
         kWindow.hideLoading()
         self.navigationController?.pop()
     }
-    public func rightAction() {
+    open func rightAction() {
         BPLog("Click right button in custom navigation bar")
     }
 }

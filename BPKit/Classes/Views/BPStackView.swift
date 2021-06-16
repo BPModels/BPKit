@@ -22,7 +22,7 @@ public enum BPStackViewShadowType {
 
 import Foundation
 
-public class BPStackView: BPView {
+open class BPStackView: BPView {
     public var offsetX: CGFloat = .zero
     public var spacing: CGFloat
     public var shadowType: BPStackViewShadowType = .normal
@@ -36,7 +36,7 @@ public class BPStackView: BPView {
         super.init(frame: .zero)
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

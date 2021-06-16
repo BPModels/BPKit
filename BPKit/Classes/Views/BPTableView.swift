@@ -11,7 +11,7 @@ public protocol BPTableViewIndexViewDelegate: NSObjectProtocol {
     func indexTitle(section: Int) -> String
 }
 
-public class BPTableView: UITableView {
+open class BPTableView: UITableView {
 
     private var currentSelectedIndex: Int = -1 {
         willSet {

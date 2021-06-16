@@ -9,7 +9,7 @@
 import UIKit
 import Kingfisher
 
-public class BPImageView: UIImageView {
+open class BPImageView: UIImageView {
     /// 下载进度闭包
     public typealias ImageDownloadProgress   = (CGFloat) -> Void
     /// 下载完成闭包

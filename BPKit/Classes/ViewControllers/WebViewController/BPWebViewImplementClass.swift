@@ -8,7 +8,7 @@
 
 import Foundation
 
-public class BPWebViewImplementClass: NSObject {
+open class BPWebViewImplementClass: NSObject {
     public func jsToOcWithPrams(_ parms: [String:Any])  {
         BPLog("jsToOcWithPrams, params : \(parms)")
     }

@@ -8,13 +8,13 @@
 import Foundation
 
 /// 水平虚线
-public class BPDottedLineView: BPView {
+open class BPDottedLineView: BPView {
     
-    init(size: CGSize) {
+    public init(size: CGSize) {
         super.init(frame: CGRect(origin: .zero, size: size))
     }
     
-    required init?(coder: NSCoder) {
+    required public init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

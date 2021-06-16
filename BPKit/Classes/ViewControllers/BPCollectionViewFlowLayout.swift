@@ -18,7 +18,7 @@ open class BPCollectionViewFlowLayout: UICollectionViewFlowLayout {
     var flowType: BPCollectionViewFlowType = .center
     var sumCellWidth = CGFloat.zero
 
-    init(type: BPCollectionViewFlowType) {
+    public init(type: BPCollectionViewFlowType) {
         super.init()
         self.flowType = type
     }

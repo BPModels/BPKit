@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Data {
+public extension Data {
     var sizeKB: CGFloat {
         get {
             return CGFloat(self.count) / 1024.0

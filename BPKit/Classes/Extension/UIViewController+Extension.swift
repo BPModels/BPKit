@@ -9,7 +9,7 @@
 import UIKit
 import CoreFoundation
 
-extension UIViewController {
+public extension UIViewController {
     
     /** Runtime关联Key*/
     private struct AssociatedKeys {
@@ -40,7 +40,7 @@ extension UIViewController {
     }
     
     /// 查找目标ViewController
-    public func findViewController<T: UIViewController>(with targetViewControllerClass: T.Type) -> T? {
+    func findViewController<T: UIViewController>(with targetViewControllerClass: T.Type) -> T? {
         var currentResponder: UIResponder? = self.next
         while currentResponder != nil {
             if currentResponder?.classForCoder == targetViewControllerClass {
@@ -53,7 +53,7 @@ extension UIViewController {
     }
     
     /// 当前的NavigationController
-    public static var currentNavigationController: UINavigationController? {
+    static var currentNavigationController: UINavigationController? {
         let currentVController: UIViewController? = self.currentViewController
         var navgationController: UINavigationController? = currentVController?.navigationController
         var currentResponder: UIResponder? = currentVController?.next
@@ -68,7 +68,7 @@ extension UIViewController {
     }
     
     /// 当前的ViewController
-    public static var currentViewController: UIViewController? {
+    static var currentViewController: UIViewController? {
         var rootViewController: UIViewController?
         let textEffectsWindowClass: AnyClass? = NSClassFromString("UITextEffectsWindow")
         for window in UIApplication.shared.windows where !window.isHidden {

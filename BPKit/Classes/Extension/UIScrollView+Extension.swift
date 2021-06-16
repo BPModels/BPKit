@@ -71,7 +71,7 @@ private struct AssociatedKeys {
     static var rows                = "krows"
 }
 
-extension UIScrollView {
+public extension UIScrollView {
     
     /// 滑动代理
     weak var refreshDelegate: BPRefreshProtocol? {

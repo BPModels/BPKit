@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension UILabel {
+public extension UILabel {
     /// 根据字体和画布宽度,计算文字在画布上的高度
     /// - parameter font: 字体
     /// - parameter width: 限制的宽度

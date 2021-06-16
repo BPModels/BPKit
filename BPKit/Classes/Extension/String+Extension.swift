@@ -343,7 +343,7 @@ public extension String {
     }
 }
 
-extension String {
+public extension String {
 
     /// Base64 - 编码
     func base64Encoding() -> String {
@@ -406,7 +406,7 @@ extension String {
     }
 }
 
-enum HMACAlgorithm {
+public enum HMACAlgorithm {
 
     case SHA1, MD5, SHA224, SHA256, SHA384, SHA512
 
@@ -454,7 +454,7 @@ enum HMACAlgorithm {
 /**
  *  转换
  */
-extension String {
+public extension String {
 
     /// 转换Json格式的String到Diction类型,一般用于解析接口返回结果
     ///

@@ -8,8 +8,8 @@
 
 import Foundation
 
-extension Array {
-    public func transformJson() -> String {
+public extension Array {
+    func transformJson() -> String {
         if (!JSONSerialization.isValidJSONObject(self)) {
             return ""
         }

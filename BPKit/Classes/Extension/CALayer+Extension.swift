@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension CALayer {
+public extension CALayer {
 
     /// 顶部距离父控件的距离
     ///

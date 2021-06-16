@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Int {
+public extension Int {
     ///  转换数字到中文
     func transformChina() ->String {
         let formatter = NumberFormatter()

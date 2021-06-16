@@ -150,24 +150,24 @@ public extension UIView {
     }
 }
 
-extension UIView {
+public extension UIView {
     
     /// 移除父视图中的所有子视图
-    public func removeAllSubviews() {
+    func removeAllSubviews() {
         while (self.subviews.count > 0) {
             self.subviews.last?.removeFromSuperview()
         }
     }
 }
 
-extension UIView {
+public extension UIView {
     
     /// 裁剪 view 的圆角,裁一角或者全裁
     ///
     /// 其实就是根据当前View的Size绘制了一个 CAShapeLayer,将其遮在了当前View的layer上,就是Mask层,使mask以外的区域不可见
     /// - parameter direction: 需要裁切的圆角方向,左上角(topLeft)、右上角(topRight)、左下角(bottomLeft)、右下角(bottomRight)或者所有角落(allCorners)
     /// - parameter cornerRadius: 圆角半径
-    public func clipRectCorner(direction: UIRectCorner, cornerRadius: CGFloat) {
+    func clipRectCorner(direction: UIRectCorner, cornerRadius: CGFloat) {
         let cornerSize = CGSize(width:cornerRadius, height:cornerRadius)
         let maskPath = UIBezierPath(roundedRect: bounds, byRoundingCorners: direction, cornerRadii: cornerSize)
         let maskLayer = CAShapeLayer()

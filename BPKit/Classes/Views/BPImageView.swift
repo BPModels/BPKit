@@ -34,13 +34,13 @@ open class BPImageView: UIImageView {
     }
     
     // MARK: ==== Event ====
-    func setCorner(radius: CGFloat) {
+    public func setCorner(radius: CGFloat) {
         self.layer.cornerRadius  = radius
         self.layer.masksToBounds = true
     }
     
     /// 设置必填图片
-    func setRequisiteImage() {
+    public func setRequisiteImage() {
         self.image = UIImage(named: "icon_requisite")
     }
 }

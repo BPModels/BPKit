@@ -29,14 +29,14 @@ open class BPStackView: BPView {
     private var type: BPDirectionType
     private var subviewList: [UIView]
     
-    init(type: BPDirectionType = .center, subview list: [UIView] = [], spacing: CGFloat = .zero) {
+    public init(type: BPDirectionType = .center, subview list: [UIView] = [], spacing: CGFloat = .zero) {
         self.type         = type
         self.subviewList  = list
         self.spacing      = spacing
         super.init(frame: .zero)
     }
     
-    required public init?(coder: NSCoder) {
+    public required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     

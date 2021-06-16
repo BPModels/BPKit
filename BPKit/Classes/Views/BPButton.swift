@@ -73,7 +73,7 @@ open class BPButton: UIButton {
     }
     
     /// 设置按钮状态，根据状态来更新UI
-    public func setStatus(_ status: BPButtonStatusEnum?) {
+    open func setStatus(_ status: BPButtonStatusEnum?) {
         if let _status = status {
             self.status = _status
         }
@@ -107,7 +107,7 @@ open class BPButton: UIButton {
         }
     }
     
-    public func setTitleColor(_ color: UIColor?) {
+    open func setTitleColor(_ color: UIColor?) {
         self.setTitleColor(color, for: .normal)
         self.setTitleColor(color, for: .highlighted)
     }

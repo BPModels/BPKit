@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import BPKit
 
 class ViewController: BPViewController, UITableViewDelegate, UITableViewDataSource {
     

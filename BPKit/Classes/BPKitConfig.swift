@@ -10,7 +10,11 @@ import Foundation
 /// 统一配置类
 public class BPKitConfig {
     public static let share = BPKitConfig()
-
+    
+    public var isEnableShakeChangeEnv = false
+    
+    /// 切换环境页面协议对象
+    public weak var changeEnvDelegate: BPEnvChangeViewControllerDelegate?
     // TODD: ==== BPTabBarController ====
     
     /// 根视图控制器列表

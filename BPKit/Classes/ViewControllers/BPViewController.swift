@@ -65,17 +65,19 @@ open class BPViewController: UIViewController, BPNavigationBarDelegate {
     open func setFullScreenPopGesture() {
     }
     
-//    // TODO: ==== 摇一摇切换环境 ====
-//    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
-//        super.motionEnded(motion, with: event)
-//        #if DEBUG
-//        if event?.subtype == .some(.motionShake) && !(UIViewController.currentViewController?.isKind(of: BPEnvChangeViewController.classForCoder()) ?? false) {
-//            let vc = BPEnvChangeViewController()
-//            UIViewController.currentViewController?.present(vc, animated: true, completion: nil)
-//            BPLog("用户目录：\(NSHomeDirectory())")
-//        }
-//        #endif
-//    }
+    // TODO: ==== 摇一摇切换环境 ====
+    open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        super.motionEnded(motion, with: event)
+        #if DEBUG
+        if event?.subtype == .some(.motionShake)
+            && !(UIViewController.currentViewController?.isKind(of: BPEnvChangeViewController.classForCoder()) ?? false)
+            && BPKitConfig.share.isEnableShakeChangeEnv {
+            let vc = BPEnvChangeViewController()
+            UIViewController.currentViewController?.present(vc, animated: true, completion: nil)
+            BPLog("用户目录：\(NSHomeDirectory())")
+        }
+        #endif
+    }
     
     // TODO: ==== CustomNavigationBar ====
     private struct AssociatedKeys {

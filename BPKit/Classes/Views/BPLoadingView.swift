@@ -13,7 +13,7 @@ open class BPLoadingView: BPView {
     private var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = .scaleAspectFill
-        if let path = Bundle.main.path(forResource: "loading", ofType: "gif") {
+        if let path = sourceBundle?.path(forResource: "loading", ofType: "gif") {
             let url = URL(fileURLWithPath: path)
             if let data = try? Data(contentsOf: url) {
                 let loadingGiftImage = UIImage.sd_image(withGIFData: data)

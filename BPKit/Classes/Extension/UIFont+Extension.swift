@@ -13,7 +13,29 @@ import UIKit.UIFont
  */
 public extension UIFont {
     class func iconFont(size: CGFloat) -> UIFont? {
-        return UIFont(name: "iconfont", size: size)
+        var font = UIFont(name: "iconfont", size: size)
+        if font == nil {
+            let fontName = "iconfont"
+            if let bundle = sourceBundle,
+               let fontPath = bundle.path(forResource: fontName, ofType: ".ttf") {
+                let url = URL(fileURLWithPath: fontPath)
+                let fontData = try? Data(contentsOf: url)
+                
+                // 通过CGDataProvider承载生成CGFont对象
+                let fontCFData: CFData = CFBridgingRetain(fontData) as! CFData
+                if let fontDataProvider = CGDataProvider(data: fontCFData), let cgFont: CGFont = CGFont(fontDataProvider) {
+                    // 注册字体
+                    var fontError: Unmanaged<CFError>?
+                    CTFontManagerRegisterGraphicsFont(cgFont, &fontError)
+                    // 转成UIFont
+                    if let cgFontName: String = cgFont.postScriptName as String? {
+                        font = UIFont(name: cgFontName, size: size)
+                    }
+                }
+            }
+            
+        }
+        return font
     }
 }
 

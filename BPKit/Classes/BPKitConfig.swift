@@ -10,8 +10,6 @@ import Foundation
 /// 统一配置类
 public class BPKitConfig {
     public static let share = BPKitConfig()
-    
-    
 
     // TODD: ==== BPTabBarController ====
     

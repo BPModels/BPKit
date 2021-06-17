@@ -9,122 +9,71 @@
 import UIKit
 import BPKit
 
-class ViewController: UIViewController {
+class ViewController: BPViewController, UITableViewDelegate, UITableViewDataSource {
+    
+    private var tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.estimatedRowHeight = AdaptSize(56)
+        tableView.backgroundColor    = UIColor.gray4
+        tableView.separatorStyle     = .none
+        tableView.refreshHeaderEnable = true
+        tableView.refreshFooterEnable = true
+        tableView.showsVerticalScrollIndicator   = false
+        tableView.showsHorizontalScrollIndicator = false
+        return tableView
+    }()
+    private var subtitle: BPLabel = {
+        let label = BPLabel()
+        label.text          = IconFont.back.rawValue
+        label.textColor     = UIColor.red
+        label.font          = UIFont.iconFont(size: AdaptSize(33))
+        label.textAlignment = .center
+        return label
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        self.customNavigationBar?.title = "HOME"
+        self.createSubviews()
+        self.bindProperty()
+    }
+    
+    override func createSubviews() {
+        super.createSubviews()
+        self.view.addSubview(subtitle)
+        self.view.addSubview(tableView)
+        subtitle.snp.makeConstraints { make in
+            make.left.right.equalToSuperview()
+            make.top.equalToSuperview().offset(kNavHeight)
+            make.height.equalTo(AdaptSize(50))
+        }
+        tableView.snp.makeConstraints { make in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalTo(subtitle.snp.bottom)
+        }
+    }
+    
+    override func bindProperty() {
+        super.bindProperty()
+        tableView.delegate = self
+        tableView.dataSource = self
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    // MARK: ==== UITableViewDelegate, UITableViewDataSource ====
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell()
+        cell.backgroundColor = .randomColor()
+        cell.textLabel?.text = "\(indexPath.row)"
+        return cell
+    }
 
-}
-
-protocol BPLoginInputViewItemDelegate: NSObjectProtocol {
-    func editing(textField: UITextField)
-}
-
-
-class BPAlertViewWorkerBasicInfoPhoneContactView: BPBaseAlertView, BPLoginInputViewItemDelegate, UITextFieldDelegate {
-   
-    private let phoneNumberItem   = UITextField()
-    
-    private var rightActionCallBack: ((String) -> Void)?
-    
-    init(title: String?, description: String, leftBtnName: String, leftBtnClosure: (() -> Void)?, rightBtnName: String, rightBtnClosure: ((String) -> Void)?, isDestruct: Bool = false) {
-        super.init(frame: .zero)
-        self.isDestruct            = isDestruct
-        self.titleLabel.text       = title
-        self.descriptionLabel.text = description
-        self.rightActionCallBack   = rightBtnClosure
-        self.leftActionBlock       = leftBtnClosure
-        self.leftButton.setTitle(leftBtnName, for: .normal)
-        self.rightButton.setTitle(rightBtnName, for: .normal)
-        self.createSubviews()
-        self.bindProperty()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func createSubviews() {
-        super.createSubviews()
-        
-        mainView.addSubview(titleLabel)
-//        mainView.addSubview(contentScrollView)
-//        contentScrollView.addSubview(descriptionLabel)
-        mainView.addSubview(phoneNumberItem)
-        mainView.addSubview(leftButton)
-        mainView.addSubview(rightButton)
-        mainView.addSubview(partitionContentLineView)
-        mainView.addSubview(partitionButtonLineView)
-        
-        titleLabel.snp.makeConstraints { (make) in
-            make.top.equalToSuperview().offset(topPadding)
-            make.left.equalToSuperview().offset(leftPadding)
-            make.right.equalToSuperview().offset(-rightPadding)
-            make.height.equalTo(titleHeight)
-        }
-        mainViewHeight += topPadding + titleHeight
-        mainViewHeight += AdaptSize(25) + AdaptSize(55)
-        phoneNumberItem.snp.makeConstraints { (make) in
-            make.top.equalTo(titleLabel.snp.bottom).offset(AdaptSize(25))
-            make.left.equalTo(AdaptSize(15))
-            make.right.equalTo(-AdaptSize(15))
-            make.height.equalTo(AdaptSize(55))
-        }
-        
-        partitionContentLineView.snp.makeConstraints { (make) in
-            make.top.equalTo(phoneNumberItem.snp.bottom).offset(AdaptSize(25))
-            make.left.right.equalToSuperview()
-            make.height.equalTo(AdaptSize(0.6))
-        }
-        partitionButtonLineView.snp.makeConstraints { (make) in
-            make.left.top.bottom.equalTo(rightButton)
-            make.width.equalTo(AdaptSize(0.6))
-        }
-        rightButton.snp.makeConstraints { (make) in
-            make.top.equalTo(partitionContentLineView.snp.bottom)
-            make.left.equalTo(leftButton.snp.right)
-            make.right.equalToSuperview()
-            make.height.equalTo(buttonHeight)
-            make.width.equalToSuperview().multipliedBy(0.5)
-            make.bottom.equalToSuperview()
-        }
-        leftButton.snp.makeConstraints { (make) in
-            make.top.height.equalTo(rightButton)
-            make.left.equalToSuperview()
-        }
-        mainViewHeight += AdaptSize(25) + buttonHeight
-        mainView.snp.makeConstraints { (make) in
-            make.center.equalToSuperview()
-            make.width.equalTo(mainViewWidth)
-            make.height.equalTo(mainViewHeight)
-        }
-    }
-    
-    override func bindProperty() {
-        super.bindProperty()
-        self.backgroundView.isUserInteractionEnabled = false
-        if self.isDestruct {
-            self.rightButton.setTitleColor(UIColor.red1)
-        } else {
-            self.rightButton.setTitleColor(UIColor.blue0)
-        }
-        self.phoneNumberItem.delegate = self
-
-    }
-    
-    func editing(textField: UITextField) {
-        
-    }
-    
-    @objc
-    override func rightAction() {
-    }
-    
 }

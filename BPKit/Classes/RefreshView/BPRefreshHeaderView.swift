@@ -16,10 +16,10 @@ public class BPRefreshHeaderView: BPView {
         label.textAlignment = .left
         return label
     }()
-    public  var imageView: BPImageView = {
+    public var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = .scaleAspectFill
-        if let path = Bundle.main.path(forResource: "refresh", ofType: "gif") {
+        if let path = sourceBundle?.path(forResource: "refresh", ofType: "gif") {
             let url = URL(fileURLWithPath: path)
             if let data = try? Data(contentsOf: url) {
                 let loadingGiftImage = UIImage.sd_image(withGIFData: data)

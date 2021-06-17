@@ -10,6 +10,18 @@ import Foundation
 @_exported import BPCommon
 @_exported import BPDeviceInfo
 
+
+/// 资源路径
+public var sourceBundle: Bundle? {
+    // 使用【use_frameworks!】
+    let mainPath = Bundle.main.bundlePath
+    var bundler  = Bundle(path: mainPath + "/Frameworks/BPKit.framework/BPKit.bundle")
+    if bundler == nil {
+        bundler = Bundle(path: mainPath + "/BPKit.bundle")
+    }
+    return bundler
+}
+
 // TODO: ==== Function ====
 
 /// 尺寸自适应

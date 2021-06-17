@@ -15,7 +15,7 @@ public enum BPEnvType: Int {
     case release = 4
     case debug   = 5
     
-    var api: String {
+    public var api: String {
         get {
             switch self {
             case .dev:
@@ -32,7 +32,7 @@ public enum BPEnvType: Int {
         }
     }
     
-    var webApi: String {
+    public var webApi: String {
         switch self {
         case .dev:
             return "http://192.168.1.155:8081/"
@@ -47,7 +47,7 @@ public enum BPEnvType: Int {
         }
     }
     
-    var title: String {
+    public var title: String {
         get {
             switch self {
             case .dev:

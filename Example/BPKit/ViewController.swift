@@ -7,8 +7,9 @@
 //
 
 import UIKit
+@_exported import BPKit
 
-class ViewController: BPViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPEnvChangeViewControllerDelegate {
     
     private var tableView: UITableView = {
         let tableView = UITableView()
@@ -56,6 +57,8 @@ class ViewController: BPViewController, UITableViewDelegate, UITableViewDataSour
         super.bindProperty()
         tableView.delegate = self
         tableView.dataSource = self
+        BPKitConfig.share.isEnableShakeChangeEnv = true
+        BPKitConfig.share.changeEnvDelegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -73,6 +76,20 @@ class ViewController: BPViewController, UITableViewDelegate, UITableViewDataSour
         cell.backgroundColor = .randomColor()
         cell.textLabel?.text = "\(indexPath.row)"
         return cell
+    }
+    
+    // MARK: ==== BPEnvChangeViewControllerDelegate ====
+    /// 页面显示
+    func show() {
+        print("Show")
+    }
+    /// 确认切换环境
+    func changeEnv() {
+        print("Change")
+    }
+    /// 页面隐藏
+    func hide() {
+        print("hide")
     }
 
 }

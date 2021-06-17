@@ -28,7 +28,7 @@ PODS:
   - SDWebImage (5.11.1):
     - SDWebImage/Core (= 5.11.1)
   - SDWebImage/Core (5.11.1)
-  - SnapKit (4.2.0)
+  - SnapKit (5.0.1)
   - Toast-Swift (5.0.1)
   - ZipArchive (1.4.0)
 
@@ -43,14 +43,14 @@ SPEC REPOS:
     - BPLog
   https://github.com/CocoaPods/Specs.git:
     - CocoaLumberjack
-    - Kingfisher
-    - ZipArchive
-  trunk:
-    - FBSnapshotTestCase
     - IQKeyboardManager
+    - Kingfisher
     - SDWebImage
     - SnapKit
     - Toast-Swift
+    - ZipArchive
+  trunk:
+    - FBSnapshotTestCase
 
 EXTERNAL SOURCES:
   BPKit:
@@ -66,7 +66,7 @@ SPEC CHECKSUMS:
   IQKeyboardManager: 2a6e97afdafc7becf0cb17a9a8d795e3a980717f
   Kingfisher: a3c03d702433fa6cfedabb2bddbe076fb8f2e902
   SDWebImage: a7f831e1a65eb5e285e3fb046a23fcfbf08e696d
-  SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 

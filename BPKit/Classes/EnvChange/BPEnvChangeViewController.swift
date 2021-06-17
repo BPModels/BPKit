@@ -209,8 +209,6 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         self.dismiss(animated: true) {
             if isChange {
                 BPKitConfig.share.changeEnvDelegate?.changeEnv()
-            } else {
-                BPKitConfig.share.changeEnvDelegate?.hide()
             }
         }
     }
@@ -266,7 +264,7 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? BPEnvChangeCell else {
             return UITableViewCell()
         }
-        cell.setData(type: type, isSelected: isSelected, serverDomain: tmpServerDomain, webDomain: tmpWebDomain)
+        cell.setData(type: type, isSelected: isSelected, isCurrentEnv: type == currentEnv, serverDomain: tmpServerDomain, webDomain: tmpWebDomain)
         return cell
     }
     
@@ -283,11 +281,14 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
                 self.changeButton.setStatus(.normal)
                 tableView.reloadData()
             }.show()
-            
         } else {
             // 临时选择，未确认切换
             self.tmpEnv = newEnv
-            self.changeButton.setStatus(.normal)
+            if currentEnv == newEnv {
+                self.changeButton.setStatus(.disable)
+            } else {
+                self.changeButton.setStatus(.normal)
+            }
             tableView.reloadData()
         }
     }

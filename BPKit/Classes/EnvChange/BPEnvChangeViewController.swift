@@ -143,7 +143,7 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
     
     @objc
     private func changeAction() {
-        BPAlertManager.share.twoButton(title: "提示", description: "切换环境需要退出重新登录，确认切换吗？", leftBtnName: "取消", leftBtnClosure: nil, rightBtnName: "确定") { [weak self] in
+        BPAlertManager.share.twoButton(title: "提示", description: "切换环境需要退出重新登录,\n确认切换吗？", leftBtnName: "取消", leftBtnClosure: nil, rightBtnName: "确定") { [weak self] in
             guard let self = self, let newEnv = self.tempEnv else { return }
             // 临时选择转换成正式选择
             self.typeModel.customApi    = self.tempServerDomain

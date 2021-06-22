@@ -99,30 +99,19 @@ class BPEnvChangeCell: UITableViewCell {
     
     /// 设置显示内容
     /// - Parameters:
-    ///   - type: 类型
-    ///   - isSelected: 是否选中
-    ///   - isCurrentEnv: 是否是当前域名
-    ///   - serverDomain: 临时自定义服务端域名
-    ///   - webDomain: 临时自定义Web端域名
-    func setData(type: BPEnvType, isSelected: Bool, isCurrentEnv: Bool, serverDomain: String? = nil, webDomain: String?) {
-        if type == .debug {
-            if let serverApi = serverDomain {
-                self.serverApiLabel.text = "Server: " + serverApi
+    ///   - typeModel: 数据对象
+    ///   - indexPath: 当前下标
+    ///   - tempSelectType: 临时选择类型
+    func setData(typeModel: BPEnvTypeDelegate, indexPath: IndexPath, tempSelectType: BPEnvType?, tempApi: String?, tempWebApi: String?) {
+        let type = typeModel.typeList[indexPath.row]
+        // 是否选中
+        let isSelected: Bool = {
+            if let tempEnv = tempSelectType {
+                return type == tempEnv
             } else {
-                self.serverApiLabel.text = "Server: " + type.api
+                return type == typeModel.currentType
             }
-            if let webApi = webDomain {
-                self.webApiLabel.text = "Web:    " + webApi
-            } else {
-                self.webApiLabel.text = "Web:    " + type.webApi
-            }
-        } else {
-            self.serverApiLabel.text = "Server: " + type.api
-            self.webApiLabel.text    = "Web:    " + type.webApi
-        }
-        self.currentTipLabel.isHidden = !isCurrentEnv
-        self.titleLabel.text      = type.title
-        
+        }()
         if isSelected {
             self.titleLabel.textColor = UIColor.blue0
             self.titleLabel.font      = UIFont.mediumFont(ofSize: AdaptSize(24))
@@ -130,5 +119,24 @@ class BPEnvChangeCell: UITableViewCell {
             self.titleLabel.textColor = UIColor.black0
             self.titleLabel.font      = UIFont.mediumFont(ofSize: AdaptSize(18))
         }
+        
+        self.titleLabel.text     = typeModel.title(type: type)
+        if type == .debug {
+            // 如果没有自定义，则取之前缓存的自定义接口
+            if let _tempApi = tempApi {
+                self.serverApiLabel.text = "Server: " + _tempApi
+            } else {
+                self.serverApiLabel.text = "Server: " + (typeModel.customApi ?? "")
+            }
+            if let _tempWebApi = tempWebApi {
+                self.webApiLabel.text    = "   Web: " + _tempWebApi
+            } else {
+                self.webApiLabel.text    = "   Web: " + (typeModel.customWebApi ?? "")
+            }
+        } else {
+            self.serverApiLabel.text = "Server: " + typeModel.api(type: type)
+            self.webApiLabel.text    = "   Web: " + typeModel.webApi(type: type)
+        }
+        self.currentTipLabel.isHidden = !(type == typeModel.currentType)
     }
 }

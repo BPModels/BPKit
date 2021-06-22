@@ -11,10 +11,17 @@ import Foundation
 public class BPKitConfig {
     public static let share = BPKitConfig()
     
+    // TODO: ---- BPEnvChangeViewController
+    /// 是否开启摇动切换网络页面
     public var isEnableShakeChangeEnv = false
     
     /// 切换环境页面协议对象
     public weak var changeEnvDelegate: BPEnvChangeViewControllerDelegate?
+    
+    /// 切换网络数据对象
+    public var typeData: BPEnvTypeDelegate?
+    
+    
     // TODD: ==== BPTabBarController ====
     
     /// 根视图控制器列表

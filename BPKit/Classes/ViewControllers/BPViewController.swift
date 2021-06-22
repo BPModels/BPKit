@@ -72,7 +72,11 @@ open class BPViewController: UIViewController, BPNavigationBarDelegate {
         if event?.subtype == .some(.motionShake)
             && !(UIViewController.currentViewController?.isKind(of: BPEnvChangeViewController.classForCoder()) ?? false)
             && BPKitConfig.share.isEnableShakeChangeEnv {
-            let vc = BPEnvChangeViewController()
+            // 确定实现了协议，否则无法切换域名
+            guard let _typeData = BPKitConfig.share.typeData else {
+                return
+            }
+            let vc = BPEnvChangeViewController(type: _typeData)
             UIViewController.currentViewController?.present(vc, animated: true, completion: nil)
             BPLog("用户目录：\(NSHomeDirectory())")
         }

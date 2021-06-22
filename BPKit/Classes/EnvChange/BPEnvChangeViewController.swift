@@ -8,77 +8,20 @@
 
 import Foundation
 
-public enum BPEnvType: Int {
-    case dev     = 1
-    case test    = 2
-    case pre     = 3
-    case release = 4
-    case debug   = 5
-    
-    public var api: String {
-        get {
-            switch self {
-            case .dev:
-                return "http://192.168.1.155:9080/"
-            case .test:
-                return "http://121.36.55.155:8081/api/"
-            case .pre:
-                return "http://121.36.23.209/api/"
-            case .release:
-                return "http://121.36.23.209/api/"
-            case .debug:
-                return UserDefaults.standard.object(forKey: "kCustomServerDomain") as? String ?? ""
-            }
-        }
-    }
-    
-    public var webApi: String {
-        switch self {
-        case .dev:
-            return "http://192.168.1.155:8081/"
-        case .test:
-            return "http://121.36.55.155:8081/"
-        case .pre:
-            return "http://121.36.23.209/"
-        case .release:
-            return "http://121.36.23.209/"
-        case .debug:
-            return UserDefaults.standard.object(forKey: "kCustomWebDomain") as? String ?? ""
-        }
-    }
-    
-    public var title: String {
-        get {
-            switch self {
-            case .dev:
-                return "开发环境"
-            case .test:
-                return "测试环境"
-            case .pre:
-                return "预发环境"
-            case .release:
-                return "正式环境"
-            case .debug:
-                return "自定义"
-            }
-        }
-    }
-}
-
-public protocol BPEnvChangeViewControllerDelegate: NSObjectProtocol {
-    /// 页面显示
-    func show()
-    /// 确认切换环境
-    func changeEnv()
-    /// 页面隐藏
-    func hide()
-}
-
 class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITableViewDataSource {
     
     private let cellID = "BPEnvChangeCellID"
-    private let typeList: [BPEnvType] = [.dev, .test, .pre, .release, .debug]
-
+    private var typeModel: BPEnvTypeDelegate
+    
+    init(type: BPEnvTypeDelegate) {
+        self.typeModel = type
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private var tableView: UITableView = {
         let tableView = UITableView()
         tableView.estimatedRowHeight = AdaptSize(55)
@@ -116,11 +59,11 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
     private var debugBar: UISwitch = UISwitch()
     
     /// 临时选中的类型
-    private var tmpEnv: BPEnvType?
+    private var tempEnv: BPEnvType?
     /// 临时填写的服务端域名
-    private var tmpServerDomain: String?
+    private var tempServerDomain: String?
     /// 临时填写的Web端域名
-    private var tmpWebDomain: String?
+    private var tempWebDomain: String?
     
     deinit {
         BPKitConfig.share.changeEnvDelegate?.hide()
@@ -133,23 +76,8 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         self.createSubviews()
         self.bindProperty()
         self.bindData()
+        // 显示事件回调
         BPKitConfig.share.changeEnvDelegate?.show()
-//        DispatchQueue.global().async {
-            
-//            let infoLog = """
-//                        User Token: \(BPUserModel.share.token) \n
-//                        User ID: \(BPUserModel.share.id) \n
-//                        Organization ID: \(BPUserModel.share.organizationId ?? 0) \n
-//                        User Other Info: \(BPUserModel.share.getModel().toJSONString() ?? "")
-//                """
-//            BPLog("\n======================================")
-//            BPLog(infoLog)
-//            BPLog("======================================\n")
-//            UIPasteboard.general.string = infoLog
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-//                kWindow.toast("信息已添加到剪切板")
-//            }
-//        }
     }
     
     override func createSubviews() {
@@ -216,12 +144,12 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
     @objc
     private func changeAction() {
         BPAlertManager.share.twoButton(title: "提示", description: "切换环境需要退出重新登录，确认切换吗？", leftBtnName: "取消", leftBtnClosure: nil, rightBtnName: "确定") { [weak self] in
-            guard let self = self, let newEnv = self.tmpEnv else { return }
-            if currentEnv != newEnv {
-                // 临时选择转正式选择
-                UserDefaults.standard.setValue(self.tmpServerDomain, forKey: "kCustomServerDomain")
-                UserDefaults.standard.setValue(self.tmpWebDomain, forKey: "kCustomWebDomain")
-                currentEnv = newEnv
+            guard let self = self, let newEnv = self.tempEnv else { return }
+            // 临时选择转换成正式选择
+            self.typeModel.customApi    = self.tempServerDomain
+            self.typeModel.customWebApi = self.tempWebDomain
+            if self.typeModel.currentType != newEnv {
+                self.typeModel.currentType  = newEnv
             }
             self.backAction(isChange: true)
         }.show()
@@ -248,43 +176,34 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
     
     // MARK: ==== UITableViewDataSource && UITableViewDelegate ====
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return typeList.count
+        return typeModel.typeList.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let type = typeList[indexPath.row]
-        let isSelected: Bool = {
-            if let tmpEnv = self.tmpEnv {
-                return type == tmpEnv
-            } else {
-                return type == currentEnv
-            }
-        }()
-    
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? BPEnvChangeCell else {
             return UITableViewCell()
         }
-        cell.setData(type: type, isSelected: isSelected, isCurrentEnv: type == currentEnv, serverDomain: tmpServerDomain, webDomain: tmpWebDomain)
+        cell.setData(typeModel: typeModel, indexPath: indexPath, tempSelectType: self.tempEnv, tempApi: tempServerDomain, tempWebApi: tempWebDomain)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        guard let newEnv = BPEnvType(rawValue: indexPath.row + 1) else {
+        guard let newEnv = BPEnvType(rawValue: indexPath.row) else {
             return
         }
         if newEnv == .debug {
             BPAlertManager.share.twoTextField(title: "设置自定义域名", firstPlaceholder: "请输入Server Domain", secondPlaceholder: "请输入Web Domain") { serverDomain, webDomain in
                 // 临时选择，未确认切换
-                self.tmpEnv          = newEnv
-                self.tmpServerDomain = serverDomain
-                self.tmpWebDomain    = webDomain
+                self.tempEnv          = newEnv
+                self.tempServerDomain = serverDomain
+                self.tempWebDomain    = webDomain
                 self.changeButton.setStatus(.normal)
                 tableView.reloadData()
             }.show()
         } else {
             // 临时选择，未确认切换
-            self.tmpEnv = newEnv
-            if currentEnv == newEnv {
+            self.tempEnv = newEnv
+            if typeModel.currentType == newEnv {
                 self.changeButton.setStatus(.disable)
             } else {
                 self.changeButton.setStatus(.normal)

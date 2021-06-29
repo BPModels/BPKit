@@ -7,173 +7,102 @@
 //
 
 import UIKit
-@_exported import BPKit
+import BPKit
+import ObjectMapper
+import BPDeviceInfo
+import BPNetwork
 
-class ViewController: BPViewController, UITableViewDelegate, UITableViewDataSource, BPEnvChangeViewControllerDelegate {
+class ViewController: BPTableViewController<BPModel, BPTestCell>, BPTableViewControllerDelegate {
     
-    private var tableView: UITableView = {
-        let tableView = UITableView()
-        tableView.estimatedRowHeight = AdaptSize(56)
-        tableView.backgroundColor    = UIColor.gray4
-        tableView.separatorStyle     = .none
-        tableView.refreshHeaderEnable = true
-        tableView.refreshFooterEnable = true
-        tableView.showsVerticalScrollIndicator   = false
-        tableView.showsHorizontalScrollIndicator = false
-        return tableView
-    }()
-    private var subtitle: BPLabel = {
-        let label = BPLabel()
-        label.text          = IconFont.back.rawValue
-        label.textColor     = UIColor.red
-        label.font          = UIFont.iconFont(size: AdaptSize(33))
-        label.textAlignment = .center
-        return label
-    }()
-
+    var request: BPRequest = BPMessageRequest.messageHome
+    var isShowAddButton: Bool = true
+    var isShowSearch: Bool = true
+    var isShowFilter: Bool = true
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.customNavigationBar?.title = "HOME"
-        self.createSubviews()
-        self.bindProperty()
-    }
-    
-    override func createSubviews() {
-        super.createSubviews()
-        self.view.addSubview(subtitle)
-        self.view.addSubview(tableView)
-        subtitle.snp.makeConstraints { make in
-            make.left.right.equalToSuperview()
-            make.top.equalToSuperview().offset(kNavHeight)
-            make.height.equalTo(AdaptSize(50))
-        }
-        tableView.snp.makeConstraints { make in
-            make.left.right.bottom.equalToSuperview()
-            make.top.equalTo(subtitle.snp.bottom)
-        }
-    }
-    
-    override func bindProperty() {
-        super.bindProperty()
-        tableView.delegate = self
-        tableView.dataSource = self
-        BPKitConfig.share.isEnableShakeChangeEnv = true
-        BPKitConfig.share.changeEnvDelegate = self
-        BPKitConfig.share.typeData = BPTypeData()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // MARK: ==== UITableViewDelegate, UITableViewDataSource ====
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        cell.backgroundColor = .randomColor()
-        cell.textLabel?.text = "\(indexPath.row)"
-        return cell
-    }
-    
-    // MARK: ==== BPEnvChangeViewControllerDelegate ====
-    /// 页面显示
-    func show() {
-        print("Show")
-    }
-    /// 确认切换环境
-    func changeEnv() {
-        print("Change")
-    }
-    /// 页面隐藏
-    func hide() {
-        print("hide")
+        self.delegate = self
+        self.title = "我是标题"
+        self.customNavigationBar?.hideLeftButton()
     }
 }
 
-class BPTypeData: BPEnvTypeDelegate {
+
+struct BPModel: Mappable {
     
-    func api(type: BPEnvType) -> String {
-        switch type {
-        case .dev:
-            return "22http://192.168.1.155:9080/"
-        case .test:
-            return "http://121.36.55.155:8081/api/"
-        case .pre:
-            return "http://121.36.23.209/api/"
-        case .release:
-            return "http://121.36.23.209/api/"
-        case .debug:
-            return customApi ?? ""
-        }
+    var name: String = "Fish"
+    var age: Int = 11
+    
+    init() {}
+    init?(map: Map) {}
+    
+    mutating func mapping(map: Map) {
+        name <- map["name"]
+        age  <- map["age"]
     }
+}
 
-    func webApi(type: BPEnvType) -> String {
-        switch type {
-        case .dev:
-            return "http://192.168.1.155:8081/"
-        case .test:
-            return "http://121.36.55.155:8081/"
-        case .pre:
-            return "http://121.36.23.209/"
-        case .release:
-            return "http://121.36.23.209/"
-        case .debug:
-            return customWebApi ?? ""
-        }
-    }
-
-    func title(type: BPEnvType) -> String {
-        switch type {
-        case .dev:
-            return "开发环境"
-        case .test:
-            return "测试环境"
-        case .pre:
-            return "预发环境"
-        case .release:
-            return "正式环境"
-        case .debug:
-            return "自定义"
-        }
-    }
-
-    var typeList: [BPEnvType] {
-        get {
-            return [.dev, .test, .pre, .release, .debug]
-        }
-    }
-
-    var currentType: BPEnvType {
-        get {
-            let typeInt = UserDefaults.standard.object(forKey: "kCurrentType") as? Int ?? 0
-            return  BPEnvType(rawValue: typeInt) ?? .dev
-        }
-
-        set {
-            UserDefaults.standard.setValue(newValue.rawValue, forKey: "kCurrentType")
+class BPTestCell: BPTableViewCell {
+    private var titleLabel: BPLabel = {
+        let label = BPLabel()
+        label.text          = "我是标题"
+        label.textColor     = UIColor.black0
+        label.font          = UIFont.DINAlternateBold(ofSize: AdaptSize(20))
+        label.textAlignment = .left
+        return label
+    }()
+    
+    override func createSubviews() {
+        super.createSubviews()
+        self.contentView.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.left.equalToSuperview().offset(AdaptSize(15))
+            make.top.equalToSuperview().offset(AdaptSize(15))
+            make.bottom.equalToSuperview().offset(AdaptSize(-15))
+            make.right.equalToSuperview().offset(AdaptSize(-15))
         }
     }
     
-    /// 自定义Api
-    var customApi: String? {
-        get {
-            return UserDefaults.standard.object(forKey: "kCustomServerDomain") as? String
-        }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: "kCustomServerDomain")
+    override func bindData(model: Mappable) {
+        super.bindData(model: model)
+        guard let _model = model as? BPModel else { return }
+        self.titleLabel.text = _model.name
+    }
+}
+
+enum BPMessageRequest: BPRequest {
+    /// 消息首页
+    case messageHome
+    
+    
+    var method: BPHTTPMethod {
+        switch self {
+        case .messageHome:
+            return .get
         }
     }
-    /// 自定义Web Api
-    var customWebApi: String? {
-        get {
-            return UserDefaults.standard.object(forKey: "kCustomWebDomain") as? String
+    
+    var parameters: [String : Any?]? {
+        switch self {
+        default:
+            return nil
         }
-        set {
-            UserDefaults.standard.setValue(newValue, forKey: "kCustomWebDomain")
+    }
+    
+    var path: String {
+        switch self {
+        case .messageHome:
+            return "http://www.baidu.com/test"
+        
+        }
+    }
+    
+    var getTypeParameter: String {
+        switch self {
+        case .messageHome:
+            return "test"
+        default:
+            return ""
         }
     }
 }

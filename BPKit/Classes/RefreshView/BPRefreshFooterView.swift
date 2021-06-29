@@ -45,7 +45,6 @@ public class BPRefreshFooterView: BPView {
             self.titleLabel.text = "加载中～"
         default:
             self.titleLabel.text = ""
-            return
         }
     }
 }

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BPKit'
-  s.version          = '0.1.27'
+  s.version          = '0.1.28'
   s.summary          = 'A short description of BPKit.'
 
 # This description is used to generate tags and improve search results.
@@ -40,6 +40,11 @@ TODO: Add long description of the pod here.
 
    s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
+  
+   # 分类切换滚动视图
+   s.dependency 'JXSegmentedView'
+   # 全屏右滑返回
+   s.dependency 'FDFullscreenPopGesture', '1.1'
    # 下载处理图片
    s.dependency 'Kingfisher', '~> 5.7'
    # 布局约束
@@ -50,10 +55,14 @@ TODO: Add long description of the pod here.
    s.dependency 'IQKeyboardManager'
    # 图片库
    s.dependency 'SDWebImage'
+   # JSON转对象
+   s.dependency 'ObjectMapper'
    # 日志收集
    s.dependency 'BPLog'
    # 设备信息
    s.dependency 'BPDeviceInfo'
    # 公共库
    s.dependency 'BPCommon'
+   # 网络库
+   s.dependency 'BPNetwork'
 end

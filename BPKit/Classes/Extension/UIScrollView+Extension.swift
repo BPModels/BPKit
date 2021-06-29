@@ -68,6 +68,7 @@ private struct AssociatedKeys {
     static var observerEnable      = "kObserverEnable"
     static var refreshStatus       = "kRefreshStatus"
     static var page                = "kPage"
+    static var pageSize            = "kPageSize"
     static var rows                = "krows"
 }
 
@@ -92,6 +93,16 @@ public extension UIScrollView {
         
         set {
             objc_setAssociatedObject(self, &AssociatedKeys.page, newValue, .OBJC_ASSOCIATION_ASSIGN)
+        }
+    }
+    /// 一页数量
+    var pageSize: Int {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.pageSize) as? Int ?? 1
+        }
+        
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.pageSize, newValue, .OBJC_ASSOCIATION_ASSIGN)
         }
     }
     
@@ -131,11 +142,13 @@ public extension UIScrollView {
             case .headerLoading:
                 self.headerView?.setStatus(status: status)
                 self.refreshBefore(isHeader: true)
-                self.refreshDelegate?.loadingHeader?(scrollView: self, completion: {[weak self] in
-                    self?.refreshCompletion(isHeader: true)
-                })
+                
                 if self.refreshDelegate == nil {
                     self.refreshCompletion(isHeader: true)
+                } else {
+                    self.refreshDelegate?.loadingHeader?(scrollView: self, completion: {[weak self] in
+                        self?.refreshCompletion(isHeader: true)
+                    })
                 }
             case .footerNormal:
                 self.footerView?.setStatus(status: status)
@@ -149,11 +162,13 @@ public extension UIScrollView {
             case .footerLoading:
                 self.footerView?.setStatus(status: status)
                 self.refreshBefore(isHeader: false)
-                self.refreshDelegate?.loadingFooter?(scrollView: self, completion: {[weak self] in
-                    self?.refreshCompletion(isHeader: false)
-                })
+                
                 if self.refreshDelegate == nil {
                     self.refreshCompletion(isHeader: false)
+                } else {
+                    self.refreshDelegate?.loadingFooter?(scrollView: self, completion: {[weak self] in
+                        self?.refreshCompletion(isHeader: false)
+                    })
                 }
             }
         }
@@ -211,6 +226,8 @@ public extension UIScrollView {
         }
     }
     
+    /// 加载前
+    /// - Parameter isHeader: 是否下拉刷新
     @objc
     private func refreshBefore(isHeader: Bool) {
         if isHeader {
@@ -223,6 +240,8 @@ public extension UIScrollView {
         self.rows = self.getCellAmount()
     }
     
+    /// 加载完成
+    /// - Parameter isHeader: 是否下拉刷新
     func refreshCompletion(isHeader: Bool) {
         self.adjustPage(isHeader: isHeader)
         DispatchQueue.main.async { [weak self] in
@@ -233,6 +252,8 @@ public extension UIScrollView {
         }
     }
     
+    /// 对比之前缓存的数量，是否有增加
+    /// - Parameter isHeader: 是否是下拉刷新
     private func adjustPage(isHeader: Bool) {
         if isHeader {
             self.page = 1
@@ -270,7 +291,7 @@ public extension UIScrollView {
     }
     
     // MARK: ==== KVO ====
-    open override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard keyPath == "contentOffset" else { return }
         // 设置默认最大拖拽长度
         let pullHeaderMaxSize: CGFloat = 90
@@ -293,6 +314,7 @@ public extension UIScrollView {
                     self.createHeaderView()
                 }
             } else {
+                guard rows > 0 else { return }
                 offsetY = self.height + offsetY - self.contentSize.height
                 // 忽略列表中滑动
                 if offsetY > 0 && self.refreshFooterEnable {
@@ -322,11 +344,12 @@ public extension UIScrollView {
                     if offsetY < pullHeaderMaxSize {
                         self.contentInset = UIEdgeInsets(top: self.headerView?.height ?? 0, left: 0, bottom: 0, right: 0)
                     }
-                } else {
+                } else if self.refreshStatus != .headerLoading {
                     // 恢复默认状态
                     self.refreshStatus = .headerNormal
                 }
             } else {
+                guard rows > 0 else { return }
                 // 上拉
                 offsetY = self.height + offsetY - self.contentSize.height
                 // 忽略列表中滑动
@@ -338,7 +361,7 @@ public extension UIScrollView {
                         if offsetY > pullFooterMaxSize {
                             self.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: self.footerView?.height ?? 0, right: 0)
                         }
-                    } else {
+                    } else if self.refreshStatus != .footerLoading {
                         // 恢复默认状态
                         self.refreshStatus = .footerNormal
                     }

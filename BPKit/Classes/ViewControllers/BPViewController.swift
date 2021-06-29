@@ -11,26 +11,17 @@ import SnapKit
 
 open class BPViewController: UIViewController, BPNavigationBarDelegate {
 
+    open override var title: String? {
+        didSet {
+            self.customNavigationBar?.title = title
+        }
+    }
+    
     deinit {
         #if DEBUG
         BPLog(self.classForCoder, "资源释放")
         #endif
     }
-    
-    // TODO: ==== 分页 ====
-    public var page: Int {
-        var _page = 1
-        self.view.subviews.forEach { (contentView) in
-            contentView.subviews.forEach { (subview) in
-                guard let tableView = subview as? UITableView else {
-                    return
-                }
-                _page = tableView.page
-            }
-        }
-        return _page
-    }
-    public var pageSize: Int = 20
 
     open override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

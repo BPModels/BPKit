@@ -24,6 +24,7 @@ class ViewController: BPTableViewController<BPModel, BPTestCell>, BPTableViewCon
         self.delegate = self
         self.title = "我是标题"
         self.customNavigationBar?.hideLeftButton()
+        BPPickerModel()
     }
 }
 

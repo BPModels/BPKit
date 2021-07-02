@@ -21,6 +21,12 @@ public extension Bundle {
         return _mainBundle.infoDictionary?["CFBundleName"] as? String ?? ""
     }()
     
+    /// 项目显示名称
+    static let projectName: String = {
+        return _mainBundle.infoDictionary?["CFBundleDisplayName"] as? String ?? ""
+    }()
+
+    
     /// 获取App Bundle 版本号
     static let appVersion: String = {
         return _mainBundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""

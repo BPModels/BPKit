@@ -19,6 +19,13 @@ public typealias DoubleBlock       = ((Double?)->Void)
 public typealias MediaListBlock    = (([BPMediaModel])->Void)
 
 
+// MARK: ----时间----
+public var week: Int   = 604800
+public var day: Int    = 86400
+public var hour: Int   = 3600
+public var minute: Int = 60
+
+
 // TODO: ==== Function ====
 /// 震动
 public func shake() {

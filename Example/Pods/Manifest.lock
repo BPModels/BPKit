@@ -3,13 +3,13 @@ PODS:
   - AlamofireObjectMapper (6.2.0):
     - Alamofire (= 5.0.0-rc.2)
     - ObjectMapper (~> 3.5.1)
-  - BPCommon (0.2.0):
+  - BPCommon (0.2.1):
     - BPFile
     - Kingfisher (~> 5.7)
     - ObjectMapper
-  - BPDeviceInfo (0.1.4)
+  - BPDeviceInfo (0.1.6)
   - BPFile (0.1.8)
-  - BPKit (0.2.6):
+  - BPKit (0.2.7):
     - BPCommon
     - BPDeviceInfo
     - BPLog
@@ -84,10 +84,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
-  BPCommon: 33b209e10e5dc35940f131a44d6e23d49891944c
-  BPDeviceInfo: c51b05ead2926aa0b626fa4ce04dfa55280ba79a
+  BPCommon: 3ca0f456bc89a971b1b7c428defc1f2da5419c40
+  BPDeviceInfo: 55bb361b36d88caa5ab72aa1e34ba1201e25165b
   BPFile: eec098ed2db845071556640d1d9256b48e85c0bb
-  BPKit: cf27e5b5dae9eb41c8ac2b544dcf5c157f0f30b5
+  BPKit: 951567f1fcb6ffedbc5d6f990dd187fc4e5d4409
   BPLog: 20d34d254148581cba73871f6a5bff428e6f71f1
   BPNetwork: 958b0b4a543aa6665b14927eeae73b48ed78c9fe
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da

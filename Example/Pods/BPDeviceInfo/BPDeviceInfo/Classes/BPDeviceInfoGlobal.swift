@@ -65,20 +65,6 @@ public var kWindow: UIWindow {
     }
 }
 
-
-/// 获取屏幕截图
-public func getScreenshotImage() -> UIImage? {
-    guard let layer = UIApplication.shared.keyWindow?.layer else {
-        return nil
-    }
-    let renderer = UIGraphicsImageRenderer(size: layer.frame.size)
-    let image = renderer.image { (context: UIGraphicsImageRendererContext) in
-        layer.render(in: context.cgContext)
-    }
-    return image
-}
-
-
 // MARK: ---尺寸相关---
 /// 屏幕宽
 public var kScreenWidth: CGFloat {

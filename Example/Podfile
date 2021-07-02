@@ -1,6 +1,5 @@
-
-source 'https://github.com/BPModels/BPSpecs.git'
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/BPModels/BPSpecs.git'
 
 use_frameworks!
 

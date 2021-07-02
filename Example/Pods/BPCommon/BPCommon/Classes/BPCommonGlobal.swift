@@ -16,7 +16,7 @@ public typealias StringBlock       = ((String)->Void)
 public typealias IntBlock          = ((Int)->Void)
 public typealias BoolBlock         = ((Bool)->Void)
 public typealias DoubleBlock       = ((Double?)->Void)
-//public typealias MediaListBlock    = (([BPMediaModel])->Void)
+public typealias MediaListBlock    = (([BPMediaModel])->Void)
 
 
 // TODO: ==== Function ====

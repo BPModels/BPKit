@@ -163,18 +163,4 @@ public class BPAuthorizationManager: NSObject, CLLocationManagerDelegate {
             self.authorizationComplet?(false)
         }
     }
-
-    // MARK: ==== Event ====
-//    public func showAlert(type: BPAuthorizationType) {
-//        let title        = String(format: "无法访问你的%@", type.rawValue)
-//        let description  = String(format: "请到设置 -> %@ -> %@，打开访问权限", projectName, type.rawValue)
-//        BPAlertManager.share.twoButton(title: title, description: description, leftBtnName: "取消", leftBtnClosure: nil, rightBtnName: "打开") {
-//            self.jumpToAppSetting()
-//        }.show()
-//    }
-//
-//    /** 跳转定位服务设置界面 ，使用私有链接，被拒绝了，因此只能提示，不能跳转 */
-//    public func jumpToSystemLocationSetting() {
-//        BPAlertManager.share.oneButton(title: "APP定位服务未开启", description: "请到【设置 -> 隐私 -> 定位服务 -> 定位服务】进行开启", buttonName: "好的", closure: nil)
-//    }
 }

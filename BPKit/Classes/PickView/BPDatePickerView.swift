@@ -58,7 +58,7 @@ public class BPDatePickerView: BPTopWindowView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(contentView)
         contentView.addSubview(cancelButton)
@@ -85,7 +85,7 @@ public class BPDatePickerView: BPTopWindowView {
         }
     }
     
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         super.draw(rect)
         guard datePicker.subviews.first?.subviews.first?.subviews.count == 3 else {
             return
@@ -107,7 +107,7 @@ public class BPDatePickerView: BPTopWindowView {
         }
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         self.cancelButton.addTarget(self, action: #selector(hide), for: .touchUpInside)
         self.confirmButton.addTarget(self, action: #selector(confirmAction), for: .touchUpInside)

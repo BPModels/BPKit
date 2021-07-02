@@ -59,7 +59,7 @@ public class BPPickerView: BPTopWindowView, UIPickerViewDelegate, UIPickerViewDa
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.addSubview(contentView)
         contentView.addSubview(titleLabel)
@@ -95,7 +95,7 @@ public class BPPickerView: BPTopWindowView, UIPickerViewDelegate, UIPickerViewDa
         }
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         self.pickerView.delegate   = self
         self.pickerView.dataSource = self
@@ -133,19 +133,19 @@ public class BPPickerView: BPTopWindowView, UIPickerViewDelegate, UIPickerViewDa
     }
     
     // MARK: ==== UIPickerViewDelegate && UIPickerViewDataSource ====
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+    public func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+    public func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return modelList.count
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+    public func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return modelList[row].title
     }
     
-    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+    public func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
         let title = modelList[row].title
         let label = BPLabel()
         label.text          = title
@@ -154,7 +154,7 @@ public class BPPickerView: BPTopWindowView, UIPickerViewDelegate, UIPickerViewDa
         label.textAlignment = .center
         return label
     }
-    func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
+    public func pickerView(_ pickerView: UIPickerView, rowHeightForComponent component: Int) -> CGFloat {
         return AdaptSize(35)
     }
 }

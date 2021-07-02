@@ -9,7 +9,7 @@ PODS:
     - ObjectMapper
   - BPDeviceInfo (0.1.4)
   - BPFile (0.1.8)
-  - BPKit (0.1.30):
+  - BPKit (0.2.0):
     - BPCommon
     - BPDeviceInfo
     - BPLog
@@ -22,7 +22,7 @@ PODS:
     - SDWebImage
     - SnapKit
     - Toast-Swift
-  - BPLog (0.1.5):
+  - BPLog (0.1.6):
     - CocoaLumberjack/Swift
     - ZipArchive
   - BPNetwork (0.2.7):
@@ -87,8 +87,8 @@ SPEC CHECKSUMS:
   BPCommon: 14cee0c16452830d3d7e5748fd32774c7cf65ee9
   BPDeviceInfo: c51b05ead2926aa0b626fa4ce04dfa55280ba79a
   BPFile: eec098ed2db845071556640d1d9256b48e85c0bb
-  BPKit: 5064cdd782d5b5f6477dfa7936a4c3637e7ef296
-  BPLog: 7b5f8580545b35300ce64dd46de1ab6c352f2700
+  BPKit: cd1a2f484f914aa315b0ac9a25d8493063addea7
+  BPLog: 20d34d254148581cba73871f6a5bff428e6f71f1
   BPNetwork: 958b0b4a543aa6665b14927eeae73b48ed78c9fe
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a

@@ -9,7 +9,7 @@ PODS:
     - ObjectMapper
   - BPDeviceInfo (0.1.4)
   - BPFile (0.1.8)
-  - BPKit (0.2.4):
+  - BPKit (0.2.5):
     - BPCommon
     - BPDeviceInfo
     - BPLog
@@ -87,7 +87,7 @@ SPEC CHECKSUMS:
   BPCommon: a4a55fc86c31342023c4c3b0ec10a5ec38293ece
   BPDeviceInfo: c51b05ead2926aa0b626fa4ce04dfa55280ba79a
   BPFile: eec098ed2db845071556640d1d9256b48e85c0bb
-  BPKit: f67e47b51d1040f58d1e0efaa2e1f0dda48a90fc
+  BPKit: 6536823ea0faa559a4fb1683bd48ed6ce33a9075
   BPLog: 20d34d254148581cba73871f6a5bff428e6f71f1
   BPNetwork: 958b0b4a543aa6665b14927eeae73b48ed78c9fe
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da

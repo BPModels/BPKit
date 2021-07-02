@@ -16,7 +16,7 @@ public typealias StringBlock       = ((String)->Void)
 public typealias IntBlock          = ((Int)->Void)
 public typealias BoolBlock         = ((Bool)->Void)
 public typealias DoubleBlock       = ((Double?)->Void)
-public typealias MediaListBlock    = (([BPMediaModel])->Void)
+//public typealias MediaListBlock    = (([BPMediaModel])->Void)
 
 
 // TODO: ==== Function ====
@@ -37,4 +37,13 @@ public func getScreenshotImage() -> UIImage? {
         layer.render(in: context.cgContext)
     }
     return image
+}
+
+/// 跳转到APP内设置界面
+public func jumpToAppSetting() {
+    let appSetting = URL(string: UIApplication.openSettingsURLString)
+
+    if appSetting != nil {
+        UIApplication.shared.open(appSetting!, options: [:], completionHandler: nil)
+    }
 }

@@ -41,7 +41,7 @@ public struct BPDownloadManager {
                 }
                 completion?(image)
             case .failure(let error):
-                BPCommonConfig.share.delegate?.printLog(log:"资源下载失败，地址：\(urlStr), 原因：" + (error.errorDescription ?? ""))
+                BPCommonConfig.share.delegate?.printCommonLog(log:"资源下载失败，地址：\(urlStr), 原因：" + (error.errorDescription ?? ""))
                 completion?(nil)
             }
         }

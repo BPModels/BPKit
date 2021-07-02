@@ -3,13 +3,13 @@ PODS:
   - AlamofireObjectMapper (6.2.0):
     - Alamofire (= 5.0.0-rc.2)
     - ObjectMapper (~> 3.5.1)
-  - BPCommon (0.1.5):
+  - BPCommon (0.1.9):
     - BPFile
     - Kingfisher (~> 5.7)
     - ObjectMapper
   - BPDeviceInfo (0.1.4)
   - BPFile (0.1.8)
-  - BPKit (0.2.2):
+  - BPKit (0.2.4):
     - BPCommon
     - BPDeviceInfo
     - BPLog
@@ -84,10 +84,10 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
-  BPCommon: 14cee0c16452830d3d7e5748fd32774c7cf65ee9
+  BPCommon: a4a55fc86c31342023c4c3b0ec10a5ec38293ece
   BPDeviceInfo: c51b05ead2926aa0b626fa4ce04dfa55280ba79a
   BPFile: eec098ed2db845071556640d1d9256b48e85c0bb
-  BPKit: a1ff0ed7bf0a4ca072cbd9894bfe13dfa3276c2e
+  BPKit: f67e47b51d1040f58d1e0efaa2e1f0dda48a90fc
   BPLog: 20d34d254148581cba73871f6a5bff428e6f71f1
   BPNetwork: 958b0b4a543aa6665b14927eeae73b48ed78c9fe
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
@@ -102,6 +102,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 2c8d30746156dbf8bf7b3594f4fcdf1eae485a17
+PODFILE CHECKSUM: 09e488683fcbf594a0d2c14a8ca610e0d3de5e2a
 
 COCOAPODS: 1.10.1

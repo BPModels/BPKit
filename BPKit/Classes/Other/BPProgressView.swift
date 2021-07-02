@@ -7,23 +7,21 @@
 
 import Foundation
 
-
-import Foundation
-enum BPProgressType: Int {
+public enum BPProgressType: Int {
     /// 直线
     case line
     /// 圆形
     case round
 }
 
-class BPProgressView: BPView {
+public class BPProgressView: BPView {
     private var type: BPProgressType
     private var lineWidth: CGFloat
     
     private var progressLayer = CAShapeLayer()
     
     /// lineWidth: 仅适用于非直线进度条
-    init(type: BPProgressType, size: CGSize, lineWidth: CGFloat = AdaptSize(10)) {
+    public init(type: BPProgressType, size: CGSize, lineWidth: CGFloat = AdaptSize(10)) {
         self.type      = type
         self.lineWidth = lineWidth
         super.init(frame: CGRect(origin: .zero, size: size))
@@ -35,7 +33,7 @@ class BPProgressView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         self.progressLayer.frame = CGRect(origin: .zero, size: size)
         switch type {
@@ -46,7 +44,7 @@ class BPProgressView: BPView {
         }
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         self.backgroundColor = .clear
     }
@@ -90,7 +88,7 @@ class BPProgressView: BPView {
         self.layer.addSublayer(progressLayer)
     }
     
-    func setProgress(progress: CGFloat, animation: Bool = true) {
+    public func setProgress(progress: CGFloat, animation: Bool = true) {
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             switch self.type {

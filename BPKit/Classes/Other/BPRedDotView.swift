@@ -7,7 +7,7 @@
 
 import Foundation
 
-class BPRedDotView: BPView {
+public class BPRedDotView: BPView {
     
     private var showNumber: Bool
     private let maxNumber: Int   = 99
@@ -22,7 +22,7 @@ class BPRedDotView: BPView {
         return label
     }()
     
-    init(showNumber: Bool = false) {
+    public init(showNumber: Bool = false) {
         self.showNumber = showNumber
         super.init(frame: .zero)
         if showNumber {
@@ -40,7 +40,7 @@ class BPRedDotView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func createSubviews() {
+    public override func createSubviews() {
         super.createSubviews()
         if showNumber {
             self.addSubview(self.numLabel)
@@ -50,14 +50,14 @@ class BPRedDotView: BPView {
         }
     }
     
-    override func bindProperty() {
+    public override func bindProperty() {
         super.bindProperty()
         self.backgroundColor    = UIColor.red0
         self.layer.cornerRadius = defaultH/2
     }
     
     // MARK: ==== Event ====
-    func updateNumber(_ num: Int) {
+    public func updateNumber(_ num: Int) {
         let value          = self.getNumberStr(num: num)
         self.numLabel.text = value
         self.isHidden      = num <= 0
@@ -74,7 +74,7 @@ class BPRedDotView: BPView {
     }
     
     // TODO: ==== Tools ====
-    private func getNumberStr(num: Int) -> String {
+    public func getNumberStr(num: Int) -> String {
         return num > maxNumber ? "\(maxNumber)+" : "\(num)"
     }
     

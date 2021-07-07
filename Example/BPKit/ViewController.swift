@@ -12,7 +12,7 @@ import ObjectMapper
 import BPDeviceInfo
 import BPNetwork
 
-class ViewController: BPTableViewController<BPModel, BPTestCell>, BPTableViewControllerDelegate {
+class ViewController: BPTableViewController<BPModel, BPTestCell>, BPTableViewControllerDelegate, BPNetworkDelegate {
     
     var request: BPRequest = BPMessageRequest.messageHome
     var isShowAddButton: Bool = true
@@ -23,20 +23,69 @@ class ViewController: BPTableViewController<BPModel, BPTestCell>, BPTableViewCon
         super.viewDidLoad()
         self.delegate = self
         self.title = "我是标题"
+        self.configBPKit()
+        self.configBPNetwork()
         self.customNavigationBar?.hideLeftButton()
-        BPPickerModel()
     }
+    
+    override func addAction() {
+        request(nil)
+    }
+    
+    /// 配置BPKit
+    private func configBPKit() {
+        BPKitConfig.share.isEnableShakeChangeEnv = true
+        BPKitConfig.share.typeData = BPTypeData()
+    }
+    
+    /// 配置BPNetwork
+    private func configBPNetwork() {
+        BPNetworkConfig.share.domainApi    = currentApi
+        BPNetworkConfig.share.demainWebApi = currentWebApi
+        BPNetworkService.default.delegate  = self
+    }
+    
+    public var currentApi: String {
+        return BPTypeData.share.api(type: BPTypeData.share.currentType)
+    }
+
+    public var currentWebApi: String {
+        return BPTypeData.share.webApi(type: BPTypeData.share.currentType)
+    }
+    
+    // MARK: ==== BPNetworkDelegate ====
+    /// 处理状态码（如果返回true，则不调用success或fail回调）
+    /// - Parameter code: 状态吗
+    /// - Returns: 是否已处理
+    func handleStatusCode(code: Int) -> Bool {
+        return false
+    }
+    /// 处理错误内容（如果返回true，则不调用success或fail回调）
+    /// - Parameter message: 错误内容
+    /// - Returns: 是否已处理
+    func handleErrorMessage(message: String) -> Bool {
+        
+        return false
+    }
+    /// 无网络
+    func noNetwork() {
+        kWindow.toast("无网络连接，请连接后重试")
+    }
+    /// 无网络权限
+    func noAuthNetwork() {
+        kWindow.toast("无网络")
+    }
+    
 }
 
-
 struct BPModel: Mappable {
-    
+
     var name: String = "Fish"
     var age: Int = 11
-    
+
     init() {}
     init?(map: Map) {}
-    
+
     mutating func mapping(map: Map) {
         name <- map["name"]
         age  <- map["age"]
@@ -79,21 +128,21 @@ enum BPMessageRequest: BPRequest {
     var method: BPHTTPMethod {
         switch self {
         case .messageHome:
-            return .get
+            return .post
         }
     }
     
     var parameters: [String : Any?]? {
         switch self {
         default:
-            return nil
+            return ["id" : 12345455, "projectId" : 84839358, "name": "Sam"]
         }
     }
     
     var path: String {
         switch self {
         case .messageHome:
-            return "http://www.baidu.com/test"
+            return "organization/baseInfo"
         
         }
     }
@@ -102,8 +151,93 @@ enum BPMessageRequest: BPRequest {
         switch self {
         case .messageHome:
             return "test"
-        default:
-            return ""
         }
     }
 }
+
+struct BPTypeData: BPEnvTypeDelegate {
+    
+    static var share = BPTypeData()
+    
+    func api(type: BPEnvType) -> String {
+        switch type {
+        case .dev:
+            return "http://192.168.1.155:9080/"
+        case .test:
+            return "http://121.36.55.155:8081/api/"
+        case .pre:
+            return "http://121.36.23.209/api/"
+        case .release:
+            return "http://121.36.23.209/api/"
+        case .debug:
+            return customApi ?? ""
+        }
+    }
+
+    func webApi(type: BPEnvType) -> String {
+        switch type {
+        case .dev:
+            return "http://192.168.1.155:8081/"
+        case .test:
+            return "http://121.36.55.155:8081/"
+        case .pre:
+            return "http://121.36.23.209/"
+        case .release:
+            return "http://121.36.23.209/"
+        case .debug:
+            return customWebApi ?? ""
+        }
+    }
+
+    func title(type: BPEnvType) -> String {
+        switch type {
+        case .dev:
+            return "开发环境"
+        case .test:
+            return "测试环境"
+        case .pre:
+            return "预发环境"
+        case .release:
+            return "正式环境"
+        case .debug:
+            return "自定义"
+        }
+    }
+
+    var typeList: [BPEnvType] {
+        get {
+            return [.dev, .test, .pre, .release, .debug]
+        }
+    }
+
+    var currentType: BPEnvType {
+        get {
+            let typeInt = UserDefaults.standard.object(forKey: "kCurrentType") as? Int ?? 0
+            return  BPEnvType(rawValue: typeInt) ?? .dev
+        }
+
+        set {
+            UserDefaults.standard.setValue(newValue.rawValue, forKey: "kCurrentType")
+        }
+    }
+    
+    /// 自定义Api
+    var customApi: String? {
+        get {
+            return UserDefaults.standard.object(forKey: "kCustomServerDomain") as? String
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "kCustomServerDomain")
+        }
+    }
+    /// 自定义Web Api
+    var customWebApi: String? {
+        get {
+            return UserDefaults.standard.object(forKey: "kCustomWebDomain") as? String
+        }
+        set {
+            UserDefaults.standard.setValue(newValue, forKey: "kCustomWebDomain")
+        }
+    }
+}
+

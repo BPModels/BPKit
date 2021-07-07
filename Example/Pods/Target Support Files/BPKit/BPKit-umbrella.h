@@ -10,7 +10,10 @@
 #endif
 #endif
 
+#import "NSArray+CrashDefender.h"
+#import "NSObject+CrashDefender.h"
 #import "NSString+Algorithm.h"
+#import "UIView+Debug.h"
 
 FOUNDATION_EXPORT double BPKitVersionNumber;
 FOUNDATION_EXPORT const unsigned char BPKitVersionString[];

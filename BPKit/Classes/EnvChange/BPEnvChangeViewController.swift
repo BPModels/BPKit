@@ -48,6 +48,16 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         return button
     }()
     
+    private var logLabel: BPLabel = {
+        let label = BPLabel()
+        label.text          = "日志："
+        label.textColor     = UIColor.black0
+        label.font          = UIFont.regularFont(ofSize: AdaptSize(13))
+        label.textAlignment = .center
+        return label
+    }()
+    private var logSwitchBar: UISwitch = UISwitch()
+    
     private var borderLabel: BPLabel = {
         let label = BPLabel()
         label.text          = "描边："
@@ -56,7 +66,7 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         label.textAlignment = .center
         return label
     }()
-    private var debugBar: UISwitch = UISwitch()
+    private var borderSwitchBar: UISwitch = UISwitch()
     
     /// 临时选中的类型
     private var tempEnv: BPEnvType?
@@ -85,8 +95,10 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         self.view.addSubview(tableView)
         self.view.addSubview(changeButton)
         self.view.addSubview(backButton)
+        self.view.addSubview(logLabel)
+        self.view.addSubview(logSwitchBar)
         self.view.addSubview(borderLabel)
-        self.view.addSubview(debugBar)
+        self.view.addSubview(borderSwitchBar)
         
         tableView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(AdaptSize(100))
@@ -102,15 +114,25 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
             make.bottom.size.equalTo(changeButton)
             make.left.equalToSuperview().offset(AdaptSize(15))
         }
+        logLabel.sizeToFit()
+        logLabel.snp.makeConstraints { make in
+            make.left.equalTo(backButton)
+            make.bottom.equalTo(backButton.snp.top).offset(AdaptSize(-15))
+            make.size.equalTo(logLabel.size)
+        }
+        logSwitchBar.snp.makeConstraints { make in
+            make.left.equalTo(logLabel.snp.right)
+            make.centerY.equalTo(logLabel)
+        }
         borderLabel.sizeToFit()
         borderLabel.snp.makeConstraints { (make) in
             make.left.equalTo(changeButton)
             make.bottom.equalTo(changeButton.snp.top).offset(AdaptSize(-15))
             make.size.equalTo(borderLabel.size)
         }
-        debugBar.snp.makeConstraints { (make) in
+        borderSwitchBar.snp.makeConstraints { (make) in
             make.left.equalTo(borderLabel.snp.right)
-            make.bottom.equalTo(borderLabel)
+            make.centerY.equalTo(borderLabel)
         }
     }
     
@@ -121,12 +143,14 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         self.tableView.register(BPEnvChangeCell.classForCoder(), forCellReuseIdentifier: cellID)
         self.backButton.addTarget(self, action: #selector(backAction), for: .touchUpInside)
         self.changeButton.addTarget(self, action: #selector(changeAction), for: .touchUpInside)
-        self.debugBar.addTarget(self, action: #selector(barAction(bar:)), for: .valueChanged)
+        self.logSwitchBar.addTarget(self, action: #selector(switchLogAction(bar:)), for: .valueChanged)
+        self.borderSwitchBar.addTarget(self, action: #selector(switchBorderAction(bar:)), for: .valueChanged)
     }
     
     override func bindData() {
         super.bindData()
-        self.debugBar.isOn = UserDefaults.standard.bool(forKey: "borderDebug")
+        self.borderSwitchBar.isOn = UserDefaults.standard.bool(forKey: "bp_borderDebug")
+        self.logSwitchBar.isOn    = UserDefaults.standard.bool(forKey: "bp_logDebug")
     }
     
     // MARK: ==== Event ====
@@ -156,20 +180,31 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
     }
     
     @objc
-    private func barAction(bar: UISwitch) {
+    private func switchLogAction(bar: UISwitch) {
+        if bar.isOn {
+            UserDefaults.standard.set(true, forKey: "bp_logDebug")
+            BPEnvLogView.show()
+        } else {
+            UserDefaults.standard.set(false, forKey: "bp_logDebug")
+            BPEnvLogView.hide()
+        }
+    }
+    
+    @objc
+    private func switchBorderAction(bar: UISwitch) {
         if bar.isOn {
             BPAlertManager.share.twoButton(title: "提示", description: "开启描边调试模式需要退出重新登录，确认退出吗？", leftBtnName: "取消", leftBtnClosure: {
                 bar.isOn = !bar.isOn
             }, rightBtnName: "确定") {
-                UserDefaults.standard.set(true, forKey: "borderDebug")
-                self.backAction(isChange: true)
+                UserDefaults.standard.set(true, forKey: "bp_borderDebug")
+                self.backAction(isChange: self.changeButton.status == .normal)
             }.show()
         } else {
             BPAlertManager.share.twoButton(title: "提示", description: "关闭描边调试模式需要退出重新登录，确认退出吗？", leftBtnName: "取消", leftBtnClosure: {
                 bar.isOn = !bar.isOn
             }, rightBtnName: "确定") {
-                UserDefaults.standard.set(false, forKey: "borderDebug")
-                self.backAction(isChange: true)
+                UserDefaults.standard.set(false, forKey: "bp_borderDebug")
+                self.backAction(isChange: self.changeButton.status == .normal)
             }.show()
         }
     }

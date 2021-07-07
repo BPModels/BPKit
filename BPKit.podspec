@@ -41,21 +41,23 @@ TODO: Add long description of the pod here.
    s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   
-   # 分类切换滚动视图
+   # Lottie
+   s.dependency 'lottie-ios'
+   # 分类切换滚动视图（MIT License）
    s.dependency 'JXSegmentedView'
-   # 全屏右滑返回
+   # 全屏右滑返回（MIT License）
    s.dependency 'FDFullscreenPopGesture', '1.1'
-   # 下载处理图片
+   # 下载处理图片（MIT License）
    s.dependency 'Kingfisher', '~> 5.7'
-   # 布局约束
+   # 布局约束（MIT License）
    s.dependency 'SnapKit'
-   # 弹框
+   # 弹框（MIT License）
    s.dependency 'Toast-Swift'
-   # 键盘管理
+   # 键盘管理（MIT License）
    s.dependency 'IQKeyboardManager'
-   # 图片库
+   # 图片库（MIT License）
    s.dependency 'SDWebImage'
-   # JSON转对象
+   # JSON转对象（MIT License）
    s.dependency 'ObjectMapper'
    # 日志收集
    s.dependency 'BPLog'

@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BPKit'
-  s.version          = '0.3.3'
+  s.version          = '0.3.4'
   s.summary          = 'A short description of BPKit.'
 
 # This description is used to generate tags and improve search results.
@@ -41,7 +41,7 @@ TODO: Add long description of the pod here.
    s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
   
-   # Lottie
+   # Lottie（Apache License 2.0）
    s.dependency 'lottie-ios'
    # 分类切换滚动视图（MIT License）
    s.dependency 'JXSegmentedView'

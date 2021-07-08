@@ -23,7 +23,7 @@ PODS:
     - SDWebImage
     - SnapKit
     - Toast-Swift
-  - BPLog (0.1.6):
+  - BPLog (0.1.7):
     - CocoaLumberjack/Swift
     - ZipArchive
   - BPNetwork (0.2.8):
@@ -91,7 +91,7 @@ SPEC CHECKSUMS:
   BPDeviceInfo: 55bb361b36d88caa5ab72aa1e34ba1201e25165b
   BPFile: eec098ed2db845071556640d1d9256b48e85c0bb
   BPKit: 206571cf7059054a9ffe5369e773b74542be29c9
-  BPLog: 20d34d254148581cba73871f6a5bff428e6f71f1
+  BPLog: 902f104fbd63778fad3c161eb3881f183934f317
   BPNetwork: 977eb47d0de5ca7d67a41235a189ae51e55b3d6e
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a

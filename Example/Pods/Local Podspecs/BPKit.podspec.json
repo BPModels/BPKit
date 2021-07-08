@@ -1,6 +1,6 @@
 {
   "name": "BPKit",
-  "version": "0.3.1",
+  "version": "0.3.3",
   "summary": "A short description of BPKit.",
   "description": "TODO: Add long description of the pod here.",
   "homepage": "https://github.com/BPModels/BPKit",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/BPModels/BPKit.git",
-    "tag": "0.3.1"
+    "tag": "0.3.3"
   },
   "platforms": {
     "ios": "10.0"

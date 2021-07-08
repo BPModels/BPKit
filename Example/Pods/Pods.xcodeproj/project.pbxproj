@@ -117,6 +117,8 @@
 		21E3D9DD858B1BFE024C75890CD1CA20 /* SDAnimatedImage.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFDAACDF85AA7DF2A6D1AA1CA2DE0CB /* SDAnimatedImage.m */; };
 		22118B72D42959DF6E341B8DC988B1D8 /* SDImageAPNGCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 67DBDD20913E00913F3E1CC28CB552D5 /* SDImageAPNGCoder.m */; };
 		223F9FE32695AD590080731C /* online.json in Resources */ = {isa = PBXBuildFile; fileRef = 223F9FE22695AD590080731C /* online.json */; };
+		223F9FE5269682A60080731C /* clear.json in Resources */ = {isa = PBXBuildFile; fileRef = 223F9FE4269682A50080731C /* clear.json */; };
+		223F9FE726968A9C0080731C /* close.json in Resources */ = {isa = PBXBuildFile; fileRef = 223F9FE626968A9C0080731C /* close.json */; };
 		224979383902797654853570C6BF55A4 /* CodableTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 027A82828D744A62FFCCB55A91935789 /* CodableTransform.swift */; };
 		2261DAE32AE77125569013D37203F758 /* SDAnimatedImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A6D309CB90D700261A976B3845486B87 /* SDAnimatedImageView.m */; };
 		230DC131AEA19A8F649E7FCEF653FCDA /* NSBezierPath+SDRoundedCorners.h in Headers */ = {isa = PBXBuildFile; fileRef = A9B9E1BBED8DFB7E9C8B5AE78BFED91E /* NSBezierPath+SDRoundedCorners.h */; settings = {ATTRIBUTES = (Private, ); }; };
@@ -1245,6 +1247,8 @@
 		2162740A1351F2D5FDA1C6FFD8DF605D /* FBSnapshotTestCase-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "FBSnapshotTestCase-umbrella.h"; sourceTree = "<group>"; };
 		222F5983DF235A00FE95983E959E80A8 /* AnimationSubview.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationSubview.swift; path = "lottie-swift/src/Public/iOS/AnimationSubview.swift"; sourceTree = "<group>"; };
 		223F9FE22695AD590080731C /* online.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = online.json; path = BPKit/Assets/online.json; sourceTree = "<group>"; };
+		223F9FE4269682A50080731C /* clear.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = clear.json; path = BPKit/Assets/clear.json; sourceTree = "<group>"; };
+		223F9FE626968A9C0080731C /* close.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = close.json; path = BPKit/Assets/close.json; sourceTree = "<group>"; };
 		2240E04CBA8C0CDB5E9A8EE7B738E977 /* Alamofire.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = Alamofire.modulemap; sourceTree = "<group>"; };
 		23236A91F9D53AF84037CAF53E9EFC99 /* NSObject+CrashDefender.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "NSObject+CrashDefender.h"; sourceTree = "<group>"; };
 		23338E034A6BCA71875D1D962A602B9D /* InterpolatableExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InterpolatableExtensions.swift; path = "lottie-swift/src/Private/Utility/Interpolatable/InterpolatableExtensions.swift"; sourceTree = "<group>"; };
@@ -2563,6 +2567,8 @@
 		29E480722C3FB7945E19C8AC4FF5E20D /* BPKit */ = {
 			isa = PBXGroup;
 			children = (
+				223F9FE626968A9C0080731C /* close.json */,
+				223F9FE4269682A50080731C /* clear.json */,
 				223F9FE22695AD590080731C /* online.json */,
 				9423BF12C44D9203B6BEB505AA09936B /* area.json */,
 				EAD0736FACC87BCD3FE9B411F5E5C2BB /* bp_add_icon.png */,
@@ -4683,6 +4689,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				223F9FE32695AD590080731C /* online.json in Resources */,
+				223F9FE5269682A60080731C /* clear.json in Resources */,
+				223F9FE726968A9C0080731C /* close.json in Resources */,
 				4FE2F5FCAB775F0FF85ABBA7743128EA /* area.json in Resources */,
 				D9480CCEE1270659C298BFD16443783D /* bp_add_icon.png in Resources */,
 				8D7490713FEFA06B9A728B401DCB0360 /* iconfont.ttf in Resources */,

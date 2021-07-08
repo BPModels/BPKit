@@ -15,21 +15,23 @@ public class BPEnvLogView:
     BPView,
     UITableViewDelegate,
     UITableViewDataSource,
-    UIGestureRecognizerDelegate,
-    BPEnvLogToolsBarDeleagate {
+    BPEnvLogToolsBarDeleagate,
+    BPEnvLogHeaderDelegate {
     
-    private let headerID = "kBPEnvLogHeader"
-    private let cellID   = "kBPEnvLogHeader"
+    private let headerID  = "kBPEnvLogHeader"
+    private let cellID    = "kBPEnvLogHeader"
+    private let nilCellID = "kBPEnvLogNilCell"
     private var modelList: [BPEnvLogModel] = []
-    private let minWidth  = AdaptSize(50)
-    private let minHeight = AdaptSize(150)
+    private let minWidth  = AdaptSize(100)
+    private let minHeight = AdaptSize(100)
     private let maxWidth  = kScreenWidth - AdaptSize(30)
     private let maxHeight = kScreenHeight - AdaptSize(45) - kSafeBottomMargin
     private let minX      = AdaptSize(15)
-    private let minY      = AdaptSize(15)
+    private let minY      = kStatusBarHeight
     private var moveLastPoint: CGPoint = .zero
     private var moveGes: UIPanGestureRecognizer?
     private var adjustGes: UIPanGestureRecognizer?
+    private var addLogNofication = Notification.Name("kBPSendRequestLog")
     
     private let toolsBar: BPEnvLogToolsBar = BPEnvLogToolsBar()
     
@@ -37,6 +39,7 @@ public class BPEnvLogView:
         let tableView = UITableView()
         tableView.estimatedRowHeight  = AdaptSize(56)
         tableView.sectionHeaderHeight = AdaptSize(40)
+        tableView.sectionFooterHeight = .zero
         tableView.backgroundColor     = UIColor.clear
         tableView.separatorStyle      = .none
         tableView.showsVerticalScrollIndicator   = false
@@ -60,13 +63,12 @@ public class BPEnvLogView:
     }()
     
     override init(frame: CGRect) {
-        super.init(frame: CGRect(x: AdaptSize(15), y: AdaptSize(30), width: maxWidth, height: maxHeight))
+        super.init(frame: CGRect(x: AdaptSize(15), y: AdaptSize(60), width: maxWidth, height: maxHeight - AdaptSize(200)))
         self.createSubviews()
         self.bindProperty()
-        NotificationCenter.default.addObserver(self, selector: #selector(addLog(sender:)), name: Notification.Name("kBPSendRequestLog"), object: nil)
+        self.onlineAction(isOnline: true)
         moveGes   = UIPanGestureRecognizer(target: self, action: #selector(moveAction(sender:)))
-        moveGes?.delegate = self
-        self.tableView.addGestureRecognizer(moveGes!)
+        self.toolsBar.addGestureRecognizer(moveGes!)
         adjustGes = UIPanGestureRecognizer(target: self, action: #selector(adjustAction(sender:)))
         self.adjustImageView.addGestureRecognizer(adjustGes!)
     }
@@ -90,8 +92,8 @@ public class BPEnvLogView:
             make.height.equalTo(AdaptSize(50))
         }
         tableView.snp.makeConstraints { make in
-            make.left.equalToSuperview().offset(AdaptSize(15))
-            make.right.equalToSuperview().offset(AdaptSize(-15))
+            make.left.equalToSuperview()
+            make.right.equalToSuperview()
             make.top.equalTo(toolsBar.snp.bottom)
             make.bottom.equalTo(adjustImageView.snp.top)
         }
@@ -109,6 +111,7 @@ public class BPEnvLogView:
         tableView.dataSource = self
         tableView.register(BPEnvLogHeader.classForCoder(), forHeaderFooterViewReuseIdentifier: headerID)
         tableView.register(BPEnvLogCell.classForCoder(), forCellReuseIdentifier: cellID)
+        tableView.register(BPEnvLogNilCell.classForCoder(), forCellReuseIdentifier: nilCellID)
     }
     
     /// 请求日志
@@ -131,24 +134,36 @@ public class BPEnvLogView:
     /// 移动
     @objc
     private func moveAction(sender: UIPanGestureRecognizer) {
-        guard sender.numberOfTouches > 1 else { return }
-        if sender.state == .changed {
+        switch sender.state {
+        case .began:
+            self.moveLastPoint = sender.location(in: kWindow)
+        case .changed:
             // 移动
             let point   = sender.location(in: kWindow)
             let offsetX = moveLastPoint.x - point.x
             let offsetY = moveLastPoint.y - point.y
             let newX    = self.origin.x - offsetX
             let newY    = self.origin.y - offsetY
-            guard newX > minX
-                    && newY > minY
-                    && newX + width < kScreenWidth
-                    && newY + height < kScreenHeight else {
-                return
-            }
             self.origin = CGPoint(x: newX, y: newY)
             self.moveLastPoint = sender.location(in: kWindow)
-        } else if sender.state == .began {
-            self.moveLastPoint = sender.location(in: kWindow)
+        case .ended:
+            UIView.animate(withDuration: 0.15) { [weak self] in
+                guard let self = self else { return }
+                if self.origin.x < self.minX {
+                    self.origin.x = self.minX
+                }
+                if self.origin.y < self.minY {
+                    self.origin.y = self.minY
+                }
+                if self.origin.x + self.width > kScreenWidth {
+                    self.origin.x = kScreenWidth - self.width
+                }
+                if self.origin.y + self.height > kScreenHeight {
+                    self.origin.y = kScreenHeight - self.height - kSafeBottomMargin
+                }
+            }
+        default:
+            break
         }
     }
     
@@ -191,15 +206,7 @@ public class BPEnvLogView:
             return
         }
         logView.isHidden = true
-    }
-    
-    // MARK: ==== UIGestureRecognizerDelegate ====
-    public override func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
-        if gestureRecognizer == moveGes {
-            return gestureRecognizer.numberOfTouches > 1
-        } else {
-            return true
-        }
+        UserDefaults.standard.set(false, forKey: "bp_logDebug")
     }
     
     // MARK: ==== BPEnvLogToolsBarDeleagate ====
@@ -208,13 +215,23 @@ public class BPEnvLogView:
         self.tableView.reloadData()
     }
     
+    func onlineAction(isOnline: Bool) {
+        if isOnline {
+            // 开始监听
+            NotificationCenter.default.addObserver(self, selector: #selector(addLog(sender:)), name: addLogNofication, object: nil)
+        } else {
+            // 停止监听
+            NotificationCenter.default.removeObserver(self, name: addLogNofication, object: nil)
+        }
+    }
+    
     // MARK: ==== UITableViewDelegate, UITableViewDataSource ====
     public func numberOfSections(in tableView: UITableView) -> Int {
         return modelList.count
     }
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return modelList[section].isOpen ? 2 : 1
     }
     
     public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -222,17 +239,34 @@ public class BPEnvLogView:
             return nil
         }
         let model = self.modelList[section]
-        headerView.setData(model: model)
+        headerView.setData(model: model, section: section)
+        headerView.delegate = self
         return headerView
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? BPEnvLogCell else {
-            return UITableViewCell()
+        if indexPath.row == 0 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: nilCellID) as? BPEnvLogNilCell else {
+                return UITableViewCell()
+            }
+            return cell
+        } else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? BPEnvLogCell else {
+                return UITableViewCell()
+            }
+            let model = self.modelList[indexPath.row - 1]
+            cell.setData(model: model)
+            return cell
         }
-        let model = self.modelList[indexPath.row]
-        cell.setData(model: model)
-        return cell
     }
+    
+    // MARK: ==== BPEnvLogHeaderDelegate ====
+    func clickHeaderAction(section: Int) {
+        self.modelList[section].isOpen = !self.modelList[section].isOpen
+        self.tableView.reloadSections(IndexSet(integer: section), with: .automatic)
+    }
+    
+    // MARK: ==== Event ====
+    
 }
 

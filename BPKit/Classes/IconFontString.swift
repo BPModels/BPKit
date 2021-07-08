@@ -43,10 +43,14 @@ public enum IconFont: String {
     case upDownArrow  = "\u{e6b7}"
     /// 选中勾
     case selected     = "\u{e618}"
-    /// 向下箭头（带圆角）
+    /// 向下箭头（圆角实心）
     case downArrow    = "\u{eb6d}"
-    /// 向下箭头（带圆角）
+    /// 向下箭头（圆角实心）
     case upArrow      = "\u{e619}"
+    /// 向下箭头（圆角实线）
+    case upArrow1     = "\u{e61b}"
+    /// 向下箭头（圆角实线）
+    case downArrow1   = "\u{e62d}"
     
     
 //    ==== ^^^ ====

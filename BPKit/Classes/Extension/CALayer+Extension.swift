@@ -132,6 +132,7 @@ public extension CALayer {
         self.shadowColor   = UIColor.gray0.cgColor
         self.shadowOffset  = CGSize(width: AdaptSize(1), height: AdaptSize(0))
         self.shadowOpacity = 1
+        self.shadowPath    = nil
         self.shadowRadius  = AdaptSize(2)
     }
 

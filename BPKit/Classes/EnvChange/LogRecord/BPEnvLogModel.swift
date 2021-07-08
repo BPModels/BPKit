@@ -11,6 +11,7 @@ import ObjectMapper
 struct BPEnvLogModel {
     var request: BPRequest?
     var response: BPBaseResopnse?
+    var isOpen: Bool = false
     
     init() {}
 }

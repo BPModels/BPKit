@@ -34,6 +34,10 @@ class BPEnvLogHeader: UITableViewHeaderFooterView {
         label.textAlignment = .center
         return label
     }()
+    private var pathScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        return scrollView
+    }()
     private var pathLabel: BPLabel = {
         let label = BPLabel()
         label.text          = ""
@@ -65,8 +69,10 @@ class BPEnvLogHeader: UITableViewHeaderFooterView {
         self.backgroundColor = .clear
         self.contentView.addSubview(codeLabel)
         self.contentView.addSubview(methodLabel)
-        self.contentView.addSubview(pathLabel)
+        self.contentView.addSubview(pathScrollView)
         self.contentView.addSubview(arrowLabel)
+        pathScrollView.addSubview(pathLabel)
+        
         codeLabel.snp.makeConstraints { make in
             make.left.height.top.equalToSuperview()
             make.width.equalTo(AdaptSize(40))
@@ -76,13 +82,16 @@ class BPEnvLogHeader: UITableViewHeaderFooterView {
             make.width.equalTo(AdaptSize(50))
             make.height.top.equalToSuperview()
         }
-        pathLabel.snp.makeConstraints { make in
+        pathScrollView.snp.makeConstraints { make in
             make.left.equalTo(methodLabel.snp.right)
             make.top.height.equalToSuperview()
             make.right.equalTo(arrowLabel.snp.left)
         }
+        pathLabel.snp.makeConstraints { make in
+            make.left.centerY.equalToSuperview()
+            make.size.equalTo(CGSize(width: AdaptSize(100), height: AdaptSize(50)))
+        }
         arrowLabel.snp.makeConstraints { make in
-            make.left.equalTo(pathLabel.snp.right)
             make.right.equalToSuperview()
             make.width.equalTo(AdaptSize(40))
             make.height.equalTo(AdaptSize(30))
@@ -114,6 +123,11 @@ class BPEnvLogHeader: UITableViewHeaderFooterView {
         } else {
             self.arrowLabel.text = IconFont.downArrow1.rawValue
         }
+        pathLabel.sizeToFit()
+        pathLabel.snp.updateConstraints { make in
+            make.size.equalTo(pathLabel.size)
+        }
+        pathScrollView.contentSize = pathLabel.size
     }
     
     @objc

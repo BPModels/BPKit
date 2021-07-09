@@ -15,13 +15,13 @@ public protocol BPTableViewControllerDelegate: NSObjectProtocol {
     func headerView() -> BPView
     /// 显示的Footer（可选）
     func footerView() -> BPView
-    /// 请求体 （必须实现）
+    /// 请求体 （ --必须实现--）
     var request: BPRequest { get set }
-    /// 是否显示搜索
+    /// 是否显示搜索（可选）
     var isShowSearch: Bool { get }
-    /// 是否显示筛选
+    /// 是否显示筛选（可选）
     var isShowFilter: Bool { get }
-    /// 是否显示悬浮添加按钮
+    /// 是否显示悬浮添加按钮（可选）
     var isShowAddButton: Bool { get }
 }
 
@@ -163,7 +163,6 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewControll
                 }
             }
         }
-        
     }
     
     // MARK: ==== Request ====
@@ -189,6 +188,7 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewControll
     @objc
     open func addAction() {
         print("replace me")
+        self.tableView.reloadData()
     }
     
     // MARK: ==== UITableViewDelegate, UITableViewDataSource  ====

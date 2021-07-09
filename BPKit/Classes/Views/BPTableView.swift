@@ -11,6 +11,42 @@ public protocol BPTableViewIndexViewDelegate: NSObjectProtocol {
     func indexTitle(section: Int) -> String
 }
 
+private struct TBAssociatedKeys {
+    static var defaultImage: String = "kDefaultImage"
+    static var defaultHint: String  = "kDefaultHint"
+    static var buttonText: String   = "kButtonText"
+    static var buttonAction: String = "kButtonAction"
+}
+
+public extension UITableViewDataSource {
+    /// 空页面
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - hintText: 文案
+    ///   - buttonText: 按钮文案
+    ///   - actionBlock: 按钮事件
+    func setEmptyViewData(image: UIImage?, hintText: String?, buttonText: String?, actionBlock: (()->Void)?) {
+        objc_setAssociatedObject(self, &TBAssociatedKeys.defaultImage, image, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        objc_setAssociatedObject(self, &TBAssociatedKeys.defaultHint, hintText, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(self, &TBAssociatedKeys.buttonText, buttonText, .OBJC_ASSOCIATION_RETAIN)
+        objc_setAssociatedObject(self, &TBAssociatedKeys.buttonAction, actionBlock, .OBJC_ASSOCIATION_RETAIN)
+    }
+    
+    /// 空页面
+    /// - Parameters:
+    ///   - image: 图片
+    ///   - hintText: 文案
+    ///   - buttonText: 按钮文案
+    ///   - actionBlock: 按钮事件
+    func getEmptyViewData() -> (UIImage?, String?, String?, (()->Void)?) {
+        let image       = objc_getAssociatedObject(self, &TBAssociatedKeys.defaultImage) as? UIImage
+        let hintText    = objc_getAssociatedObject(self, &TBAssociatedKeys.defaultHint) as? String
+        let buttonText  = objc_getAssociatedObject(self, &TBAssociatedKeys.buttonText) as? String
+        let actionBlock = objc_getAssociatedObject(self, &TBAssociatedKeys.buttonAction) as? (()->Void)
+        return (image, hintText, buttonText, actionBlock)
+    }
+}
+
 open class BPTableView: UITableView {
 
     private var currentSelectedIndex: Int = -1 {
@@ -33,7 +69,7 @@ open class BPTableView: UITableView {
     private let indexNormalColor   = UIColor.black1
     /// 索引选中颜色
     private let indexSelectedColor = UIColor.blue0
-
+    /// 索引回调代理
     public weak var indexDelegate: BPTableViewIndexViewDelegate?
     
     private var indexView: BPView = {
@@ -55,11 +91,30 @@ open class BPTableView: UITableView {
     
     public override func reloadData() {
         super.reloadData()
+        // 添加索引
         if indexDelegate != nil {
             self.createIndexView()
             self.addGestureAction()
             self.currentSelectedIndex = 0
         }
+        // 配置空页面
+        self.configEmptyView()
+    }
+    
+    /// 配置默认空页面
+    private func configEmptyView() {
+        var count = 0
+        for section in 0..<numberOfSections {
+            count += numberOfRows(inSection: section)
+        }
+        guard count == 0 else {
+            self.backgroundView = nil
+            return
+        }
+        let tupleData = self.dataSource?.getEmptyViewData()
+        let emptyView = BPTableViewEmptyView()
+        emptyView.setData(image: tupleData?.0, hintText: tupleData?.1, buttonText: tupleData?.2, actionBlock: tupleData?.3)
+        self.backgroundView = emptyView
     }
 
     // TODO: ==== IndexView ====
@@ -151,5 +206,4 @@ open class BPTableView: UITableView {
             self.scrollToRow(at: IndexPath(row: 0, section: section), at: .top, animated: true)
         }
     }
-
 }

@@ -142,7 +142,7 @@ enum BPMessageRequest: BPRequest {
     var path: String {
         switch self {
         case .messageHome:
-            return "organization/baseInfo"
+            return "organization/baseInfo/organization/baseInfo/organization/baseInfo"
         
         }
     }

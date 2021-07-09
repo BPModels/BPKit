@@ -18,6 +18,7 @@ open class BPViewController: UIViewController, BPNavigationBarDelegate {
     }
     
     deinit {
+        hideLoadingForce()
         #if DEBUG
         BPLog(self.classForCoder, "资源释放")
         #endif
@@ -102,7 +103,6 @@ open class BPViewController: UIViewController, BPNavigationBarDelegate {
     
     // MARK: ==== BPNavigationBarDelegate ====
     open func leftAction() {
-        kWindow.hideLoading()
         self.navigationController?.pop()
     }
     open func rightAction() {

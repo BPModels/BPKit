@@ -80,5 +80,12 @@ open class BPLoadingView: BPView {
             }
         }
     }
+    
+    
+    /// 强制隐藏
+    public func hideForce() {
+        self.count = 0
+        self.hide()
+    }
 }
 

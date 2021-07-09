@@ -31,6 +31,11 @@ public func hideLoading() {
     BPLoadingView.share.hide()
 }
 
+/// 强制隐藏加载动画
+public func hideLoadingForce() {
+    BPLoadingView.share.hideForce()
+}
+
 // TODO: ==== Function ====
 
 /// 尺寸自适应

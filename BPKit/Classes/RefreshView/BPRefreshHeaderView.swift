@@ -19,13 +19,7 @@ public class BPRefreshHeaderView: BPView {
     public var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = .scaleAspectFill
-        if let path = sourceBundle?.path(forResource: "refresh", ofType: "gif") {
-            let url = URL(fileURLWithPath: path)
-            if let data = try? Data(contentsOf: url) {
-                let loadingGiftImage = UIImage.sd_image(withGIFData: data)
-                imageView.image      = loadingGiftImage
-            }
-        }
+        imageView.image = getImage(name: "refresh", type: "gif")
         return imageView
     }()
     

@@ -77,12 +77,7 @@ class BPTableViewEmptyView: BPView {
             self.imageView.image = _image
         } else {
             // 默认图
-            if let path = sourceBundle?.path(forResource: "bp_empty", ofType: "png") {
-                let url = URL(fileURLWithPath: path)
-                if let data = try? Data(contentsOf: url) {
-                    self.imageView.image = UIImage.sd_image(withGIFData: data)
-                }
-            }
+            self.imageView.image = getImage(name: "bp_empty", type: "png")
         }
         if let _hintText = hintText {
             self.hintLabel.text = _hintText

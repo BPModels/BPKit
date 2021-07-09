@@ -53,13 +53,8 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewControll
     
     private var addButton: BPButton = {
         let button = BPButton()
-        if let path = sourceBundle?.path(forResource: "bp_add_icon", ofType: "png") {
-            let url = URL(fileURLWithPath: path)
-            if let data = try? Data(contentsOf: url) {
-                let iconImage = UIImage.sd_image(withGIFData: data)
-                button.setImage(iconImage, for: .normal)
-            }
-        }
+        let iconImage = getImage(name: "bp_add_icon", type: "png")
+        button.setImage(iconImage, for: .normal)
         return button
     }()
     
@@ -199,8 +194,7 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewControll
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? BPTableViewCell else { return UITableViewCell() }
         let _model = self.modelList[indexPath.row]
-        cell.bindData(model: _model)
-        cell.backgroundColor = .randomColor()
+        cell.bindData(model: _model, indexPath: indexPath)
         return cell
     }
     

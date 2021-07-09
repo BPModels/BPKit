@@ -254,30 +254,3 @@ public extension UIView {
         }
     }
 }
-
-public extension UIView {
-
-    /// Runtime关联Key
-    private struct AssociatedKeys {
-        static var loadingView: String = "kLoadingView"
-    }
-    
-    /// 显示加载动画
-    func showLoading(delay: Double = 0.5) {
-        if let loadingView = objc_getAssociatedObject(self, &AssociatedKeys.loadingView) as? BPLoadingView {
-            loadingView.show(delay: delay)
-        } else {
-            let loadingView = BPLoadingView()
-            loadingView.show(delay: delay)
-            objc_setAssociatedObject(self, &AssociatedKeys.loadingView, loadingView, .OBJC_ASSOCIATION_RETAIN)
-        }
-    }
-    
-    /// 隐藏加载动画
-    func hideLoading() {
-        let loadView = objc_getAssociatedObject(self, &AssociatedKeys.loadingView)
-        guard let _loadView = loadView as? BPLoadingView else { return }
-        _loadView.hide()
-    }
-}
-

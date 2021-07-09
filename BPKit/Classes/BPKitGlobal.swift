@@ -21,6 +21,15 @@ public var sourceBundle: Bundle? {
     return bundler
 }
 
+/// 显示加载动画
+public func showLoading() {
+    BPLoadingView.share.show(delay: 0.5)
+}
+
+/// 隐藏加载动画
+public func hideLoading() {
+    BPLoadingView.share.hide()
+}
 
 // TODO: ==== Function ====
 
@@ -41,4 +50,17 @@ public func sizeForText(mAttrStr: NSAttributedString, width: CGFloat) -> CGSize 
     let restrictSize = CGSize(width: width, height: CGFloat.greatestFiniteMagnitude)
     let coreTextSize = CTFramesetterSuggestFrameSizeWithConstraints(frameSetter, CFRange(location: 0, length: 0), nil, restrictSize, nil)
     return coreTextSize
+}
+
+
+/// 获取资源目录中的图片
+func getImage(name: String, type: String) -> UIImage? {
+    var image: UIImage?
+    if let path = sourceBundle?.path(forResource: name, ofType: type) {
+        let url = URL(fileURLWithPath: path)
+        if let data = try? Data(contentsOf: url) {
+            image = UIImage.sd_image(withGIFData: data)
+        }
+    }
+    return image
 }

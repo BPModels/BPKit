@@ -1,4 +1,4 @@
-//
+//  加载页面
 //  BPLoadingView.swift
 //  Tenant
 //
@@ -9,17 +9,15 @@ import Foundation
 import SDWebImage
 
 open class BPLoadingView: BPView {
+    
+    static let share = BPLoadingView()
+    /// 请求显示计数
+    var count: Int = 0
 
     private var imageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = .scaleAspectFill
-        if let path = sourceBundle?.path(forResource: "loading", ofType: "gif") {
-            let url = URL(fileURLWithPath: path)
-            if let data = try? Data(contentsOf: url) {
-                let loadingGiftImage = UIImage.sd_image(withGIFData: data)
-                imageView.image      = loadingGiftImage
-            }
-        }
+        imageView.image       = getImage(name: "loading", type: "gif")
         return imageView
     }()
     
@@ -41,6 +39,11 @@ open class BPLoadingView: BPView {
             make.centerY.equalToSuperview().offset(AdaptSize(-30))
             make.size.equalTo(CGSize(width: AdaptSize(122), height: AdaptSize(150)))
         }
+        kWindow.addSubview(self)
+        self.snp.makeConstraints { (make) in
+            make.left.right.bottom.equalToSuperview()
+            make.top.equalToSuperview().offset(kNavHeight)
+        }
     }
     
     public override func bindProperty() {
@@ -50,36 +53,32 @@ open class BPLoadingView: BPView {
     }
     
     // MARK: ==== Event ====
-    public func show(view: UIView = kWindow, delay: Double) {
+    public func show(delay: Double) {
+        self.count += 1
         // 延迟显示
-        DispatchQueue.main.async {
-            self.isHidden = false
-        }
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
-            guard let self = self, !self.isHidden else { return }
-            view.addSubview(self)
-            self.snp.makeConstraints { (make) in
-                make.left.right.bottom.equalToSuperview()
-                make.top.equalToSuperview().offset(kNavHeight)
-            }
-            UIView.animate(withDuration: 0.25) {
+            guard let self = self, self.count > 0 else { return }
+            UIView.animate(withDuration: 0.25) {[weak self] in
+                guard let self = self else { return }
                 self.layer.opacity = 1.0
             }
         }
     }
     
     public func hide() {
+        self.count -= 1
+        guard self.count <= 0 else { return }
+        /// 容错
+        self.count = 0
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             self.layer.opacity = 0.0
         } completion: { [weak self] (finished) in
             guard let self = self else { return }
-            self.isHidden = true
             if finished {
                 self.removeFromSuperview()
             }
         }
     }
-    
 }
 

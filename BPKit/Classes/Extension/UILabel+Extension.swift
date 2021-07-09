@@ -17,4 +17,26 @@ public extension UILabel {
         let rect = NSString(string: _text).boundingRect(with: CGSize(width: width, height: CGFloat(MAXFLOAT)), options: .usesLineFragmentOrigin, attributes: [.font: _font], context: nil)
         return ceil(rect.height)
     }
+    
+    /// 设置左侧 icon
+    /// - Parameter icon: 图片
+    func setIcon(icon: UIImage?, iconSize: CGSize? = nil) {
+        guard let _icon = icon else {
+            return
+        }
+        let _iconSize = iconSize ?? CGSize(width: AdaptSize(7), height: AdaptSize(7))
+        let attachment = NSTextAttachment()
+        attachment.image = _icon
+        let offsetY = font.lineHeight/2 - _iconSize.height
+        attachment.bounds = CGRect(origin: CGPoint(x: 0, y: offsetY), size: _iconSize)
+        let mAttr = NSMutableAttributedString(attachment: attachment)
+        mAttr.append(NSAttributedString(string: " " + (self.text ?? "")))
+        self.attributedText = mAttr
+    }
+    
+    /// 设置显示必选图标
+    func setRequiredIcon() {
+        let icon = getImage(name: "bp_required_icon", type: "png")
+        self.setIcon(icon: icon)
+    }
 }

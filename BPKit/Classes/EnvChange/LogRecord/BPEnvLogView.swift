@@ -47,17 +47,13 @@ public class BPEnvLogView:
         return tableView
     }()
     
+    /// 放大缩小
     private var adjustImageView: BPImageView = {
         let imageView = BPImageView()
         imageView.contentMode = .scaleAspectFill
         imageView.isUserInteractionEnabled = true
-        if let path = sourceBundle?.path(forResource: "log_adjust_icon", ofType: "png") {
-            let url = URL(fileURLWithPath: path)
-            if let data = try? Data(contentsOf: url) {
-                if let iconImage = UIImage.sd_image(withGIFData: data) {
-                    imageView.setInsets(with: iconImage, edge: UIEdgeInsets(top: AdaptSize(30), left: AdaptSize(35), bottom: AdaptSize(10), right: AdaptSize(5)))
-                }
-            }
+        if let iconImage = getImage(name: "log_adjust_icon", type: "png") {
+            imageView.setInsets(with: iconImage, edge: UIEdgeInsets(top: AdaptSize(30), left: AdaptSize(35), bottom: AdaptSize(10), right: AdaptSize(5)))
         }
         return imageView
     }()

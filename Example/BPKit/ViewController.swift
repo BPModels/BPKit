@@ -12,7 +12,7 @@ import ObjectMapper
 import BPDeviceInfo
 import BPNetwork
 
-class ViewController: BPTableViewController<BPModel, BPTestCell>, BPTableViewControllerDelegate, BPNetworkDelegate {
+class ViewController: BPTableViewController<BPModel, BPCommonTableViewCell>, BPTableViewControllerDelegate, BPNetworkDelegate {
     
     var request: BPRequest = BPMessageRequest.messageHome
     var isShowAddButton: Bool = true
@@ -99,6 +99,7 @@ class BPTestCell: BPTableViewCell {
         label.textColor     = UIColor.black0
         label.font          = UIFont.DINAlternateBold(ofSize: AdaptSize(20))
         label.textAlignment = .left
+        label.setRequiredIcon()
         return label
     }()
     
@@ -113,10 +114,21 @@ class BPTestCell: BPTableViewCell {
         }
     }
     
-    override func bindData(model: Mappable) {
-        super.bindData(model: model)
+    override func bindProperty() {
+        super.bindProperty()
+    }
+    
+    override func bindData(model: Mappable, indexPath: IndexPath) {
+        super.bindData(model: model, indexPath: indexPath)
         guard let _model = model as? BPModel else { return }
         self.titleLabel.text = _model.name
+        self.titleLabel.setRequiredIcon()
+        print(indexPath)
+        if indexPath.row % 2 > 0 {
+            self.setLine()
+        } else {
+            self.setLine(isHide: true, left: AdaptSize(10), right: AdaptSize(-50))
+        }
     }
 }
 
@@ -143,7 +155,6 @@ enum BPMessageRequest: BPRequest {
         switch self {
         case .messageHome:
             return "organization/baseInfo/organization/baseInfo/organization/baseInfo"
-        
         }
     }
     

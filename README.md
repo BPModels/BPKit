@@ -76,12 +76,12 @@ BPKit is available under the MIT license. See the LICENSE file for more info.
         ///   - hintText: 文案
         ///   - buttonText: 按钮文案
         ///   - actionBlock: 按钮事件
-    self.tableView.dataSource?.setEmptyViewData(image: nil, hintText: "暂无内容", buttonText: "添加", actionBlock: {
+    self.tableView.dataSource?.setDefaultViewData(image: nil, hintText: "暂无内容", buttonText: "添加", actionBlock: {
         print("Show create view controller")
     })
     ```
 
-* 通用列表控件 **BPTableViewController**
+* 通用列表 **BPTableViewController**
 
     ```swift
     /// 继承自 BPTableViewController
@@ -106,5 +106,20 @@ BPKit is available under the MIT license. See the LICENSE file for more info.
     }
     ```
 
+* 通用Cell **BPCommonTableViewCell**
+
+    ```swift
+            /// 配置数据
+        /// - Parameters:
+        ///   - isRequired: 是否必选
+        ///   - title: 标题
+        ///   - placeholder: 默认
+        ///   - canEdit: 是否可编辑
+        ///   - icon: 图标
+        ///   - unit: 单位
+        ///   - hideLine: 是否显示底部分割线
+        public func setData(_ isRequired: Bool, title: String?, placeholder: String?, canEdit: Bool, icon: UIImage?, unit: String?, hideLine: Bool = true) 
+    ```
+    
     
 

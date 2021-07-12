@@ -9,7 +9,7 @@ PODS:
     - ObjectMapper
   - BPDeviceInfo (0.1.6)
   - BPFile (0.1.8)
-  - BPKit (0.3.4):
+  - BPKit (0.3.6):
     - BPCommon
     - BPDeviceInfo
     - BPLog
@@ -26,8 +26,8 @@ PODS:
   - BPLog (0.1.7):
     - CocoaLumberjack/Swift
     - ZipArchive
-  - BPNetwork (0.2.8):
-    - Alamofire
+  - BPNetwork (0.3.0):
+    - Alamofire (= 5.0.0-rc.2)
     - AlamofireObjectMapper
     - ObjectMapper
   - CocoaLumberjack/Core (3.7.2)
@@ -90,9 +90,9 @@ SPEC CHECKSUMS:
   BPCommon: 3ca0f456bc89a971b1b7c428defc1f2da5419c40
   BPDeviceInfo: 55bb361b36d88caa5ab72aa1e34ba1201e25165b
   BPFile: eec098ed2db845071556640d1d9256b48e85c0bb
-  BPKit: eb7e16355af40c7e1f2b49474af784af7c423a85
+  BPKit: 00edd0c591bbf6932c01a5eff60323aa0187b244
   BPLog: 902f104fbd63778fad3c161eb3881f183934f317
-  BPNetwork: 977eb47d0de5ca7d67a41235a189ae51e55b3d6e
+  BPNetwork: 7d7aca993c1bc1779ca68ccadd2949044854ebf2
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0

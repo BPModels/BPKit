@@ -24,7 +24,7 @@ open class BPImageView: UIImageView, BPViewDelegate {
         super.init(frame: frame)
         self.updateUI()
     }
-    init() {
+    public init() {
         super.init(frame: .zero)
     }
     

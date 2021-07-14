@@ -12,6 +12,74 @@ import ObjectMapper
 import BPDeviceInfo
 import BPNetwork
 
+class CenterView: BPView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.createSubviews()
+        self.bindProperty()
+        self.updateUI()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func createSubviews() {
+        super.createSubviews()
+    }
+    
+    override func bindProperty() {
+        super.bindProperty()
+    }
+    
+    override func updateUI() {
+        super.updateUI()
+        self.backgroundColor = UIColor.with(.white0, dark: .darkWhite0)
+    }
+    
+    // MARK: ==== Event ====
+}
+
+
+class ViewController1: BPViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.createSubviews()
+        self.bindProperty()
+        self.bindData()
+        self.updateUI()
+    }
+    
+    override func createSubviews() {
+        super.createSubviews()
+        let centerView = CenterView()
+        self.view.addSubview(centerView)
+        centerView.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.size.equalTo(CGSize(width: AdaptSize(100), height: AdaptSize(100)))
+        }
+    }
+    
+    override func bindProperty() {
+        super.bindProperty()
+        self.customNavigationBar?.title = "你好"
+    }
+    
+    override func bindData() {
+        super.bindData()
+    }
+    
+    override func updateUI() {
+        super.updateUI()
+        self.view.backgroundColor = .with(.darkWhite0, dark: .white0)
+    }
+    
+    // MARK: ==== Event ====
+    
+}
+
 class ViewController: BPTableViewController<BPModel, BPCommonTableViewCell>, BPTableViewControllerDelegate, BPNetworkDelegate {
     
     var request: BPRequest = BPMessageRequest.messageHome

@@ -10,6 +10,11 @@ import UIKit
 import SnapKit
 
 open class BPViewController: UIViewController, BPNavigationBarDelegate {
+    
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateUI()
+    }
 
     open override var title: String? {
         didSet {
@@ -51,11 +56,15 @@ open class BPViewController: UIViewController, BPNavigationBarDelegate {
     open func bindProperty() {}
 
     open func bindData() {}
+    
+    /// 更新UI颜色、图片
+    open func updateUI() {
+        self.view.backgroundColor = .with(.white0, dark: .black0)
+    }
 
     open func registerNotification() {}
 
-    open func setFullScreenPopGesture() {
-    }
+    open func setFullScreenPopGesture() {}
     
     // TODO: ==== 摇一摇切换环境 ====
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {

@@ -89,6 +89,25 @@ open class BPTableView: UITableView {
         return label
     }()
     
+    public override init(frame: CGRect, style: UITableView.Style) {
+        super.init(frame: frame, style: style)
+        self.updateUI()
+    }
+    
+    required public init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateUI()
+    }
+    
+    /// 更新UI颜色、图片
+    open func updateUI() {
+        self.backgroundColor = .with(.gray4, dark: .black0)
+    }
+    
     public override func reloadData() {
         super.reloadData()
         // 添加索引

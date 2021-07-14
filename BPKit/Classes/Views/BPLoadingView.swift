@@ -31,6 +31,11 @@ open class BPLoadingView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateUI()
+    }
+    
     public override func createSubviews() {
         super.createSubviews()
         self.addSubview(imageView)
@@ -48,8 +53,11 @@ open class BPLoadingView: BPView {
     
     public override func bindProperty() {
         super.bindProperty()
-        self.backgroundColor = UIColor.hex(0xf8f8f8)
         self.layer.opacity   = 0.0
+    }
+    
+    open override func updateUI() {
+        self.backgroundColor = UIColor.with(UIColor.hex(0xf8f8f8), dark: .black0)
     }
     
     // MARK: ==== Event ====

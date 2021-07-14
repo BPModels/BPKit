@@ -43,6 +43,8 @@ class BPTableViewEmptyView: BPView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: ==== BPViewDelegate ====
+    
     override func createSubviews() {
         super.createSubviews()
         self.addSubview(imageView)

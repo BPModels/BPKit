@@ -16,7 +16,6 @@ public class BPCommonTableViewCell: BPTableViewCell {
     private var titleLabel: BPLabel = {
         let label = BPLabel()
         label.text          = ""
-        label.textColor     = UIColor.black0
         label.font          = UIFont.regularFont(ofSize: AdaptSize(17))
         label.textAlignment = .left
         return label
@@ -25,7 +24,6 @@ public class BPCommonTableViewCell: BPTableViewCell {
         let textField = BPTextField()
         textField.placeholder   = ""
         textField.font          = UIFont.regularFont(ofSize: AdaptSize(17))
-        textField.textColor     = UIColor.black0
         textField.textAlignment = .right
         return textField
     }()
@@ -37,7 +35,6 @@ public class BPCommonTableViewCell: BPTableViewCell {
     private var unitLabel: BPLabel = {
         let label = BPLabel()
         label.text          = ""
-        label.textColor     = UIColor.black0
         label.font          = UIFont.regularFont(ofSize: 17)
         label.textAlignment = .right
         return label
@@ -46,6 +43,7 @@ public class BPCommonTableViewCell: BPTableViewCell {
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         self.bindProperty()
+        self.updateUI()
     }
     
     required init?(coder: NSCoder) {
@@ -110,6 +108,13 @@ public class BPCommonTableViewCell: BPTableViewCell {
     public override func bindData(model: Mappable, indexPath: IndexPath) {
         super.bindData(model: model, indexPath: indexPath)
         self.setData(true, title: "标题", placeholder: "随便写点", canEdit: false, icon: getImage(name: "bp_add_icon", type: "png"), unit: "元")
+    }
+    
+    public override func updateUI() {
+        super.updateUI()
+        titleLabel.textColor = UIColor.with(.black0, dark: .gray0)
+        textField.textColor  = UIColor.with(.black0, dark: .gray0)
+        unitLabel.textColor  = UIColor.with(.black0, dark: .gray0)
     }
     
     // MARK: ==== Event ====

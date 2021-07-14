@@ -110,11 +110,18 @@ public extension UIColor {
         }
         return ColorWithRGBA(red: red, green: green, blue: blue, alpha: alphe)
     }
+    
     // TODO: ====== Green ====
     /// 文字 (red: 16, green: 188, blue: 131)
     static let green0 = ColorWithRGBA(red: 16, green: 188, blue: 131)
     /// 微信Icon背景色 (red: 6, green: 194, blue: 95)
     static let green1 = ColorWithRGBA(red: 6, green: 194, blue: 95)
+    
+    /// 文字 (red: 16, green: 188, blue: 131)
+    var darkGreen0: UIColor {
+        
+        return UIColor.blue0
+    }
     
     // TODO: ====== Black ====
     /// 文字 (red: 48, green: 49, blue: 51)
@@ -159,24 +166,26 @@ public extension UIColor {
     static let gray3 = ColorWithRGBA(red: 199, green: 199, blue: 204)
 
     /// 列表背景 (red: 248, green: 248, blue: 248)
-    static let gray4: UIColor = {
-        if isDark {
-            return UIColor.hex(0x5F615C)
-        } else {
-            return ColorWithRGBA(red: 248, green: 248, blue: 248)
-        }
-    }()
+    static let gray4: UIColor = ColorWithRGBA(red: 248, green: 248, blue: 248)
     /// 进度文字 (red: 96, green: 98, blue: 102)
     static let gray5 = ColorWithRGBA(red: 96, green: 98, blue: 102)
 
     // MARK: ==== White ====
     /// 聊天室别人发送的消息气泡颜色
-    static let white0: UIColor = {
+    static let white0: UIColor = UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.00)
+    
+    static let darkWhite0: UIColor = UIColor.black0
+    
+        
+    /// 根据暗黑是否开启返回对应颜色
+    /// - Parameters:
+    ///   - normal: 未开启的颜色
+    ///   - dark: 开启暗黑的颜色
+    static func with(_ normal: UIColor, dark: UIColor) -> UIColor {
         if isDark {
-            return ColorWithRGBA(red: 248, green: 248, blue: 248)
+            return dark
         } else {
-            return UIColor(red:1.00, green:1.00, blue:1.00, alpha:1.00)
+            return normal
         }
-    }()
-
+    }
 }

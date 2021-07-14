@@ -18,7 +18,7 @@ extension BPTextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) {}
 }
 
-open class BPTextView: IQTextView, UITextViewDelegate {
+open class BPTextView: IQTextView, UITextViewDelegate, BPViewDelegate {
     public var maxLength: Int = .max
     
     public weak var delegateBP: BPTextViewDelegate?
@@ -32,10 +32,22 @@ open class BPTextView: IQTextView, UITextViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func bindProperty() {
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateUI()
+    }
+    
+    // MARK: ==== BPViewDelegate ====
+    open func createSubviews() {}
+    
+    open func bindProperty() {
         self.delegate = self
         self.contentInset = UIEdgeInsets(top: AdaptSize(10), left: AdaptSize(10), bottom: AdaptSize(10), right: AdaptSize(10))
     }
+    
+    open func bindData() {}
+    
+    open func updateUI() {}
     
     // MARK: ==== UITextViewDelegate ====
     

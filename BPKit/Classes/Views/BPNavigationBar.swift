@@ -27,7 +27,6 @@ open class BPNavigationBar: BPView {
     public var titleLabel: BPLabel = {
         let label = BPLabel()
         label.text          = ""
-        label.textColor     = UIColor.black0
         label.font          = UIFont.iconFont(size: AdaptSize(18))
         label.textAlignment = .center
         return label
@@ -36,7 +35,6 @@ open class BPNavigationBar: BPView {
     public var leftButton: BPButton = {
         let button = BPButton()
         button.setTitle(IconFont.back.rawValue, for: .normal)
-        button.setTitleColor(UIColor.black0)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(16))
         button.contentHorizontalAlignment = .left
         return button
@@ -44,7 +42,6 @@ open class BPNavigationBar: BPView {
     
     public var rightButton: BPButton = {
         let button = BPButton()
-        button.setTitleColor(UIColor.black0, for: .normal)
         button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(16))
         button.isHidden = true
         button.contentHorizontalAlignment = .right
@@ -85,6 +82,7 @@ open class BPNavigationBar: BPView {
         super.init(frame: frame)
         self.createSubviews()
         self.bindProperty()
+        self.updateUI()
     }
     
     required public init?(coder: NSCoder) {
@@ -118,7 +116,6 @@ open class BPNavigationBar: BPView {
     
     public override func bindProperty() {
         super.bindProperty()
-        self.backgroundColor = .white0
         self.leftButton.addTarget(self, action: #selector(leftAction), for: .touchUpInside)
         self.rightButton.addTarget(self, action: #selector(rightAction), for: .touchUpInside)
         self.setTextColor(color: .black0)
@@ -128,7 +125,13 @@ open class BPNavigationBar: BPView {
             self.rightTitle = currentVC.rightText
             self.rightButton.setImage(currentVC.rightImage, for: .normal)
         }
-        
+    }
+    
+    open override func updateUI() {
+        super.updateUI()
+        self.leftButton.setTitleColor(UIColor.with(UIColor.black0, dark: UIColor.gray0))
+        self.rightButton.setTitleColor(UIColor.with(UIColor.black0, dark: UIColor.gray0))
+        self.titleLabel.textColor = UIColor.with(.black0, dark: .gray0)
     }
     
     // MARK: ==== Event ====

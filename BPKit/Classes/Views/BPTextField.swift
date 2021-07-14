@@ -20,7 +20,7 @@ public enum BPTextFieldType {
     case money
 }
 
-open class BPTextField: UITextField, UITextFieldDelegate {
+open class BPTextField: UITextField, UITextFieldDelegate, BPViewDelegate {
     
     private var type: BPTextFieldType
     /// 最长字符长度
@@ -108,10 +108,22 @@ open class BPTextField: UITextField, UITextFieldDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func bindProperty() {
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateUI()
+    }
+    
+    // MARK: ==== BPViewDelegate ====
+    open func createSubviews() {}
+    
+    open func bindProperty() {
         self.delegate = self
         self.addTarget(self, action: #selector(editingAction), for: .editingChanged)
     }
+    
+    open func bindData() {}
+    
+    open func updateUI() {}
     
     open override func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         return false

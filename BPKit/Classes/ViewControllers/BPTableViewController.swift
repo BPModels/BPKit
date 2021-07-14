@@ -26,14 +26,39 @@ public protocol BPTableViewControllerDelegate: NSObjectProtocol {
 }
 
 public extension BPTableViewControllerDelegate {
-    func headerView() -> BPView { return BPView() }
-    func footerView() -> BPView { return BPView() }
+    func headerView() -> BPView {
+        let headerView = BPView()
+        let label = BPLabel()
+        label.backgroundColor = .clear
+        headerView.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.left.right.top.bottom.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        return headerView
+    }
+    func footerView() -> BPView {
+        let footerView = BPView()
+        let label = BPLabel()
+        label.backgroundColor = .clear
+        footerView.addSubview(label)
+        label.snp.makeConstraints { make in
+            make.left.right.top.bottom.equalToSuperview()
+            make.height.equalTo(1)
+        }
+        return footerView
+    }
     var isShowSearch: Bool { return false }
     var isShowFilter: Bool { return false }
     var isShowAddButton: Bool { return false }
 }
 
-open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewController, UITableViewDelegate, UITableViewDataSource, BPRefreshProtocol {
+open class BPTableViewController<T: Mappable, C:BPTableViewCell>:
+    BPViewController,
+    UITableViewDelegate,
+    UITableViewDataSource,
+    BPRefreshProtocol,
+    BPViewDelegate {
     
     var modelList: [T] = []
     public weak var delegate: BPTableViewControllerDelegate?
@@ -41,9 +66,7 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewControll
     
     public var tableView: BPTableView = {
         let tableView = BPTableView()
-        tableView.estimatedRowHeight  = AdaptSize(56)
         tableView.separatorStyle      = .none
-        tableView.backgroundColor     = .yellow
         tableView.refreshHeaderEnable = true
         tableView.refreshFooterEnable = true
         tableView.showsVerticalScrollIndicator   = false
@@ -58,31 +81,26 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewControll
         return button
     }()
     
-    private var topView: BPView = {
-        let view = BPView()
-        view.backgroundColor = UIColor.white0
-        return view
-    }()
+    /// 存放搜索和筛选
+    private var topView: BPView = BPView()
     
     public var searchBar: UISearchBar = {
         let bar = UISearchBar()
         bar.placeholder     = "搜索"
         bar.searchBarStyle  = .minimal
-        bar.backgroundColor = .white0
         return bar
     }()
     
     private var filterButton: BPButton = {
         let button = BPButton()
         button.setTitle("筛选", for: .normal)
-        button.setTitleColor(UIColor.blue0, for: .normal)
         button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(17))
         return button
     }()
     
     open override func viewDidLoad() {
         super.viewDidLoad()
-        self.view.backgroundColor = .blue
+        self.updateUI()
     }
     
     open override func viewWillAppear(_ animated: Bool) {
@@ -106,7 +124,6 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewControll
                 make.top.equalToSuperview().offset(kNavHeight)
             }
         }
-        self.tableView.backgroundColor = .gray4
         self.tableView.delegate        = self
         self.tableView.dataSource      = self
         self.tableView.refreshDelegate = self
@@ -158,6 +175,15 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>: BPViewControll
                 }
             }
         }
+    }
+    
+    open override func updateUI() {
+        super.updateUI()
+        self.view.backgroundColor      = .with(.white0, dark: .black0)
+        self.tableView.backgroundColor = .with(.gray4, dark: .black0)
+        self.searchBar.backgroundColor = .with(.white0, dark: .black0)
+        filterButton.setTitleColor(UIColor.gray0, for: .normal)
+        filterButton.setTitleColor(UIColor.blue0, for: .selected)
     }
     
     // MARK: ==== Request ====

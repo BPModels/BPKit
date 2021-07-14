@@ -14,13 +14,29 @@ private struct AssociatedKeys {
 
 open class BPTableViewCell: UITableViewCell {
     
+    open override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        self.updateUI()
+    }
+    
+    /// 初始化子视图
     open func createSubviews() {}
     
+    /// 初始化属性
     open func bindProperty() {
         self.separatorInset = UIEdgeInsets(top: 0, left: kScreenWidth, bottom: 0, right: 0)
     }
     
+    /// 初始化数据
+    /// - Parameters:
+    ///   - model: 数据模型
+    ///   - indexPath: 下标
     open func bindData(model: Mappable, indexPath: IndexPath) {}
+    
+    /// 更新UI颜色、图片
+    open func updateUI() {
+        self.backgroundColor = .with(.white0, dark: .black0)
+    }
     
     /// 设置底部分割线
     /// - Parameters:

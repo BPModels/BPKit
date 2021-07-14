@@ -26,6 +26,17 @@ open class BPImageView: UIImageView, BPViewDelegate {
     }
     public init() {
         super.init(frame: .zero)
+        self.updateUI()
+    }
+    
+    public override init(image: UIImage?) {
+        super.init(image: image)
+        self.updateUI()
+    }
+    
+    public override init(image: UIImage?, highlightedImage: UIImage?) {
+        super.init(image: image, highlightedImage: highlightedImage)
+        self.updateUI()
     }
     
     required public init?(coder: NSCoder) {

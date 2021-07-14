@@ -38,11 +38,10 @@ class BPSystemAlbumListView: BPView, UITableViewDelegate, UITableViewDataSource 
         fatalError("init(coder:) has not been implemented")
     }
 
-    var tableView: UITableView = {
-        let tableView = UITableView()
+    var tableView: BPTableView = {
+        let tableView = BPTableView()
         tableView.showsHorizontalScrollIndicator = false
         tableView.showsVerticalScrollIndicator   = false
-        tableView.backgroundColor = .white0
         return tableView
     }()
 

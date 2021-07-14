@@ -35,8 +35,8 @@ public class BPEnvLogView:
     
     private let toolsBar: BPEnvLogToolsBar = BPEnvLogToolsBar()
     
-    private var tableView: UITableView = {
-        let tableView = UITableView()
+    private var tableView: BPTableView = {
+        let tableView = BPTableView()
         tableView.estimatedRowHeight  = AdaptSize(56)
         tableView.sectionHeaderHeight = AdaptSize(40)
         tableView.sectionFooterHeight = .zero

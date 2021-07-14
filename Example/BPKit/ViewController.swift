@@ -90,7 +90,6 @@ class ViewController: BPTableViewController<BPModel, BPCommonTableViewCell>, BPT
     override func viewDidLoad() {
         super.viewDidLoad()
         self.delegate = self
-        BPImageView(image: nil)
         self.title = "我是标题"
         self.configBPKit()
         self.configBPNetwork()

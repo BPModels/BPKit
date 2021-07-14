@@ -19,6 +19,15 @@ open class BPTableViewCell: UITableViewCell {
         self.updateUI()
     }
     
+    public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        self.updateUI()
+    }
+    
+    public required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     /// 初始化子视图
     open func createSubviews() {}
     

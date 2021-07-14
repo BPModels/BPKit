@@ -22,8 +22,8 @@ class BPEnvChangeViewController: BPViewController , UITableViewDelegate, UITable
         fatalError("init(coder:) has not been implemented")
     }
     
-    private var tableView: UITableView = {
-        let tableView = UITableView()
+    private var tableView: BPTableView = {
+        let tableView = BPTableView()
         tableView.estimatedRowHeight = AdaptSize(55)
         tableView.showsVerticalScrollIndicator   = false
         tableView.showsHorizontalScrollIndicator = false

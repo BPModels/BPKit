@@ -90,7 +90,7 @@ open class BPButton: UIButton {
     }
     
     // MARK: ---- Event ----
-    private func bindProperty() {
+    open func bindProperty() {
         switch type {
         case .normal:
             self.setTitleColor(UIColor.black0)

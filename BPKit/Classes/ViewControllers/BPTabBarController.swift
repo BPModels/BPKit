@@ -26,7 +26,7 @@ open class BPTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     open func updateUI() {
-        UITabBar.appearance().backgroundImage         = UIImage.imageWithColor(UIColor.with(.white0, dark: .blue0))
+        UITabBar.appearance().backgroundImage         = UIImage.imageWithColor(UIColor.with(.white0, dark: .black0))
         UITabBar.appearance().isTranslucent           = false
         UITabBar.appearance().unselectedItemTintColor = BPKitConfig.share.unselectItemColor
         UITabBar.appearance().tintColor               = BPKitConfig.share.selectedItemColor

@@ -129,6 +129,8 @@ public extension UIColor {
     /// 文字 (red: 96, green: 98, blue: 102)
     static let black1 = ColorWithRGBA(red: 96, green: 98, blue: 102)
     
+    static let darkBlack0 = gray2
+    
     // TODO: ====== Red ====
     /// newTag ColorWithRGBA(red: 241, green: 44, blue: 32)
     static let red0 = ColorWithRGBA(red: 241, green: 44, blue: 32)

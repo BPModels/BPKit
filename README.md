@@ -32,28 +32,49 @@ BPKit is available under the MIT license. See the LICENSE file for more info.
 
 ## USE
 
+### 暗黑模式
+
+> 所有自定义视图，都需要继承自 **BPView** ,或对应的子类，比如 **BPTableViewCell**
+>
+> 视图中的颜色设置，均需要放在 **updateUI()** 函数中申明，此函数会在视图初始化和切换暗黑模式时被调用
+>
+> 视图的Color赋值，建议使用 **UIColor.with( normal: UIColor, dark: UIColor)** 便于在不同模式显示不同的颜色
+>
+> 默认根视图都有默认设置黑白颜色
+
 ### BPTableView
 
 * 刷新、加载更多
 
     ```swift
-    /// 开启下拉刷新
-    tableView.refreshHeaderEnable = true
-    /// 开启上拉加载更多
-    tableView.refreshFooterEnable = true
-    /// 实现协议，接收回调
-    self.tableView.refreshDelegate = self
-    // MARK: ==== BPRefreshProtocol ====
-    /// 显示刷新动画
-    public func loadingHeader(scrollView: UIScrollView, completion block: DefaultBlock?) {
-          // 记得结束后调用block，隐藏加载动画
-        self.request(block)
+    // 开启下拉刷新
+    self.tableView.setRefreshHeaderEnable {
+          // 下拉请求的接口
+            self.request()
     }
-    /// 显示加载动画 
-    public func loadingFooter(scrollView: UIScrollView, completion block: DefaultBlock?) {
-       // 记得结束后调用block，隐藏加载动画
-        self.request(block)
-     }
+    // 开启上拉加载更多
+    self.tableView.setRefreshFooterEnable {
+          // 上拉请求的接口
+            self.request()
+    }
+    
+    // 注意⚠️
+        public func request() {
+            guard let request = self.delegate?.request else { return }
+            BPNetworkService.default.request(BPStructDataArrayResponse<T>.self, request: request) { (response) in
+                guard let modelList = response.dataArray else { return }
+                if self.tableView.page > 1 {
+                    self.modelList += modelList
+                } else {
+                    self.modelList = modelList
+                }
+                self.tableView.reloadData()
+            } fail: { (error) in
+                // 在请求的失败回调中，需要结束刷新状态
+                self.tableView.scrollEnd()
+                kWindow.toast((error as NSError).message)
+            }
+        }
     ```
 
 * 索引

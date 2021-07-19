@@ -19,7 +19,6 @@ public class BPRefreshHeaderView: BPView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .clear
         self.createSubviews()
     }
     
@@ -34,6 +33,12 @@ public class BPRefreshHeaderView: BPView {
             make.size.equalTo(CGSize(width: AdaptSize(35), height: AdaptSize(35)))
             make.center.equalToSuperview()
         }
+    }
+    
+    public override func updateUI() {
+        super.updateUI()
+        self.imageView.backgroundColor = .clear
+        self.backgroundColor           = .clear
     }
     
     public func setStatus(status: BPRefreshStatus) {

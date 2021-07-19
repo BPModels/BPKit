@@ -118,6 +118,8 @@ open class BPTableView: UITableView {
         }
         // 配置空页面
         self.configEmptyView()
+        // 结束加载动画
+        self.scrollEnd()
     }
     
     /// 配置默认空页面

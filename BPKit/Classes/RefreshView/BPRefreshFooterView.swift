@@ -11,7 +11,6 @@ import Foundation
 public class BPRefreshFooterView: BPView {
     public var titleLabel: UILabel = {
         let label = UILabel()
-        label.textColor     = .gray0
         label.font          = UIFont.regularFont(ofSize: AdaptSize(13))
         label.textAlignment = .center
         return label
@@ -19,7 +18,6 @@ public class BPRefreshFooterView: BPView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = .clear
         self.createSubviews()
     }
     
@@ -33,6 +31,12 @@ public class BPRefreshFooterView: BPView {
         titleLabel.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
+    }
+    
+    public override func updateUI() {
+        super.updateUI()
+        titleLabel.textColor = .gray0
+        self.backgroundColor = .clear
     }
     
     public func setStatus(status: BPRefreshStatus) {

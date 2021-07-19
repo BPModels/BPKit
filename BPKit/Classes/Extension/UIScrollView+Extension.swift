@@ -10,25 +10,30 @@ import Foundation
 
 public enum BPRefreshStatus: Int {
     
-    // 顶部默认状态
-    case headerNormal  = 0
-    // 下拉滑动中
-    case headerPulling = 1
-    // 下拉滑动超过阈值
-    case headerPullMax = 2
-    // 下拉刷新中
-    case headerLoading = 3
+    /// 顶部默认状态
+    case headerNormal  = 10
+    /// 下拉滑动中
+    case headerPulling = 11
+    /// 下拉滑动超过阈值
+    case headerPullMax = 12
+    /// 下拉刷新中
+    case headerLoading = 13
+    /// 下拉刷新结束
+    case headerEnd     = 15
     
-    // 底部默认状态
-    case footerNormal  = 4
-    // 上拉滑动中
-    case footerPulling = 5
-    // 上拉滑动超过阈值
-    case footerPullMax = 6
-    // 上拉加载中
-    case footerLoading = 7
+    /// 底部默认状态
+    case footerNormal  = 20
+    /// 上拉滑动中
+    case footerPulling = 21
+    /// 上拉滑动超过阈值
+    case footerPullMax = 22
+    /// 上拉加载中
+    case footerLoading = 23
+    /// 上拉加载结束
+    case footerEnd     = 24
 }
 
+/// 对外暴露的回调
 @objc
 public protocol BPRefreshProtocol: NSObjectProtocol {
     // -------- Header ---------
@@ -40,7 +45,7 @@ public protocol BPRefreshProtocol: NSObjectProtocol {
     @objc optional func pullMaxHeader(scrollView: UIScrollView)
     /// 刷新中
     /// - Parameter scrollView: scrollView
-    @objc optional func loadingHeader(scrollView: UIScrollView, completion block: DefaultBlock?)
+    @objc optional func loadingHeader(scrollView: UIScrollView)
     /// 恢复头部视图
     /// - Parameter scrollView: scrollView
     @objc optional func recoverHeaderView(scrollView: UIScrollView)
@@ -53,7 +58,7 @@ public protocol BPRefreshProtocol: NSObjectProtocol {
     @objc optional func pullMaxFooter(scrollView: UIScrollView)
     /// 加载中
     /// - Parameter scrollView: scrollView
-    @objc optional func loadingFooter(scrollView: UIScrollView, completion block: DefaultBlock?)
+    @objc optional func loadingFooter(scrollView: UIScrollView)
     /// 恢复底部视图
     /// - Parameter scrollView: scrollView
     @objc optional func recoverFooterView(scrollView: UIScrollView)
@@ -64,6 +69,8 @@ private struct AssociatedKeys {
     static var refreshFooterEnable = "kRefreshFooterEnable"
     static var headerView          = "kHeaderView"
     static var footerView          = "kFooterView"
+    static var refreshHeaderBlock  = "kRefreshHeaderBlock"
+    static var refreshFooterBlock  = "kRefreshFooterBlock"
     static var refreshDelegate     = "kRefreshDelegate"
     static var observerEnable      = "kObserverEnable"
     static var refreshStatus       = "kRefreshStatus"
@@ -142,14 +149,17 @@ public extension UIScrollView {
             case .headerLoading:
                 self.headerView?.setStatus(status: status)
                 self.refreshBefore(isHeader: true)
-                
+                self.refreshHeaderBlock?()
                 if self.refreshDelegate == nil {
                     self.refreshCompletion(isHeader: true)
                 } else {
-                    self.refreshDelegate?.loadingHeader?(scrollView: self, completion: {[weak self] in
-                        self?.refreshCompletion(isHeader: true)
-                    })
+                    self.refreshDelegate?.loadingHeader?(scrollView: self)
                 }
+            case .headerEnd:
+                self.headerView?.setStatus(status: status)
+                self.refreshDelegate?.recoverHeaderView?(scrollView: self)
+                self.refreshCompletion(isHeader: true)
+                
             case .footerNormal:
                 self.footerView?.setStatus(status: status)
                 self.refreshDelegate?.recoverFooterView?(scrollView: self)
@@ -162,14 +172,16 @@ public extension UIScrollView {
             case .footerLoading:
                 self.footerView?.setStatus(status: status)
                 self.refreshBefore(isHeader: false)
-                
+                self.refreshFooterBlock?()
                 if self.refreshDelegate == nil {
                     self.refreshCompletion(isHeader: false)
                 } else {
-                    self.refreshDelegate?.loadingFooter?(scrollView: self, completion: {[weak self] in
-                        self?.refreshCompletion(isHeader: false)
-                    })
+                    self.refreshDelegate?.loadingFooter?(scrollView: self)
                 }
+            case .footerEnd:
+                self.footerView?.setStatus(status: status)
+                self.refreshDelegate?.recoverFooterView?(scrollView: self)
+                self.refreshCompletion(isHeader: false)
             }
         }
     }
@@ -186,15 +198,14 @@ public extension UIScrollView {
     }
 
     /// 是否开启下拉刷新
-    var refreshHeaderEnable: Bool {
+    private var refreshHeaderEnable: Bool {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.refreshHeaderEnable) as? Bool ?? false
         }
         
         set {
-            objc_setAssociatedObject(self, &AssociatedKeys.refreshHeaderEnable, newValue, .OBJC_ASSOCIATION_ASSIGN)
             if newValue {
-                if !refreshFooterEnable {
+                if !refreshHeaderEnable {
                     // 开启KVO监听
                     self.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
                 }
@@ -203,8 +214,10 @@ public extension UIScrollView {
                 self.refreshCompletion(isHeader: true)
                 self.removeObserver(self, forKeyPath: "contentOffset")
             }
+            objc_setAssociatedObject(self, &AssociatedKeys.refreshHeaderEnable, newValue, .OBJC_ASSOCIATION_ASSIGN)
         }
     }
+    
     /// 是否开启上拉加载更多
     var refreshFooterEnable: Bool {
         get {
@@ -212,9 +225,8 @@ public extension UIScrollView {
         }
         
         set {
-            objc_setAssociatedObject(self, &AssociatedKeys.refreshFooterEnable, newValue, .OBJC_ASSOCIATION_ASSIGN)
             if newValue {
-                if !refreshHeaderEnable {
+                if !refreshFooterEnable {
                     // 开启KVO监听
                     self.addObserver(self, forKeyPath: "contentOffset", options: .new, context: nil)
                 }
@@ -223,7 +235,42 @@ public extension UIScrollView {
                 self.refreshCompletion(isHeader: false)
                 self.removeObserver(self, forKeyPath: "contentOffset")
             }
+            objc_setAssociatedObject(self, &AssociatedKeys.refreshFooterEnable, newValue, .OBJC_ASSOCIATION_ASSIGN)
         }
+    }
+    
+    /// 下拉刷新闭包
+    private var refreshHeaderBlock: DefaultBlock? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.refreshHeaderBlock) as? DefaultBlock
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.refreshHeaderBlock, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    /// 上拉加载闭包
+    private var refreshFooterBlock: DefaultBlock? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.refreshFooterBlock) as? DefaultBlock
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedKeys.refreshFooterBlock, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    /// 设置下拉刷新
+    /// - Parameter block: 刷新闭包
+    func setRefreshHeaderEnable(block: DefaultBlock?) {
+        self.refreshHeaderBlock  = block
+        self.refreshHeaderEnable = true
+    }
+    
+    /// 设置上拉加载更多
+    /// - Parameter block: 加载闭包
+    func setRefreshFooterEnable(block: DefaultBlock?) {
+        self.refreshFooterBlock  = block
+        self.refreshFooterEnable = true
     }
     
     /// 加载前
@@ -242,7 +289,7 @@ public extension UIScrollView {
     
     /// 加载完成
     /// - Parameter isHeader: 是否下拉刷新
-    func refreshCompletion(isHeader: Bool) {
+    private func refreshCompletion(isHeader: Bool) {
         self.adjustPage(isHeader: isHeader)
         DispatchQueue.main.async { [weak self] in
             guard let self = self else { return }
@@ -290,12 +337,21 @@ public extension UIScrollView {
         }
     }
     
+    /// 滑动结束，供外部调用
+    func scrollEnd() {
+        if self.refreshStatus?.rawValue ?? 0 > BPRefreshStatus.footerNormal.rawValue {
+            self.refreshStatus = .footerEnd
+        } else {
+            self.refreshStatus = .headerEnd
+        }
+    }
+    
     // MARK: ==== KVO ====
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         guard keyPath == "contentOffset" else { return }
         // 设置默认最大拖拽长度
-        let pullHeaderMaxSize: CGFloat = 90
-        let pullFooterMaxSize: CGFloat = 60
+        let pullHeaderMaxSize = AdaptSize(90)
+        let pullFooterMaxSize = AdaptSize(60)
         
         var offsetY = self.contentOffset.y
         
@@ -314,6 +370,9 @@ public extension UIScrollView {
                     self.createHeaderView()
                 }
             } else {
+                DispatchQueue.once(token: "kRefreshBefore") { [weak self] in
+                    self?.refreshBefore(isHeader: false)
+                }
                 guard rows > 0 else { return }
                 offsetY = self.height + offsetY - self.contentSize.height
                 // 忽略列表中滑动
@@ -378,9 +437,9 @@ public extension UIScrollView {
         self.addSubview(headerView!)
         headerView?.snp.makeConstraints({ (make) in
             make.centerX.equalToSuperview()
-            make.bottom.equalTo(self.snp.top)
-            make.height.equalTo(AdaptSize(50))
-            make.width.equalToSuperview()
+                        make.bottom.equalTo(self.snp.top)
+                        make.height.equalTo(AdaptSize(50))
+                        make.width.equalToSuperview()
         })
     }
     

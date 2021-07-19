@@ -97,7 +97,7 @@ class ViewController: BPTableViewController<BPModel, BPCommonTableViewCell>, BPT
     }
     
     override func addAction() {
-        request(nil)
+        request()
     }
     
     /// 配置BPKit

@@ -15,7 +15,7 @@ protocol BPImageBrowserCellDelegate: NSObjectProtocol {
     func closeAction(imageView: UIImageView)
 }
 
-class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureRecognizerDelegate {
+class BPImageBrowserCell: BPCollectionViewCell, UIScrollViewDelegate, UIGestureRecognizerDelegate {
 
     /// 手指离开后，超过该值则关闭视图
     private let maxOffsetY: CGFloat = 100
@@ -52,7 +52,8 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func createSubviews() {
+    internal override func createSubviews() {
+        super.createSubviews()
         self.addSubview(scrollView)
         self.scrollView.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
@@ -70,7 +71,8 @@ class BPImageBrowserCell: UICollectionViewCell, UIScrollViewDelegate, UIGestureR
         scrollView.contentSize = kWindow.size
     }
 
-    private func bindProperty() {
+    internal override func bindProperty() {
+        super.bindProperty()
         self.scrollView.delegate = self
         self.backgroundColor     = .clear
         self.progressView.isHidden = true

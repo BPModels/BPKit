@@ -219,7 +219,7 @@ public extension UIScrollView {
     }
     
     /// 是否开启上拉加载更多
-    var refreshFooterEnable: Bool {
+    private var refreshFooterEnable: Bool {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.refreshFooterEnable) as? Bool ?? false
         }

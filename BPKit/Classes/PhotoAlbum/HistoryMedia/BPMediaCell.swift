@@ -13,7 +13,7 @@ protocol BPPhotoAlbumCellDelegate: NSObjectProtocol {
     func unselectImage(model: Any)
 }
 
-class BPMediaCell: UICollectionViewCell {
+class BPMediaCell: BPCollectionViewCell {
     /// 历史照片列表使用
     var model: BPMediaModel?
     /// 系统相册列表使用
@@ -80,7 +80,8 @@ class BPMediaCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    private func createSubviews() {
+    internal override func createSubviews() {
+        super.createSubviews()
         self.addSubview(imageView)
         self.addSubview(selectedBgView)
         self.addSubview(selectButton)
@@ -115,7 +116,8 @@ class BPMediaCell: UICollectionViewCell {
         }
     }
 
-    private func bindProperty() {
+    internal override func bindProperty() {
+        super.bindProperty()
         self.imageView.layer.masksToBounds = true
         self.selectButton.addTarget(self, action: #selector(selectedImage(sender:)), for: .touchUpInside)
     }

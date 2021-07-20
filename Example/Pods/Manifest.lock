@@ -3,13 +3,13 @@ PODS:
   - AlamofireObjectMapper (6.2.0):
     - Alamofire (= 5.0.0-rc.2)
     - ObjectMapper (~> 3.5.1)
-  - BPCommon (0.2.1):
+  - BPCommon (0.2.2):
     - BPFile
     - Kingfisher (~> 5.7)
     - ObjectMapper
-  - BPDeviceInfo (0.1.6)
-  - BPFile (0.1.8)
-  - BPKit (0.4.2):
+  - BPDeviceInfo (0.1.7)
+  - BPFile (0.2.1)
+  - BPKit (0.4.8):
     - BPCommon
     - BPDeviceInfo
     - BPLog
@@ -23,10 +23,10 @@ PODS:
     - SDWebImage
     - SnapKit
     - Toast-Swift
-  - BPLog (0.1.7):
+  - BPLog (0.1.8):
     - CocoaLumberjack/Swift
     - ZipArchive
-  - BPNetwork (0.3.3):
+  - BPNetwork (0.3.5):
     - Alamofire (= 5.0.0-rc.2)
     - AlamofireObjectMapper
     - ObjectMapper
@@ -87,12 +87,12 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   Alamofire: f9450d3c7f6bea2ad62e7a541c3e9b186c7991d6
   AlamofireObjectMapper: 74d1440c92c42bbcc2b5f4dc81654ac095ec669f
-  BPCommon: 3ca0f456bc89a971b1b7c428defc1f2da5419c40
-  BPDeviceInfo: 55bb361b36d88caa5ab72aa1e34ba1201e25165b
-  BPFile: eec098ed2db845071556640d1d9256b48e85c0bb
-  BPKit: 73cf3dc3e8a8a1e221d847fc3b148eac3e7c2760
-  BPLog: 902f104fbd63778fad3c161eb3881f183934f317
-  BPNetwork: 7d04090d9e83e913ab38d433747745d6b6223fa6
+  BPCommon: 7368aade40f52bd4457c8a1156ba2ba2d978ca62
+  BPDeviceInfo: fea471989679a34d10fd7e48707a62e1c4cdb1a4
+  BPFile: 88d50e2b276324a5dbaae549c21dbb31ccc7f965
+  BPKit: c75c719e61d2ad907c3b8337bba5d5e29f43b8d9
+  BPLog: f0e5bace561c9f91008b927ffbe05c5ced0f613b
+  BPNetwork: 74b31c6edf3bc4c7ac8af98b483e6ff6ed5c40c3
   CocoaLumberjack: b7e05132ff94f6ae4dfa9d5bce9141893a21d9da
   FBSnapshotTestCase: 094f9f314decbabe373b87cc339bea235a63e07a
   FDFullscreenPopGesture: a8a620179e3d9c40e8e00256dcee1c1a27c6d0f0
@@ -106,6 +106,6 @@ SPEC CHECKSUMS:
   Toast-Swift: 9b6a70f28b3bf0b96c40d46c0c4b9d6639846711
   ZipArchive: e25a4373192673e3229ac8d6e9f64a3e5713c966
 
-PODFILE CHECKSUM: 09e488683fcbf594a0d2c14a8ca610e0d3de5e2a
+PODFILE CHECKSUM: 44fac1897f48b56fa6799640fe6912ab6d655951
 
 COCOAPODS: 1.10.1

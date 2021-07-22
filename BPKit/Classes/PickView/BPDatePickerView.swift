@@ -13,27 +13,46 @@ public enum BPDatePickerType {
 }
 
 public class BPDatePickerView: BPTopWindowView {
+    private var title:String?
+    private var subtitle:String?
     private var type: BPDatePickerType
     private var selectedBlock: ((Date)->Void)?
 
     private var contentView: BPView = {
-        let view = BPView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: AdaptSize(220) + kSafeBottomMargin))
+        let view = BPView(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: AdaptSize(450) + kSafeBottomMargin))
         view.backgroundColor = UIColor.white0
         view.clipRectCorner(directionList: [.topLeft, .topRight], cornerRadius: AdaptSize(10))
         return view
     }()
-    private var cancelButton: BPButton = {
+    private var titleLabel: BPLabel = {
+        let label = BPLabel()
+        label.text          = ""
+        label.textColor     = UIColor.black0
+        label.font          = UIFont.mediumFont(ofSize: AdaptSize(17))
+        label.textAlignment = .center
+        return label
+    }()
+    private var subtitleLabel: BPLabel = {
+        let label = BPLabel()
+        label.text          = ""
+        label.textColor     = UIColor.gray2
+        label.font          = UIFont.mediumFont(ofSize: AdaptSize(13))
+        label.textAlignment = .center
+        return label
+    }()
+    
+    private var closeButton: BPButton = {
         let button = BPButton()
-        button.setTitle("取消", for: .normal)
-        button.setTitleColor(UIColor.gray0, for: .normal)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(16))
+        button.setTitle(IconFont.close.rawValue, for: .normal)
+        button.setTitleColor(UIColor.black0, for: .normal)
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(13))
         return button
     }()
     private var confirmButton: BPButton = {
-        let button = BPButton()
+        let button = BPButton(.second)
         button.setTitle("确定", for: .normal)
-        button.setTitleColor(UIColor.black0, for: .normal)
-        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(16))
+        button.setTitleColor(UIColor.white0, for: .normal)
+        button.titleLabel?.font = UIFont.regularFont(ofSize: AdaptSize(17))
         return button
     }()
     public let datePicker: UIDatePicker = {
@@ -52,6 +71,18 @@ public class BPDatePickerView: BPTopWindowView {
         self.selectedBlock = block
         self.createSubviews()
         self.bindProperty()
+        self.bindData()
+    }
+    
+    public init(title:String?, subtitle:String?, type: BPDatePickerType = .day,selected block: ((Date)->Void)?) {
+        self.title = title
+        self.subtitle = subtitle
+        self.type = type
+        super.init(frame: .zero)
+        self.selectedBlock = block
+        self.createSubviews()
+        self.bindProperty()
+        self.bindData()
     }
     
     public required init?(coder aDecoder: NSCoder) {
@@ -61,27 +92,41 @@ public class BPDatePickerView: BPTopWindowView {
     public override func createSubviews() {
         super.createSubviews()
         self.addSubview(contentView)
-        contentView.addSubview(cancelButton)
-        contentView.addSubview(confirmButton)
+        contentView.addSubview(titleLabel)
+        contentView.addSubview(subtitleLabel)
+        contentView.addSubview(closeButton)
         contentView.addSubview(datePicker)
+        contentView.addSubview(confirmButton)
         contentView.snp.makeConstraints { (make) in
             make.top.equalToSuperview().offset(kScreenHeight)
-            make.centerX.equalToSuperview()
-            make.size.equalTo(contentView.size)
+            make.left.right.equalToSuperview()
         }
-        let buttonSize = CGSize(width: AdaptSize(80), height: AdaptSize(56))
-        cancelButton.snp.makeConstraints { (make) in
-            make.left.top.equalToSuperview()
-            make.size.equalTo(buttonSize)
+        titleLabel.snp.makeConstraints { (make) in
+            make.left.equalTo(AdaptSize(15))
+            make.right.equalTo(-AdaptSize(15))
+            make.top.equalTo(AdaptSize(25))
         }
-        confirmButton.snp.makeConstraints { (make) in
-            make.right.top.equalToSuperview()
+        subtitleLabel.snp.makeConstraints { make in
+            make.top.equalTo(titleLabel.snp.bottom).offset(subtitle == nil ? 0 : AdaptSize(10))
+            make.left.equalTo(AdaptSize(15))
+            make.right.equalTo(-AdaptSize(15))
+        }
+        let buttonSize = CGSize(width: AdaptSize(40), height: AdaptSize(67))
+        closeButton.snp.makeConstraints { (make) in
+            make.right.equalToSuperview()
+            make.top.equalToSuperview()
             make.size.equalTo(buttonSize)
         }
         datePicker.snp.makeConstraints { (make) in
+            make.top.equalTo(subtitleLabel.snp.bottom)
             make.left.right.equalToSuperview()
-            make.bottom.equalToSuperview().offset(-kSafeBottomMargin)
-            make.top.equalTo(confirmButton.snp.bottom)
+            make.height.equalTo(AdaptSize(270))
+        }
+        confirmButton.snp.makeConstraints { (make) in
+            make.top.equalTo(datePicker.snp.bottom)
+            make.size.equalTo(CGSize(width: AdaptSize(185), height: AdaptSize(40)))
+            make.centerX.equalToSuperview()
+            make.bottom.equalToSuperview().offset(AdaptSize(-30) - kSafeBottomMargin)
         }
     }
     
@@ -109,8 +154,14 @@ public class BPDatePickerView: BPTopWindowView {
     
     public override func bindProperty() {
         super.bindProperty()
-        self.cancelButton.addTarget(self, action: #selector(hide), for: .touchUpInside)
+        self.closeButton.addTarget(self, action: #selector(hide), for: .touchUpInside)
         self.confirmButton.addTarget(self, action: #selector(confirmAction), for: .touchUpInside)
+    }
+    
+    public override func bindData() {
+        super.bindData()
+        self.titleLabel.text = self.title ?? "请选择日期"
+        self.subtitleLabel.text = self.subtitle
     }
     
     // MARK: ==== Event ====
@@ -124,6 +175,7 @@ public class BPDatePickerView: BPTopWindowView {
     
     public override func show(view: UIView = kWindow) {
         super.show(view: view)
+        self.contentView.layoutIfNeeded()
         UIView.animate(withDuration: 0.25) { [weak self] in
             guard let self = self else { return }
             self.contentView.transform = CGAffineTransform(translationX: 0, y: -self.contentView.height)

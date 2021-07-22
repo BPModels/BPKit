@@ -16,6 +16,7 @@ public class BPDatePickerView: BPTopWindowView {
     private var title:String?
     private var subtitle:String?
     private var type: BPDatePickerType
+    private var onTitleClick:(()->Void)?
     private var selectedBlock: ((Date)->Void)?
 
     private var contentView: BPView = {
@@ -32,6 +33,10 @@ public class BPDatePickerView: BPTopWindowView {
         label.textAlignment = .center
         return label
     }()
+    private var titleTipButton: BPButton = {
+        let button = BPButton()
+        return button
+    }()
     private var subtitleLabel: BPLabel = {
         let label = BPLabel()
         label.text          = ""
@@ -45,7 +50,7 @@ public class BPDatePickerView: BPTopWindowView {
         let button = BPButton()
         button.setTitle(IconFont.close.rawValue, for: .normal)
         button.setTitleColor(UIColor.black0, for: .normal)
-        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(13))
+        button.titleLabel?.font = UIFont.iconFont(size: AdaptSize(11))
         return button
     }()
     private var confirmButton: BPButton = {
@@ -111,7 +116,7 @@ public class BPDatePickerView: BPTopWindowView {
             make.left.equalTo(AdaptSize(15))
             make.right.equalTo(-AdaptSize(15))
         }
-        let buttonSize = CGSize(width: AdaptSize(40), height: AdaptSize(67))
+        let buttonSize = CGSize(width: AdaptSize(45), height: AdaptSize(70))
         closeButton.snp.makeConstraints { (make) in
             make.right.equalToSuperview()
             make.top.equalToSuperview()
@@ -120,7 +125,7 @@ public class BPDatePickerView: BPTopWindowView {
         datePicker.snp.makeConstraints { (make) in
             make.top.equalTo(subtitleLabel.snp.bottom)
             make.left.right.equalToSuperview()
-            make.height.equalTo(AdaptSize(270))
+            make.height.equalTo(AdaptSize(200))
         }
         confirmButton.snp.makeConstraints { (make) in
             make.top.equalTo(datePicker.snp.bottom)
@@ -165,12 +170,51 @@ public class BPDatePickerView: BPTopWindowView {
     }
     
     // MARK: ==== Event ====
-    public func setMaxDate(date: Date) {
-        self.datePicker.maximumDate = date
+    @discardableResult
+    public func setTitleIcon(icon: UIImage?, direction:BPDirectionType = .right) -> Self{
+        if let _icon = icon{
+            let attachment = NSTextAttachment()
+            attachment.image = _icon
+            //计算图片大小，与文字同高，按比例设置宽度
+            let imgH = self.titleLabel.font.pointSize
+            let imgW = (_icon.size.width / _icon.size.height) * imgH;
+            //计算文字padding-top ，使图片垂直居中
+            let textPaddingTop = (self.titleLabel.font.lineHeight - self.titleLabel.font.pointSize) / 2;
+            attachment.bounds = CGRect(x: 0, y: -textPaddingTop , width: imgW, height: imgH);
+            let attr = NSMutableAttributedString()
+            let mAttr = NSMutableAttributedString(attachment: attachment)
+            let titleStr = titleLabel.text ?? ""
+            if direction == .left {
+                attr.append(mAttr)
+                attr.append(NSAttributedString(string: " " + titleStr))
+            }else if direction == .right{
+                attr.append(NSAttributedString(string:titleStr + " "))
+                attr.append(mAttr)
+            }
+            titleLabel.attributedText = attr
+        }
+        return self
     }
     
-    public func setMinDate(date: Date) {
+    
+    @discardableResult
+    public func setOnTitleClick(block:@escaping (()->Void)) -> Self{
+        titleLabel.isUserInteractionEnabled = true
+        titleLabel.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(self.clickTitleAction)))
+        self.onTitleClick = block
+        return self
+    }
+    
+    @discardableResult
+    public func setMaxDate(date: Date) -> Self{
+        self.datePicker.maximumDate = date
+        return self
+    }
+    
+    @discardableResult
+    public func setMinDate(date: Date) -> Self{
         self.datePicker.minimumDate = date
+        return self
     }
     
     public override func show(view: UIView = kWindow) {
@@ -200,5 +244,10 @@ public class BPDatePickerView: BPTopWindowView {
         let date = self.datePicker.date
         self.selectedBlock?(date)
         self.hide()
+    }
+    
+    @objc
+    private func clickTitleAction() {
+        self.onTitleClick?()
     }
 }

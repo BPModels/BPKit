@@ -77,14 +77,6 @@ class ViewController1: BPViewController {
     }
     
     // MARK: ==== Event ====
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-//        BPDatePickerView(type: BPDatePickerType.day) { date in
-//
-//        }.show()
-        BPDatePickerView(title: "请选择工人退场日期", subtitle: "员工退场日期将被设定为选择的日期后", type: BPDatePickerType.day) { date in
-            
-        }.show()
-    }
     
 }
 

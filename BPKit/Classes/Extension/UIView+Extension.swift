@@ -243,7 +243,7 @@ public extension UIView {
             guard let self = self else { return }
             var style = ToastStyle()
             style.messageAlignment = .center
-            self.makeToast(message, duration: duration, point: self.center, title: nil, image: nil, style: style, completion: completion)
+            self.toast(message, duration: duration, point: self.center, title: nil, image: nil, style: style, completion: completion)
         }
     }
     

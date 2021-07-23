@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BPKit'
-  s.version          = '0.5.2'
+  s.version          = '0.5.3'
   s.summary          = 'A short description of BPKit.'
 
 # This description is used to generate tags and improve search results.
@@ -52,7 +52,7 @@ TODO: Add long description of the pod here.
    # 布局约束（MIT License）
    s.dependency 'SnapKit'
    # 弹框（MIT License）
-   s.dependency 'Toast-Swift'
+#   s.dependency 'Toast-Swift'
    # 键盘管理（MIT License）
    s.dependency 'IQKeyboardManager'
    # 图片库（MIT License）

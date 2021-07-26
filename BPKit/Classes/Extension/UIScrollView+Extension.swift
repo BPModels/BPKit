@@ -198,7 +198,7 @@ public extension UIScrollView {
     }
 
     /// 是否开启下拉刷新
-    private var refreshHeaderEnable: Bool {
+    var refreshHeaderEnable: Bool {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.refreshHeaderEnable) as? Bool ?? false
         }
@@ -219,7 +219,7 @@ public extension UIScrollView {
     }
     
     /// 是否开启上拉加载更多
-    private var refreshFooterEnable: Bool {
+    var refreshFooterEnable: Bool {
         get {
             return objc_getAssociatedObject(self, &AssociatedKeys.refreshFooterEnable) as? Bool ?? false
         }

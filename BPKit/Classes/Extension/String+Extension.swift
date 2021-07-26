@@ -479,7 +479,7 @@ public extension String {
     }
     
     static func readLocalJsonFileWith(name: String?) -> String? {
-        guard let path = Bundle.main.path(forResource: name, ofType: "json") else {
+        guard let path = Bundle.main.path(forResource: name, ofType: "json") ?? sourceBundle?.path(forResource: name, ofType: "json") else {
             return nil
         }
         let url = URL(fileURLWithPath: path)

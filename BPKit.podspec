@@ -8,7 +8,9 @@
 
 Pod::Spec.new do |s|
   s.name             = 'BPKit'
-  s.version          = '0.5.4'
+
+  s.version          = '0.5.5'
+
   s.summary          = 'A short description of BPKit.'
 
 # This description is used to generate tags and improve search results.

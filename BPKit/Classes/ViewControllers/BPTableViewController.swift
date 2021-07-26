@@ -108,6 +108,7 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>:
         if self.delegate?.isShowAddButton ?? false {
             self.configAddButton()
         }
+        
         self.request()
     }
     
@@ -193,22 +194,16 @@ open class BPTableViewController<T: Mappable, C:BPTableViewCell>:
     // MARK: ==== Request ====
     public func request() {
         guard let request = self.delegate?.request else { return }
-//        BPNetworkService.default.request(BPStructDataArrayResponse<T>.self, request: request) { (response) in
-//            guard let modelList = response.dataArray else { return }
-//            if self.tableView.page > 1 {
-//                self.modelList += modelList
-//            } else {
-//                self.modelList = modelList
-//            }
-//            self.tableView.reloadData()
-//        } fail: { (error) in
-//            self.tableView.scrollEnd()
-//            kWindow.toast((error as NSError).message)
-//        }
-        BPNetworkService.default.request(BPStructNilResponse.self, request: request) { (response) in
-            guard let count = response.dataAny as? Int else { return }
-            print(count)
+        BPNetworkService.default.request(BPStructDataArrayResponse<T>.self, request: request) { (response) in
+            guard let modelList = response.dataArray else { return }
+            if self.tableView.page > 1 {
+                self.modelList += modelList
+            } else {
+                self.modelList = modelList
+            }
+            self.tableView.reloadData()
         } fail: { (error) in
+            self.tableView.scrollEnd()
             kWindow.toast((error as NSError).message)
         }
     }

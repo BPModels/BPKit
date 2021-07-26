@@ -100,6 +100,8 @@ class ViewController: BPTableViewController<BPModel, BPCommonTableViewCell>, BPT
         request()
     }
     
+    
+    
     /// 配置BPKit
     private func configBPKit() {
         BPKitConfig.share.isEnableShakeChangeEnv = true

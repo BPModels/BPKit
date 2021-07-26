@@ -41,6 +41,10 @@ open class BPTopWindowView: BPView {
         let tap = UITapGestureRecognizer(target: self, action: #selector(hide))
         self.backgroundView.addGestureRecognizer(tap)
     }
+    
+    open override func updateUI() {
+        
+    }
 
     // MARK: ==== Event ===
     /// 显示弹框

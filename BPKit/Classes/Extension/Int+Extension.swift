@@ -17,4 +17,9 @@ public extension Int {
         let result = formatter.string(from: NSNumber(integerLiteral: self))
         return result ?? "\(self)"
     }
+    
+    /// 转换成String
+    func toString() -> String {
+        return "\(self)"
+    }
 }

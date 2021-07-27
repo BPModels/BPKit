@@ -61,7 +61,8 @@ open class BPTextView: IQTextView, UITextViewDelegate, BPViewDelegate {
             self.delegateBP?.textView(textView, shouldChangeTextIn: range, replacementText: text)
         }
         
-        if text.isEmpty { return true }
+        if text.isEmpty || self.maxLength == .max
+        { return true }
         guard (textView.text.count - range.length) < maxLength else {
             return false
         }

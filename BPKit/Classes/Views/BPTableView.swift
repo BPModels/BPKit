@@ -124,11 +124,12 @@ open class BPTableView: UITableView {
     
     /// 配置默认空页面
     private func configEmptyView() {
-        var count = 0
-        for section in 0..<numberOfSections {
-            count += numberOfRows(inSection: section)
+        var rows      = 0
+        let sesctions = numberOfSections
+        for section in 0..<sesctions {
+            rows += numberOfRows(inSection: section)
         }
-        guard count == 0 else {
+        guard (rows == 0 && sesctions == 0) || (rows == 0 && sesctions == 1 && headerView(forSection: 0) == nil && footerView(forSection: 0) == nil) else {
             self.backgroundView = nil
             return
         }

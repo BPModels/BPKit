@@ -330,8 +330,8 @@ public extension String {
             }
             // 创建一个NSTextAttachment
             let attachment = NSTextAttachment()
-            attachment.image = emojiImage
-
+            attachment.image     = emojiImage
+            attachment.name      = emojiStr
             let attachmentHeight = font.lineHeight
             let attachmentWidth  = attachmentHeight * emojiImage.size.width / emojiImage.size.height
             let offsetY          = (font.capHeight - font.lineHeight)/2

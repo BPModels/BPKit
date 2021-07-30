@@ -138,6 +138,8 @@
 		212AFE4C3FD8184B7D3B825F109CFB0C /* CompatibleAnimationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCFED5E5275913ACB965FCA03B1A6A22 /* CompatibleAnimationView.swift */; };
 		21BBCB3A4F7314EA22FAF0B862FD5E64 /* IQUIScrollView+Additions.h in Headers */ = {isa = PBXBuildFile; fileRef = E5FD9CEE7F91CF2C4CDF082D14AD721B /* IQUIScrollView+Additions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		21E60DD6C947510B54240A1123188FC4 /* JXSegmentedIndicatorGradientLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2144D8213217373C183A51F97C4799F5 /* JXSegmentedIndicatorGradientLineView.swift */; };
+		226E8DDD26B3A7F900C0B965 /* NSTextAttachment+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E8DDC26B3A7F900C0B965 /* NSTextAttachment+Extension.swift */; };
+		226E8DDF26B3A85000C0B965 /* UITextView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 226E8DDE26B3A84F00C0B965 /* UITextView+Extension.swift */; };
 		22C0D71E02D15B12AE487E6902EBB411 /* InvertedMatteLayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5C0A5C93CD0EF55301EDBBAA06C840F /* InvertedMatteLayer.swift */; };
 		22DA2E598CBCCCE29C811878B0355F9E /* DDAbstractDatabaseLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = 259321C8AE83A89465DD5B1F95247CA1 /* DDAbstractDatabaseLogger.m */; };
 		22EFD8E69AFF5F65E663A8B99CC0023B /* ConstraintRelatableTarget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB2ACE506D8EC24C559AA6460C72D38 /* ConstraintRelatableTarget.swift */; };
@@ -1117,7 +1119,7 @@
 		0153D9358B89155B59897013118571DA /* ShapeCompositionLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeCompositionLayer.swift; path = "lottie-swift/src/Private/LayerContainers/CompLayers/ShapeCompositionLayer.swift"; sourceTree = "<group>"; };
 		016D636B6BCD936A6FC5D0EE8DDD283F /* ConstraintMakerEditable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerEditable.swift; path = Source/ConstraintMakerEditable.swift; sourceTree = "<group>"; };
 		01E38A79AC99E644BC8E5D2EF8368138 /* JXSegmentedIndicatorDotLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorDotLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorDotLineView.swift; sourceTree = "<group>"; };
-		0203AA13ED94FB5D2009C6B5A98EAE44 /* BPKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = BPKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		0203AA13ED94FB5D2009C6B5A98EAE44 /* BPKit.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; path = BPKit.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		021FA0F2EFCEEECFBFB0CA74D691517E /* DDASLLogCapture.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDASLLogCapture.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDASLLogCapture.h; sourceTree = "<group>"; };
 		024269F6F92352FBB8834900821D75B6 /* BPPhotoAlbumViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPPhotoAlbumViewController.swift; sourceTree = "<group>"; };
 		02AF0E3D4436533120224C67E8D9DDD8 /* NSObject+CrashDefender.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSObject+CrashDefender.m"; sourceTree = "<group>"; };
@@ -1149,7 +1151,7 @@
 		0709EA3C137C064809A862F523F68B41 /* log_adjust_icon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = log_adjust_icon.png; path = BPKit/Assets/log_adjust_icon.png; sourceTree = "<group>"; };
 		076B79293FFAC6AAE6F67B02D8DCDA0F /* SDWebImageDownloaderDecryptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderDecryptor.h; path = SDWebImage/Core/SDWebImageDownloaderDecryptor.h; sourceTree = "<group>"; };
 		07746BF0FC184DA53974D84C39DEDA1C /* CocoaLumberjack.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CocoaLumberjack.debug.xcconfig; sourceTree = "<group>"; };
-		07928762D9A8551470DAAD7C1E1F53A5 /* JXSegmentedView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = JXSegmentedView.framework; path = JXSegmentedView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		07928762D9A8551470DAAD7C1E1F53A5 /* JXSegmentedView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = JXSegmentedView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B7AD605FF95EBEA460416F2EB56444 /* Color.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Color.swift; path = "lottie-swift/src/Public/Primitives/Color.swift"; sourceTree = "<group>"; };
 		0827C41450E1C0074B0D38AB094A77E3 /* Keyframe.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Keyframe.swift; path = "lottie-swift/src/Private/Model/Keyframes/Keyframe.swift"; sourceTree = "<group>"; };
 		083645D259E085150A2AA13A45283268 /* JXSegmentedTitleImageItemModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleImageItemModel.swift; path = Sources/TitleImage/JXSegmentedTitleImageItemModel.swift; sourceTree = "<group>"; };
@@ -1207,7 +1209,7 @@
 		146583AC27B91C6B8DA4E16D8C3DB32D /* JXSegmentedComponetGradientView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedComponetGradientView.swift; path = Sources/Indicator/JXSegmentedComponetGradientView.swift; sourceTree = "<group>"; };
 		14FB9114276BABC450B0E20FE76500BB /* KeyframeGroup.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KeyframeGroup.swift; path = "lottie-swift/src/Private/Model/Keyframes/KeyframeGroup.swift"; sourceTree = "<group>"; };
 		1507F8B094E0449D6ACBB77D5C6118D6 /* AnyValueContainer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnyValueContainer.swift; path = "lottie-swift/src/Private/NodeRenderSystem/NodeProperties/Protocols/AnyValueContainer.swift"; sourceTree = "<group>"; };
-		1523AF9B042D00B01F36A029673570A5 /* area.json */ = {isa = PBXFileReference; includeInIndex = 1; name = area.json; path = BPKit/Assets/area.json; sourceTree = "<group>"; };
+		1523AF9B042D00B01F36A029673570A5 /* area.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = area.json; path = BPKit/Assets/area.json; sourceTree = "<group>"; };
 		15A677119932F56F03F4769213978EAC /* CompatibleAnimationKeypath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CompatibleAnimationKeypath.swift; path = "lottie-swift/src/Public/iOS/Compatibility/CompatibleAnimationKeypath.swift"; sourceTree = "<group>"; };
 		15C79EAC1307E80CB9093D372876973D /* BPLogManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BPLogManager.swift; path = BPLog/Classes/BPLogManager.swift; sourceTree = "<group>"; };
 		15C9DEC96FF380EBBF8043CAAFB4BC5B /* AlamofireObjectMapper.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = AlamofireObjectMapper.debug.xcconfig; sourceTree = "<group>"; };
@@ -1216,7 +1218,7 @@
 		17E30B6CC0F578CEA289C35CD5FD1C75 /* BPFilterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPFilterView.swift; sourceTree = "<group>"; };
 		182B57770C31E1FDE2186102763CCE39 /* LayerImageProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = LayerImageProvider.swift; path = "lottie-swift/src/Private/LayerContainers/Utility/LayerImageProvider.swift"; sourceTree = "<group>"; };
 		183C9CED9A989BAB23FB8DB81450FF2C /* BPTableView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPTableView.swift; sourceTree = "<group>"; };
-		18413627FC43BE35D0A363E0C09F948C /* BPFile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BPFile.framework; path = BPFile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		18413627FC43BE35D0A363E0C09F948C /* BPFile.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BPFile.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		18F8EEDC77CE9DEABDE959B4D5EBA50A /* BPAlertAttributedViewOneButton.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPAlertAttributedViewOneButton.swift; sourceTree = "<group>"; };
 		190BCDD18D973E804DB92C780512B14A /* SizeValueProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SizeValueProvider.swift; path = "lottie-swift/src/Public/DynamicProperties/ValueProviders/SizeValueProvider.swift"; sourceTree = "<group>"; };
 		1913C97E2C776D0413EA9E3BE1D47AB3 /* IQUIViewController+Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUIViewController+Additions.m"; path = "IQKeyboardManager/Categories/IQUIViewController+Additions.m"; sourceTree = "<group>"; };
@@ -1241,11 +1243,13 @@
 		20479419D0DD4682E77F5822B5EA3AA7 /* Kingfisher-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Kingfisher-umbrella.h"; sourceTree = "<group>"; };
 		204EA2B2D8D19DE3D6C1EF2C9976F4C3 /* SDDisplayLink.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDDisplayLink.m; path = SDWebImage/Private/SDDisplayLink.m; sourceTree = "<group>"; };
 		20840CC8BB84FDEC452215F90EAEB62B /* BPTableViewCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPTableViewCell.swift; sourceTree = "<group>"; };
-		210B8CE37D5DAF7ECB7F3DC84E08BC57 /* Pods_BPKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BPKit_Example.framework; path = "Pods-BPKit_Example.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		210B8CE37D5DAF7ECB7F3DC84E08BC57 /* Pods_BPKit_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BPKit_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2144D8213217373C183A51F97C4799F5 /* JXSegmentedIndicatorGradientLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorGradientLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorGradientLineView.swift; sourceTree = "<group>"; };
 		215BC26EEB7C3940511C1140DF3AF678 /* MapError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MapError.swift; path = Sources/MapError.swift; sourceTree = "<group>"; };
 		2207E419B38B834423850E59A9D2991E /* RetryStrategy.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = RetryStrategy.swift; path = Sources/Networking/RetryStrategy.swift; sourceTree = "<group>"; };
 		222B6033C2C25A142C687A1EF2096A18 /* ToJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ToJSON.swift; path = Sources/ToJSON.swift; sourceTree = "<group>"; };
+		226E8DDC26B3A7F900C0B965 /* NSTextAttachment+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSTextAttachment+Extension.swift"; sourceTree = "<group>"; };
+		226E8DDE26B3A84F00C0B965 /* UITextView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Extension.swift"; sourceTree = "<group>"; };
 		2441B8073D3D6CEDDF13A738DB0BA4DE /* BPLog-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "BPLog-dummy.m"; sourceTree = "<group>"; };
 		2498CF4AFCC407F994C3093A0712235E /* BPRedDotView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPRedDotView.swift; sourceTree = "<group>"; };
 		24FD0300A64C812C609CB3FD65C741B2 /* Pods-BPKit_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BPKit_Example-acknowledgements.plist"; sourceTree = "<group>"; };
@@ -1297,7 +1301,7 @@
 		331E4DCD886ADD1F6B2A483029E93D6C /* NSString+Algorithm.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSString+Algorithm.m"; sourceTree = "<group>"; };
 		334A2FBDE38AA7BEBEAF4683D8B0E755 /* HTTPMethod.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HTTPMethod.swift; path = Source/HTTPMethod.swift; sourceTree = "<group>"; };
 		338AF54A8DCF97201EDC39E2025489EC /* ResourceBundle-BPKit-BPKit-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "ResourceBundle-BPKit-BPKit-Info.plist"; sourceTree = "<group>"; };
-		33E805C3F444963DFB5B9DC927533BAA /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = unzip.c; path = minizip/unzip.c; sourceTree = "<group>"; };
+		33E805C3F444963DFB5B9DC927533BAA /* unzip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = unzip.c; path = minizip/unzip.c; sourceTree = "<group>"; };
 		340B806B486A4140D196CE57E5C8EC8E /* IQNSArray+Sort.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQNSArray+Sort.h"; path = "IQKeyboardManager/Categories/IQNSArray+Sort.h"; sourceTree = "<group>"; };
 		34300B5449B1DFF0F639D57B6E36C980 /* SDImageCoder.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageCoder.m; path = SDWebImage/Core/SDImageCoder.m; sourceTree = "<group>"; };
 		3477EC6D50792F7EA44DC6EE36E84B21 /* ZipArchive-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ZipArchive-umbrella.h"; sourceTree = "<group>"; };
@@ -1402,7 +1406,7 @@
 		511E2D24070C2E2CCF73C1377C0B347A /* SizeExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SizeExtensions.swift; path = Sources/Utility/SizeExtensions.swift; sourceTree = "<group>"; };
 		514A8E0E74DC438A6563BDFA8039D2D4 /* BPNetwork.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = BPNetwork.modulemap; sourceTree = "<group>"; };
 		5159B6D953BBA7E99DFBACEA29D0EF6A /* IQUITextFieldView+Additions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "IQUITextFieldView+Additions.m"; path = "IQKeyboardManager/Categories/IQUITextFieldView+Additions.m"; sourceTree = "<group>"; };
-		51BA97E8B5085EFFB47BC9C0B785CEA7 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Lottie.framework; path = "lottie-ios.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		51BA97E8B5085EFFB47BC9C0B785CEA7 /* Lottie.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Lottie.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		51BBF4389703DAAA52608A1A90655E6F /* SnapKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SnapKit-prefix.pch"; sourceTree = "<group>"; };
 		51DA9181FB0FE2C1B79BEBBB2DEDA620 /* ConstraintMultiplierTarget.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMultiplierTarget.swift; path = Source/ConstraintMultiplierTarget.swift; sourceTree = "<group>"; };
 		52B33777F152D05C45B180F486314544 /* DDFileLogger+Buffering.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "DDFileLogger+Buffering.h"; path = "Sources/CocoaLumberjack/include/CocoaLumberjack/DDFileLogger+Buffering.h"; sourceTree = "<group>"; };
@@ -1417,7 +1421,7 @@
 		57DA90783000541A8F11EF7ED43ADE6A /* BPTopWindowView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPTopWindowView.swift; sourceTree = "<group>"; };
 		57EE33E047101BB12A5C8ED6E283D418 /* BPLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BPLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5812CBBD528EA0FA5B0C445A8482A574 /* AnimatedImageView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedImageView.swift; path = Sources/Views/AnimatedImageView.swift; sourceTree = "<group>"; };
-		583267407290B66BF5CEE00D5E209525 /* mztools.c */ = {isa = PBXFileReference; includeInIndex = 1; name = mztools.c; path = minizip/mztools.c; sourceTree = "<group>"; };
+		583267407290B66BF5CEE00D5E209525 /* mztools.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = mztools.c; path = minizip/mztools.c; sourceTree = "<group>"; };
 		58513F616A11FB1924F9DD11C06D43F3 /* GIFAnimatedImage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GIFAnimatedImage.swift; path = Sources/Image/GIFAnimatedImage.swift; sourceTree = "<group>"; };
 		587943DA8942C7A082F0E11E2F4F6695 /* GradientStrokeNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientStrokeNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/RenderNodes/GradientStrokeNode.swift"; sourceTree = "<group>"; };
 		58B1371FF6EBB05E69903E57E1A10CCC /* JXSegmentedTitleGradientDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleGradientDataSource.swift; path = Sources/TitleGradient/JXSegmentedTitleGradientDataSource.swift; sourceTree = "<group>"; };
@@ -1435,13 +1439,13 @@
 		5BE54A06E63BB0A22C0CB45D4CDB3BE7 /* BPLogGlobal.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BPLogGlobal.swift; path = BPLog/Classes/BPLogGlobal.swift; sourceTree = "<group>"; };
 		5BE602ADACC664DC68C79799D1B410C3 /* URLTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = URLTransform.swift; path = Sources/URLTransform.swift; sourceTree = "<group>"; };
 		5BFC2D8A14F43FA83476B7996334F8DF /* bp_add_icon.png */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = image.png; name = bp_add_icon.png; path = BPKit/Assets/bp_add_icon.png; sourceTree = "<group>"; };
-		5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FBSnapshotTestCase.framework; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C4F31330DFA99D699E4BDC8C3573D73 /* FBSnapshotTestCase.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FBSnapshotTestCase.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5C7046123F488B80ACD01E9DE15E2AA9 /* BPImageTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BPImageTransform.swift; path = BPCommon/Classes/Download/BPImageTransform.swift; sourceTree = "<group>"; };
 		5C8F26972A42FABAB987EFE8DCF3FFF5 /* IQKeyboardManager.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardManager.m; path = IQKeyboardManager/IQKeyboardManager.m; sourceTree = "<group>"; };
-		5CEEDAA9B57892B8329EE713DC27110B /* BPKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BPKit.framework; path = BPKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CEEDAA9B57892B8329EE713DC27110B /* BPKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BPKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CF6C2461B27A4A9211AE345481CD17C /* AnimationTime.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationTime.swift; path = "lottie-swift/src/Public/Primitives/AnimationTime.swift"; sourceTree = "<group>"; };
 		5D459C0F7D04304FB68B80588DB06BED /* DDLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDLog.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDLog.h; sourceTree = "<group>"; };
-		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Alamofire.framework; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5D797E9A5C5782CE845840781FA1CC81 /* Alamofire.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Alamofire.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DB4EB84E60266F28DD29546D402A69D /* SDFileAttributeHelper.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDFileAttributeHelper.h; path = SDWebImage/Private/SDFileAttributeHelper.h; sourceTree = "<group>"; };
 		5EC092130CF4EF8A7CE83F3E72669CAB /* DDFileLogger.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDFileLogger.m; path = Sources/CocoaLumberjack/DDFileLogger.m; sourceTree = "<group>"; };
 		5EFE6F40E69F394501C65D42EAA16268 /* ZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1449,7 +1453,7 @@
 		5F6CC6ECDE7396C15CEC9F417195807A /* SDWebImage.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SDWebImage.modulemap; sourceTree = "<group>"; };
 		5FB83CFE344802FEC68B6A951403D28C /* AnimationView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationView.swift; path = "lottie-swift/src/Public/Animation/AnimationView.swift"; sourceTree = "<group>"; };
 		605D80509470BD6DC88B110C2EA87607 /* SDWebImageDownloaderResponseModifier.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderResponseModifier.h; path = SDWebImage/Core/SDWebImageDownloaderResponseModifier.h; sourceTree = "<group>"; };
-		606AD5BA3FF2E1261A1B4B27B9DF330B /* iconfont.ttf */ = {isa = PBXFileReference; includeInIndex = 1; name = iconfont.ttf; path = BPKit/Assets/iconfont.ttf; sourceTree = "<group>"; };
+		606AD5BA3FF2E1261A1B4B27B9DF330B /* iconfont.ttf */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file; name = iconfont.ttf; path = BPKit/Assets/iconfont.ttf; sourceTree = "<group>"; };
 		607AA8E41858C6C67441381E4662A505 /* BPAuthoriationManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BPAuthoriationManager.swift; path = BPCommon/Classes/Authorization/BPAuthoriationManager.swift; sourceTree = "<group>"; };
 		610BCE00ABC45498EF7A5CEB08490F75 /* BPRefreshHeaderView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPRefreshHeaderView.swift; sourceTree = "<group>"; };
 		611A08B14193453A8A6817F3FA051701 /* Pods-BPKit_Tests.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-BPKit_Tests.modulemap"; sourceTree = "<group>"; };
@@ -1491,14 +1495,14 @@
 		69C1D1061E270F65BD78EDF03D01273F /* BPOCMacro.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BPOCMacro.h; path = BPLog/Classes/BPOCMacro.h; sourceTree = "<group>"; };
 		69DB37758C16B412E2D70994DFF4AFDA /* UIButton+Kingfisher.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "UIButton+Kingfisher.swift"; path = "Sources/Extensions/UIButton+Kingfisher.swift"; sourceTree = "<group>"; };
 		69E2D41C67BB0F9CBD5D3F365D2C8F3E /* AnimatedSwitch.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimatedSwitch.swift; path = "lottie-swift/src/Public/iOS/AnimatedSwitch.swift"; sourceTree = "<group>"; };
-		6A08589E8A2240869E97735E280AF221 /* BPDeviceInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BPDeviceInfo.framework; path = BPDeviceInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6B3D9CDC9780913A9558D4F71AADA645 /* WebViewControllerReadMe.md */ = {isa = PBXFileReference; includeInIndex = 1; path = WebViewControllerReadMe.md; sourceTree = "<group>"; };
+		6A08589E8A2240869E97735E280AF221 /* BPDeviceInfo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BPDeviceInfo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6B3D9CDC9780913A9558D4F71AADA645 /* WebViewControllerReadMe.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = WebViewControllerReadMe.md; sourceTree = "<group>"; };
 		6B4A1BE12359894626B15F7540F58825 /* Ellipse.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Ellipse.swift; path = "lottie-swift/src/Private/Model/ShapeItems/Ellipse.swift"; sourceTree = "<group>"; };
 		6B4FFF04F34B4CD21076BEAC9914F0BD /* BPFile-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "BPFile-umbrella.h"; sourceTree = "<group>"; };
 		6B8C79D2ABC72DFA55015D9270383BDD /* SDWebImageCacheSerializer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageCacheSerializer.m; path = SDWebImage/Core/SDWebImageCacheSerializer.m; sourceTree = "<group>"; };
 		6BFBBA1D685F389F7F9BEFC411D05E16 /* BPOCLog.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = BPOCLog.h; path = BPLog/Classes/BPOCLog.h; sourceTree = "<group>"; };
 		6CF66FAB1FF46B4DAD371194644334AF /* SDWebImageDownloaderConfig.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageDownloaderConfig.h; path = SDWebImage/Core/SDWebImageDownloaderConfig.h; sourceTree = "<group>"; };
-		6D0A635EC833DC421E6686497A8A0474 /* BPCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BPCommon.framework; path = BPCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		6D0A635EC833DC421E6686497A8A0474 /* BPCommon.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BPCommon.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D7DC1B3D178E6949476112E898768EA /* ConstraintLayoutSupport.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintLayoutSupport.swift; path = Source/ConstraintLayoutSupport.swift; sourceTree = "<group>"; };
 		6DA81BDACA161563D0B130D94C33742D /* Request.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Request.swift; path = Source/Request.swift; sourceTree = "<group>"; };
 		6F27D2D0E3F618AD173A7810AE54A1A0 /* ObjectMapper-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "ObjectMapper-prefix.pch"; sourceTree = "<group>"; };
@@ -1509,7 +1513,7 @@
 		70D478E9F89BEC3E40480FACDE5CBB19 /* SDDeviceHelper.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDDeviceHelper.m; path = SDWebImage/Private/SDDeviceHelper.m; sourceTree = "<group>"; };
 		71272686DCD68A1DE591CD86D8A4C701 /* ImageCache.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ImageCache.swift; path = Sources/Cache/ImageCache.swift; sourceTree = "<group>"; };
 		717E8524D60B55320F8BFFE5929A6FA5 /* ConstraintView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintView.swift; path = Source/ConstraintView.swift; sourceTree = "<group>"; };
-		7191B1F03A39AAE50E81BD9D3C7F9F5F /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; name = ioapi.c; path = minizip/ioapi.c; sourceTree = "<group>"; };
+		7191B1F03A39AAE50E81BD9D3C7F9F5F /* ioapi.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = ioapi.c; path = minizip/ioapi.c; sourceTree = "<group>"; };
 		71A9489C93844B5AD98D43531D6BA511 /* MemoryStorage.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = MemoryStorage.swift; path = Sources/Cache/MemoryStorage.swift; sourceTree = "<group>"; };
 		71AEF3C71A63941FCECE5CE09928D750 /* AnimationTextProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationTextProvider.swift; path = "lottie-swift/src/Public/TextProvider/AnimationTextProvider.swift"; sourceTree = "<group>"; };
 		72377389E6D7E284757921F14B24B8D7 /* GradientValueProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientValueProvider.swift; path = "lottie-swift/src/Public/DynamicProperties/ValueProviders/GradientValueProvider.swift"; sourceTree = "<group>"; };
@@ -1575,14 +1579,14 @@
 		8537FD905131D57750E04CC7583B21D7 /* Trim.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Trim.swift; path = "lottie-swift/src/Private/Model/ShapeItems/Trim.swift"; sourceTree = "<group>"; };
 		853AEA3C32C4536AE78CFFA69033BFD7 /* CustomDateFormatTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CustomDateFormatTransform.swift; path = Sources/CustomDateFormatTransform.swift; sourceTree = "<group>"; };
 		85A98C9D8B99C68F291D6EAEF302D107 /* Pods-BPKit_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-BPKit_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
-		85D03BEC2CA9B2DB28398618379E7744 /* FDFullscreenPopGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = FDFullscreenPopGesture.framework; path = FDFullscreenPopGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		85ECE2A91F2B8703472400AF60CA8477 /* BPLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BPLog.framework; path = BPLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85D03BEC2CA9B2DB28398618379E7744 /* FDFullscreenPopGesture.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = FDFullscreenPopGesture.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		85ECE2A91F2B8703472400AF60CA8477 /* BPLog.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BPLog.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		85F4663116558848E615587BA543A3D2 /* BPTableViewHeaderFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPTableViewHeaderFooterView.swift; sourceTree = "<group>"; };
-		86184555CEC7226684FF9520B57751E8 /* BPNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = BPNetwork.framework; path = BPNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		86822384CD379FCE373C2F755839B8DE /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = AlamofireObjectMapper.framework; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86184555CEC7226684FF9520B57751E8 /* BPNetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = BPNetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		86822384CD379FCE373C2F755839B8DE /* AlamofireObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AlamofireObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8727D875CD992FB05925552FB4888B48 /* ObjectMapper.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = ObjectMapper.release.xcconfig; sourceTree = "<group>"; };
 		87377F487D86C7F42F734604CC3BC610 /* IQKeyboardManager.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = IQKeyboardManager.release.xcconfig; sourceTree = "<group>"; };
-		8757F1D3ADE1A708DE837438E177CC4A /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; name = zip.c; path = minizip/zip.c; sourceTree = "<group>"; };
+		8757F1D3ADE1A708DE837438E177CC4A /* zip.c */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.c; name = zip.c; path = minizip/zip.c; sourceTree = "<group>"; };
 		87C83649487784D38A9A6FA18FD0DA79 /* Mapper.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mapper.swift; path = Sources/Mapper.swift; sourceTree = "<group>"; };
 		8827D8E21C9544695F6B4D9682C58C40 /* JXSegmentedIndicatorRainbowLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorRainbowLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorRainbowLineView.swift; sourceTree = "<group>"; };
 		885A8394F06865211F2CBB6A59E560F5 /* BPTextView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPTextView.swift; sourceTree = "<group>"; };
@@ -1635,12 +1639,12 @@
 		9484E90B0FF7E7DE801F01A45A81876C /* ShapeNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/PathNodes/ShapeNode.swift"; sourceTree = "<group>"; };
 		952A3CB90C9A15844AAD7FA0506264F4 /* KingfisherManager.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherManager.swift; path = Sources/General/KingfisherManager.swift; sourceTree = "<group>"; };
 		95F9B95A548259DE8754A2E3BE5185C0 /* GradientFill.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientFill.swift; path = "lottie-swift/src/Private/Model/ShapeItems/GradientFill.swift"; sourceTree = "<group>"; };
-		977BD5786F27722E2BAAAE2418562B56 /* clear.json */ = {isa = PBXFileReference; includeInIndex = 1; name = clear.json; path = BPKit/Assets/clear.json; sourceTree = "<group>"; };
-		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SnapKit.framework; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		977BD5786F27722E2BAAAE2418562B56 /* clear.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = clear.json; path = BPKit/Assets/clear.json; sourceTree = "<group>"; };
+		979486118B3E90C08386079D57962701 /* SnapKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SnapKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		97B921B254682C4206DD1BE1B04B1111 /* DDDispatchQueueLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDDispatchQueueLogFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDDispatchQueueLogFormatter.m; sourceTree = "<group>"; };
 		97BF08E0A522D47E1EAA2A696CAC193B /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9845640E153763F19004F989F903A01D /* SDImageLoader.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageLoader.h; path = SDWebImage/Core/SDImageLoader.h; sourceTree = "<group>"; };
-		98527D7196957AAB07B79E2E2AFDE23E /* IQKeyboardManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = IQKeyboardManager.framework; path = IQKeyboardManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		98527D7196957AAB07B79E2E2AFDE23E /* IQKeyboardManager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IQKeyboardManager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		98675CA7F5CEDACB6B7AFAEF2422FD55 /* BPNetworkService.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BPNetworkService.swift; path = BPNetwork/Classes/BPNetworkService.swift; sourceTree = "<group>"; };
 		986F216639B45B585D2E98BD11FA69DD /* Box.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Box.swift; path = Sources/Utility/Box.swift; sourceTree = "<group>"; };
 		9935BD56F0AF9CC365478915E2C7C974 /* SDInternalMacros.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDInternalMacros.h; path = SDWebImage/Private/SDInternalMacros.h; sourceTree = "<group>"; };
@@ -1660,7 +1664,7 @@
 		9C8E913EF105EFB7362AB01606618669 /* BPDeviceInfo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BPDeviceInfo.release.xcconfig; sourceTree = "<group>"; };
 		9CB07F4CDBE5756CDF8FF2D2B6626066 /* ConstraintMakerExtendable.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMakerExtendable.swift; path = Source/ConstraintMakerExtendable.swift; sourceTree = "<group>"; };
 		9CC026D93F6B0810AD7448A4356CCB99 /* BPNavigationBar.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPNavigationBar.swift; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9D9BC54992F37F8456FB2C8F3B460690 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Accelerate.framework; sourceTree = DEVELOPER_DIR; };
 		9DA20F17E0D73D6D89BB7FE1AC3F6C73 /* KingfisherError.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = KingfisherError.swift; path = Sources/General/KingfisherError.swift; sourceTree = "<group>"; };
 		9DC1C8970C4C084BCDA26FE3D3B3CD3E /* UIImage+MemoryCacheCost.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIImage+MemoryCacheCost.h"; path = "SDWebImage/Core/UIImage+MemoryCacheCost.h"; sourceTree = "<group>"; };
@@ -1727,7 +1731,7 @@
 		B0268B2EB8DE0C81ED1F72E96DCE54EB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/QuartzCore.framework; sourceTree = DEVELOPER_DIR; };
 		B02DE2D47705D5E9A880F304FE5C276E /* IQKeyboardManager-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IQKeyboardManager-prefix.pch"; sourceTree = "<group>"; };
 		B0639F109DA50923E6EAC3FBDB8DE369 /* BPViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPViewController.swift; sourceTree = "<group>"; };
-		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SDWebImage.framework; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B0B214D775196BA7CA8E17E53048A493 /* SDWebImage.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SDWebImage.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B117874D9B7FDB52F099F9EE218BA387 /* StarNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StarNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/PathNodes/StarNode.swift"; sourceTree = "<group>"; };
 		B1FE718045A7AAFFE5C9331A43D23306 /* UIView+WebCacheOperation.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "UIView+WebCacheOperation.h"; path = "SDWebImage/Core/UIView+WebCacheOperation.h"; sourceTree = "<group>"; };
 		B1FEA7D2DFAB84861B53C2DF9E0B7DF5 /* BPImageBrowserCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPImageBrowserCell.swift; sourceTree = "<group>"; };
@@ -1738,7 +1742,7 @@
 		B3EC93905AF33EFDFCFB90FD066928C8 /* BPFile.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BPFile.debug.xcconfig; sourceTree = "<group>"; };
 		B458BA3EEA380C88BCFC54E0D8584D91 /* AnimationPublic.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationPublic.swift; path = "lottie-swift/src/Public/Animation/AnimationPublic.swift"; sourceTree = "<group>"; };
 		B490B91DE55A95FDE9D38E8A27349698 /* BezierPath.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BezierPath.swift; path = "lottie-swift/src/Private/Utility/Primitives/BezierPath.swift"; sourceTree = "<group>"; };
-		B4B7C88AE25F7CD53255DC8BC1BA9450 /* online.json */ = {isa = PBXFileReference; includeInIndex = 1; name = online.json; path = BPKit/Assets/online.json; sourceTree = "<group>"; };
+		B4B7C88AE25F7CD53255DC8BC1BA9450 /* online.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = online.json; path = BPKit/Assets/online.json; sourceTree = "<group>"; };
 		B698350D70DA6FA16DED5061A9839835 /* BPUploadFilesModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BPUploadFilesModel.swift; path = BPNetwork/Classes/BPUploadFilesModel.swift; sourceTree = "<group>"; };
 		B6FFAC2F4CF554F9C74095AF9754A085 /* SingleValueProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SingleValueProvider.swift; path = "lottie-swift/src/Private/NodeRenderSystem/NodeProperties/ValueProviders/SingleValueProvider.swift"; sourceTree = "<group>"; };
 		B711D786B7E4A9902AFAD265B177D8CF /* DDMultiFormatter.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDMultiFormatter.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDMultiFormatter.h; sourceTree = "<group>"; };
@@ -1752,7 +1756,7 @@
 		B8811B97E792F4AA649A4335D1FDCD43 /* ShapeItem.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ShapeItem.swift; path = "lottie-swift/src/Private/Model/ShapeItems/ShapeItem.swift"; sourceTree = "<group>"; };
 		B891E30E951B76333DF91CB48F4A9EEB /* JXSegmentedIndicatorLineView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedIndicatorLineView.swift; path = Sources/Indicator/JXSegmentedIndicatorLineView.swift; sourceTree = "<group>"; };
 		B8D6B857477D8A943DB7206F2EC0C687 /* BPStackView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPStackView.swift; sourceTree = "<group>"; };
-		B9084FE779702931E8DF1D00A2D725FB /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ObjectMapper.framework; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9084FE779702931E8DF1D00A2D725FB /* ObjectMapper.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ObjectMapper.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B979D4AF3C9144C126DC4E67686DDA31 /* AnimationImageProvider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AnimationImageProvider.swift; path = "lottie-swift/src/Public/ImageProvider/AnimationImageProvider.swift"; sourceTree = "<group>"; };
 		B9E6D64495D6F1F9649887D904EE11A1 /* SDImageTransformer.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDImageTransformer.m; path = SDWebImage/Core/SDImageTransformer.m; sourceTree = "<group>"; };
 		BA016A1BC33B0F79E79B5B234FCA5B6D /* Filter.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Filter.swift; path = Sources/Image/Filter.swift; sourceTree = "<group>"; };
@@ -1781,16 +1785,16 @@
 		C080ADB15673E239319A741AAE8EE1EF /* BPEnvTypeProtocol.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPEnvTypeProtocol.swift; sourceTree = "<group>"; };
 		C13D2135F6166AF36F98B7F937B9CAF5 /* Typealiases.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Typealiases.swift; path = Source/Typealiases.swift; sourceTree = "<group>"; };
 		C15D9BFB7471BF682CC04679F9BBD19A /* BPLogFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = BPLogFormatter.m; path = BPLog/Classes/BPLogFormatter.m; sourceTree = "<group>"; };
-		C1A00C0C33E7E8849747DFF1DFDF8FA2 /* close.json */ = {isa = PBXFileReference; includeInIndex = 1; name = close.json; path = BPKit/Assets/close.json; sourceTree = "<group>"; };
+		C1A00C0C33E7E8849747DFF1DFDF8FA2 /* close.json */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.json; name = close.json; path = BPKit/Assets/close.json; sourceTree = "<group>"; };
 		C1E3F58A2592A29368142DA3518FC36D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/ImageIO.framework; sourceTree = DEVELOPER_DIR; };
 		C21CEF1A0A4904E98A7A1B4735181450 /* NSBezierPath+SDRoundedCorners.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "NSBezierPath+SDRoundedCorners.h"; path = "SDWebImage/Private/NSBezierPath+SDRoundedCorners.h"; sourceTree = "<group>"; };
 		C231362E5293C8CC310F0206F29BE905 /* IQKeyboardManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManager.h; path = IQKeyboardManager/IQKeyboardManager.h; sourceTree = "<group>"; };
 		C25D039471480A335068E38FFB239C1D /* SDWebImageManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDWebImageManager.h; path = SDWebImage/Core/SDWebImageManager.h; sourceTree = "<group>"; };
-		C261436D14052AE3C35F240BCD155CAC /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = CocoaLumberjack.framework; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C261436D14052AE3C35F240BCD155CAC /* CocoaLumberjack.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = CocoaLumberjack.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C299D0DCF3676461878AA6ED6DB85242 /* BPMediaCell.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPMediaCell.swift; sourceTree = "<group>"; };
 		C35BCC17D386F9D482316B4328C4E23D /* IQKeyboardReturnKeyHandler.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = IQKeyboardReturnKeyHandler.m; path = IQKeyboardManager/IQKeyboardReturnKeyHandler.m; sourceTree = "<group>"; };
 		C3EB883AA2921C040BE9EE61E34AACB1 /* DDFileLogger+Buffering.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "DDFileLogger+Buffering.m"; path = "Sources/CocoaLumberjack/Extensions/DDFileLogger+Buffering.m"; sourceTree = "<group>"; };
-		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Kingfisher.framework; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3F44C782D64D7EB20B61CE3844EBFAD /* Kingfisher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Kingfisher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C3FEE8D54C704A182E79BAA3316EC7BB /* BPLog-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "BPLog-Info.plist"; sourceTree = "<group>"; };
 		C44727188E9D3DB26870D8B8AE8FA411 /* CurveVertex.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CurveVertex.swift; path = "lottie-swift/src/Private/Utility/Primitives/CurveVertex.swift"; sourceTree = "<group>"; };
 		C48C83ADC1B615B487E0B795D6ADAA4A /* UIImage+Snapshot.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Snapshot.m"; path = "FBSnapshotTestCase/Categories/UIImage+Snapshot.m"; sourceTree = "<group>"; };
@@ -1866,7 +1870,7 @@
 		D90B7EDB0EB2189E5BC17DF766218081 /* TextCompositionLayer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextCompositionLayer.swift; path = "lottie-swift/src/Private/LayerContainers/CompLayers/TextCompositionLayer.swift"; sourceTree = "<group>"; };
 		D9FBA521DB0E881570A79118779458DC /* FBSnapshotTestCasePlatform.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = FBSnapshotTestCasePlatform.h; path = FBSnapshotTestCase/FBSnapshotTestCasePlatform.h; sourceTree = "<group>"; };
 		DA99A7271B487F09590DED81DA10F95E /* SDWebImageError.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = SDWebImageError.m; path = SDWebImage/Core/SDWebImageError.m; sourceTree = "<group>"; };
-		DAFC4FBA3B95C5E9D5CBFC260AA08804 /* ZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = ZipArchive.framework; path = ZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DAFC4FBA3B95C5E9D5CBFC260AA08804 /* ZipArchive.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZipArchive.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DC390549888233E294F39135C8D3E840 /* InterpolatableExtensions.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = InterpolatableExtensions.swift; path = "lottie-swift/src/Private/Utility/Interpolatable/InterpolatableExtensions.swift"; sourceTree = "<group>"; };
 		DC8B5C3181F0866EFA2E135E230C74D7 /* DDTTYLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDTTYLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDTTYLogger.h; sourceTree = "<group>"; };
 		DCE6FA643DD63A11A34386A711860260 /* BPPickerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPPickerModel.swift; sourceTree = "<group>"; };
@@ -1881,7 +1885,7 @@
 		DEF61169EE88AAED3F07D5CC8CE7A82F /* BPRefreshFooterView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPRefreshFooterView.swift; sourceTree = "<group>"; };
 		DF034D7116FC8C50C4F80E38E319ABF8 /* SDImageCodersManager.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageCodersManager.h; path = SDWebImage/Core/SDImageCodersManager.h; sourceTree = "<group>"; };
 		DF279061D1D22B0D2A696B2DF7E39080 /* SolidLayerModel.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SolidLayerModel.swift; path = "lottie-swift/src/Private/Model/Layers/SolidLayerModel.swift"; sourceTree = "<group>"; };
-		DF504ADFC5DF095236DC9686EAC7751C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
+		DF504ADFC5DF095236DC9686EAC7751C /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
 		DF7C0607B6BE78B5347B4EF272342734 /* DDAbstractDatabaseLogger.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = DDAbstractDatabaseLogger.h; path = Sources/CocoaLumberjack/include/CocoaLumberjack/DDAbstractDatabaseLogger.h; sourceTree = "<group>"; };
 		DFF77604556567CA0EBD807D8C9279C4 /* DataTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DataTransform.swift; path = Sources/DataTransform.swift; sourceTree = "<group>"; };
 		E01CBDAB4C635CD333C938C383BFC0E7 /* DateTransform.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DateTransform.swift; path = Sources/DateTransform.swift; sourceTree = "<group>"; };
@@ -1918,7 +1922,7 @@
 		E5FD9CEE7F91CF2C4CDF082D14AD721B /* IQUIScrollView+Additions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = "IQUIScrollView+Additions.h"; path = "IQKeyboardManager/Categories/IQUIScrollView+Additions.h"; sourceTree = "<group>"; };
 		E5FF611E49C973A1054C70FEE329C5C8 /* BPCommon.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BPCommon.debug.xcconfig; sourceTree = "<group>"; };
 		E65940EA33CA1518CA50DB6A119C72DF /* StrokeNode.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = StrokeNode.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/RenderNodes/StrokeNode.swift"; sourceTree = "<group>"; };
-		E66B9CA6AB6C62DD0903D3FEF8179DA6 /* BPKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = BPKit.bundle; path = "BPKit-BPKit.bundle"; sourceTree = BUILT_PRODUCTS_DIR; };
+		E66B9CA6AB6C62DD0903D3FEF8179DA6 /* BPKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BPKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CD89A87C804A0D5EBEB6435A2ABF34 /* IQBarButtonItem.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQBarButtonItem.h; path = IQKeyboardManager/IQToolbar/IQBarButtonItem.h; sourceTree = "<group>"; };
 		E72E23B3F87C50FAE11FA58CEF29C701 /* Mask.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Mask.swift; path = "lottie-swift/src/Private/Model/Objects/Mask.swift"; sourceTree = "<group>"; };
 		E774BD5B770744C118BE924AF5F5666F /* DDMultiFormatter.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; name = DDMultiFormatter.m; path = Sources/CocoaLumberjack/Extensions/DDMultiFormatter.m; sourceTree = "<group>"; };
@@ -1968,7 +1972,7 @@
 		F4C97FD12E372BFC8E506530903D5912 /* IQKeyboardManagerConstantsInternal.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = IQKeyboardManagerConstantsInternal.h; path = IQKeyboardManager/Constants/IQKeyboardManagerConstantsInternal.h; sourceTree = "<group>"; };
 		F4D7211D185CAB906EF58F653D932480 /* SwiftLogLevel.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SwiftLogLevel.h; path = Sources/CocoaLumberjackSwiftSupport/include/CocoaLumberjackSwiftSupport/SwiftLogLevel.h; sourceTree = "<group>"; };
 		F4DBC0193F4DBF48CE44D88437A4A64E /* GradientStrokeRenderer.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GradientStrokeRenderer.swift; path = "lottie-swift/src/Private/NodeRenderSystem/Nodes/OutputNodes/Renderables/GradientStrokeRenderer.swift"; sourceTree = "<group>"; };
-		F5B7D9BEB75E991D649E8070F810C047 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
+		F5B7D9BEB75E991D649E8070F810C047 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		F5EAE126D0BB80AA97BA1CD8024BF8B6 /* TextDocument.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TextDocument.swift; path = "lottie-swift/src/Private/Model/Text/TextDocument.swift"; sourceTree = "<group>"; };
 		F60A8D0E2A18343926E0576E7430045E /* ConstraintMaker.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ConstraintMaker.swift; path = Source/ConstraintMaker.swift; sourceTree = "<group>"; };
 		F60E4706EE9D1D6EC7A6DE9221B4A77D /* NSArray+CrashDefender.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "NSArray+CrashDefender.m"; sourceTree = "<group>"; };
@@ -2007,7 +2011,7 @@
 		FEF4CC0B22F76AF8EDCBE8D3F8D8B8DA /* JXSegmentedTitleOrImageDataSource.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = JXSegmentedTitleOrImageDataSource.swift; path = Sources/TitleOrImage/JXSegmentedTitleOrImageDataSource.swift; sourceTree = "<group>"; };
 		FF06C6572F4EA077ADC5B709712C21B5 /* BPKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = BPKit.debug.xcconfig; sourceTree = "<group>"; };
 		FF261925C37A09E6859488DA19A52475 /* FDFullscreenPopGesture.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = FDFullscreenPopGesture.debug.xcconfig; sourceTree = "<group>"; };
-		FF6B15B716C2A11C8C3F0ECD269885D6 /* Pods_BPKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_BPKit_Tests.framework; path = "Pods-BPKit_Tests.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		FF6B15B716C2A11C8C3F0ECD269885D6 /* Pods_BPKit_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BPKit_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FF72E1A04886E36DB6E419BA7D5E9D5D /* SDImageIOAnimatedCoder.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = SDImageIOAnimatedCoder.h; path = SDWebImage/Core/SDImageIOAnimatedCoder.h; sourceTree = "<group>"; };
 		FFB75E730573F10914ADD1FCC1F18311 /* BPAlertViewTwoEditView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = BPAlertViewTwoEditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2246,7 +2250,6 @@
 				E1A67049ABD5556BF0180B6CAD2CB2E2 /* BPEnvLogToolsBar.swift */,
 				09FD63BE8980880745B5052CA511FA8F /* BPEnvLogView.swift */,
 			);
-			name = LogRecord;
 			path = LogRecord;
 			sourceTree = "<group>";
 		};
@@ -2257,7 +2260,6 @@
 				40FB506F921F44BC467E547E9BA515ED /* BPSystemAlbumListView.swift */,
 				06134D209D33DD54564B266553F0BCA1 /* BPSystemPhotoView.swift */,
 			);
-			name = View;
 			path = View;
 			sourceTree = "<group>";
 		};
@@ -2313,7 +2315,6 @@
 				5BE602ADACC664DC68C79799D1B410C3 /* URLTransform.swift */,
 				DDECBB9444B4B3071A93B2A7286B5488 /* Support Files */,
 			);
-			name = ObjectMapper;
 			path = ObjectMapper;
 			sourceTree = "<group>";
 		};
@@ -2324,7 +2325,6 @@
 				CA059E81BBB8768A3DD3E26EC0ADA3BE /* Support Files */,
 				0F35D6EF7D7E12C038537161D5EB2062 /* SwiftSupport */,
 			);
-			name = FBSnapshotTestCase;
 			path = FBSnapshotTestCase;
 			sourceTree = "<group>";
 		};
@@ -2508,7 +2508,6 @@
 				2D9A65C537F6A296DB702DB0247B0686 /* ZipArchive.m */,
 				E8AA759498C85F335CF289184DDBB6CE /* Support Files */,
 			);
-			name = ZipArchive;
 			path = ZipArchive;
 			sourceTree = "<group>";
 		};
@@ -2607,7 +2606,6 @@
 				EE57FA54AFF299673887E99AE7D11847 /* JXSegmentedViewTool.swift */,
 				8ED0F400F3B648EBA15838872E960D52 /* Support Files */,
 			);
-			name = JXSegmentedView;
 			path = JXSegmentedView;
 			sourceTree = "<group>";
 		};
@@ -2642,7 +2640,6 @@
 				9D08D59B50BA2CB47171CD6113880421 /* Core */,
 				57B43D23AA45660B948C088F8A7852CF /* Support Files */,
 			);
-			name = SDWebImage;
 			path = SDWebImage;
 			sourceTree = "<group>";
 		};
@@ -2653,7 +2650,6 @@
 				1D6706801824E31853C6923CCE31FCA6 /* UINavigationController+FDFullscreenPopGesture.m */,
 				2BD08BC0D8AF5D90CA516E6E9D1A96D6 /* Support Files */,
 			);
-			name = FDFullscreenPopGesture;
 			path = FDFullscreenPopGesture;
 			sourceTree = "<group>";
 		};
@@ -2694,7 +2690,6 @@
 				0F58D698BB035DEFDBFB49A60CB5D635 /* Validation.swift */,
 				452380E3AA8A1D1F149B42530B61B1EB /* Support Files */,
 			);
-			name = Alamofire;
 			path = Alamofire;
 			sourceTree = "<group>";
 		};
@@ -2724,7 +2719,6 @@
 				D743AEFE01310BDDA1FF368CB02F09E3 /* BPMediaModel.swift */,
 				B84F4C0F17B4C6F6EDDB25708FF28446 /* Support Files */,
 			);
-			name = BPCommon;
 			path = BPCommon;
 			sourceTree = "<group>";
 		};
@@ -2784,7 +2778,6 @@
 				AB4E9CD4128622E6CFCDB5E3BB117D2B /* UILayoutSupport+Extensions.swift */,
 				FAE30FBB5C163C34A9FC74395A84E2BE /* Support Files */,
 			);
-			name = SnapKit;
 			path = SnapKit;
 			sourceTree = "<group>";
 		};
@@ -2799,7 +2792,6 @@
 				E4BD27AAD25C25787FE6BFEC900703B9 /* UIDevice+Extension.swift */,
 				86E4560F314129964A3D56223B7C29A9 /* Support Files */,
 			);
-			name = BPDeviceInfo;
 			path = BPDeviceInfo;
 			sourceTree = "<group>";
 		};
@@ -2845,7 +2837,6 @@
 				82F0D2E95F7576A576B44ADDDD1A1F2E /* AlamofireObjectMapper.swift */,
 				A187574F589EE3D3C28BCCF820592F93 /* Support Files */,
 			);
-			name = AlamofireObjectMapper;
 			path = AlamofireObjectMapper;
 			sourceTree = "<group>";
 		};
@@ -2878,7 +2869,6 @@
 				69C1D1061E270F65BD78EDF03D01273F /* BPOCMacro.h */,
 				2DE28A0A9074BD87FE42643F5917011E /* Support Files */,
 			);
-			name = BPLog;
 			path = BPLog;
 			sourceTree = "<group>";
 		};
@@ -2998,7 +2988,6 @@
 				1913C97E2C776D0413EA9E3BE1D47AB3 /* IQUIViewController+Additions.m */,
 				62ED03A966EC1135727FB45477D90E3A /* Support Files */,
 			);
-			name = IQKeyboardManager;
 			path = IQKeyboardManager;
 			sourceTree = "<group>";
 		};
@@ -3270,7 +3259,6 @@
 				441265922CAA62E502C92CB423317A08 /* BPWebViewImplementClass.swift */,
 				6B3D9CDC9780913A9558D4F71AADA645 /* WebViewControllerReadMe.md */,
 			);
-			name = WebViewController;
 			path = WebViewController;
 			sourceTree = "<group>";
 		};
@@ -3292,6 +3280,8 @@
 		A271962846F558D9EB2C55C119B3EE82 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				226E8DDE26B3A84F00C0B965 /* UITextView+Extension.swift */,
+				226E8DDC26B3A7F900C0B965 /* NSTextAttachment+Extension.swift */,
 				63E4CB20BF10D186DFCFE596ECCEB17A /* Array+Extension.swift */,
 				FEC62A798590309A88194E1D9EC2D866 /* CALayer+Extension.swift */,
 				27CEB77783749BCADBB2A11E1E39743E /* Data+Extension.swift */,
@@ -3376,7 +3366,6 @@
 				9C654F88E033C559DDDF61B21882EC1E /* UserDefault+Extension.swift */,
 				A6A4605AC083DC6ED1E573D20655E994 /* Support Files */,
 			);
-			name = BPFile;
 			path = BPFile;
 			sourceTree = "<group>";
 		};
@@ -3542,7 +3531,6 @@
 				89046DE65B83E407041AD316F9ED1348 /* VectorsExtensions.swift */,
 				5C2E394D43896B4FA5290242E495A655 /* Support Files */,
 			);
-			name = "lottie-ios";
 			path = "lottie-ios";
 			sourceTree = "<group>";
 		};
@@ -3553,7 +3541,6 @@
 				AB1FCD36CE3DC14787BAEE29E019EC11 /* BPSystemPhotoViewController.swift */,
 				0C80FA868A4FB85C44BD0947E9C963C5 /* View */,
 			);
-			name = SystemAlbum;
 			path = SystemAlbum;
 			sourceTree = "<group>";
 		};
@@ -3582,7 +3569,6 @@
 				11C224418D36187FADDBCA75456F8F2B /* ZYNetworkAccessibity.m */,
 				133669AC17393552B19521540ACD751D /* Support Files */,
 			);
-			name = BPNetwork;
 			path = BPNetwork;
 			sourceTree = "<group>";
 		};
@@ -3642,7 +3628,6 @@
 				2E2FFC834BF0844B89EC12213E5F8511 /* Core */,
 				3584D273E0A25EA8C6764463C8E5127D /* Support Files */,
 			);
-			name = Kingfisher;
 			path = Kingfisher;
 			sourceTree = "<group>";
 		};
@@ -3653,7 +3638,6 @@
 				DBE9C62602C018859D66F2206626C766 /* Support Files */,
 				F9FC2561383469855FD15F8DEE5BF8EE /* Swift */,
 			);
-			name = CocoaLumberjack;
 			path = CocoaLumberjack;
 			sourceTree = "<group>";
 		};
@@ -3746,7 +3730,6 @@
 				27062B2906A3CB8AD1906B65E6EB3A13 /* BPPhotoAlbumToolsView.swift */,
 				024269F6F92352FBB8834900821D75B6 /* BPPhotoAlbumViewController.swift */,
 			);
-			name = HistoryMedia;
 			path = HistoryMedia;
 			sourceTree = "<group>";
 		};
@@ -5312,6 +5295,7 @@
 				E92B0960259F5A44C08911E25E10B2BA /* BPActionSheet.swift in Sources */,
 				DF9C24EE27E0E01874B14F35AE870C12 /* BPAlertAttributedViewOneButton.swift in Sources */,
 				AE6F68EE3759422F3F9ECAD4E63221DE /* BPAlertAttributedViewTwoButton.swift in Sources */,
+				226E8DDF26B3A85000C0B965 /* UITextView+Extension.swift in Sources */,
 				36826CA59B0AF9B6DE7734B7C7E1E96A /* BPAlertManager.swift in Sources */,
 				6E5AAB88016D17F53728AAE55C2D2FD2 /* BPAlertViewImage.swift in Sources */,
 				EB616B4229356777EA8CE2EDA8CA2290 /* BPAlertViewOneButton.swift in Sources */,
@@ -5344,6 +5328,7 @@
 				30E500405C89A4991E5A4A97207C7BBF /* BPKit-dummy.m in Sources */,
 				B5CDA9E94EEF1BC8FBC8E1CA562E85A1 /* BPKitConfig.swift in Sources */,
 				6EA2C4073E728F0AA4FFF648D92E6D14 /* BPKitGlobal.swift in Sources */,
+				226E8DDD26B3A7F900C0B965 /* NSTextAttachment+Extension.swift in Sources */,
 				38AC80886A3D26EB6E13FB1AB1B679C5 /* BPLabel.swift in Sources */,
 				1A7B59EDC773500D01F655B6D2F53589 /* BPLoadingView.swift in Sources */,
 				766A1A600F09C4FB2E128E15CFC6D54F /* BPMediaCell.swift in Sources */,
@@ -6648,8 +6633,7 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};

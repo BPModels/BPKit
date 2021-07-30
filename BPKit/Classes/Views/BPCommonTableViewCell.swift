@@ -7,6 +7,7 @@
 
 import Foundation
 import ObjectMapper
+import BPCommon
 
 public class BPCommonTableViewCell: BPTableViewCell {
     
@@ -58,7 +59,7 @@ public class BPCommonTableViewCell: BPTableViewCell {
         
         titleLabel.sizeToFit()
         titleLabel.snp.remakeConstraints { make in
-            make.left.equalToSuperview().offset(AdaptSize(10))
+            make.left.equalToSuperview().offset(AdaptSize(isRequired ? 10 : 20))
             make.top.height.equalToSuperview()
             make.width.equalTo(titleLabel.width)
         }
@@ -70,7 +71,7 @@ public class BPCommonTableViewCell: BPTableViewCell {
             // 显示icon
             iconImageView.snp.remakeConstraints { make in
                 make.left.equalTo(textField.snp.right).offset(AdaptSize(10))
-                make.size.equalTo(CGSize(width: AdaptSize(17), height: AdaptSize(17)))
+                make.size.equalTo(iconImageView.image?.size ?? CGSize(width: AdaptSize(17), height: AdaptSize(17)))
                 make.centerY.equalToSuperview()
                 make.right.equalToSuperview().offset(AdaptSize(-15))
             }
@@ -107,7 +108,6 @@ public class BPCommonTableViewCell: BPTableViewCell {
     
     public override func bindData(model: Mappable, indexPath: IndexPath) {
         super.bindData(model: model, indexPath: indexPath)
-        self.setData(true, title: "标题", placeholder: "随便写点", canEdit: false, icon: getImage(name: "bp_add_icon", type: "png"), unit: "元")
     }
     
     public override func updateUI() {
@@ -127,11 +127,15 @@ public class BPCommonTableViewCell: BPTableViewCell {
     ///   - icon: 图标
     ///   - unit: 单位
     ///   - hideLine: 是否显示底部分割线
-    public func setData(_ isRequired: Bool, title: String?, placeholder: String?, canEdit: Bool, icon: UIImage?, unit: String?, hideLine: Bool = true) {
-        self.titleLabel.text       = title
-        self.textField.placeholder = placeholder
-        self.iconImageView.image   = icon
-        self.unitLabel.text        = unit
+    public func setData(_ isRequired: Bool, title: String?, content: String?, placeholder: String?, canEdit: Bool, maxLength:Int = .max,icon: UIImage?, unit: String?, hideLine: Bool = true, editBlock: StringBlock?) {
+        self.isRequired             = isRequired
+        self.titleLabel.text        = title
+        self.textField.text         = content
+        self.textField.placeholder  = placeholder
+        self.textField.maxLength    = maxLength
+        self.iconImageView.image    = icon
+        self.unitLabel.text         = unit
+        self.textField.editingBlock = editBlock
         if isRequired {
             self.titleLabel.setRequiredIcon()
         }

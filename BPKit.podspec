@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = 'BPKit'
 
-  s.version          = '0.5.5'
+  s.version          = '0.5.6'
 
   s.summary          = 'A short description of BPKit.'
 
